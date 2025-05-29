@@ -188,3 +188,7 @@ CREATE TABLE coordenador(
 	dthcoord TIMESTAMP NOT NULL,
 	status BOOLEAN DEFAULT TRUE
 );
+
+/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
+ALTER TABLE coordenador
+ALTER COLUMN senha TYPE VARCHAR(255);
