@@ -182,7 +182,7 @@ CREATE TABLE disponibilidade(
 CREATE TABLE coordenador(
 	idcoordendor SERIAL PRIMARY KEY,
 	nome VARCHAR(50),
-	senha VARCHAR(16) UNIQUE,
+	senha VARCHAR(255) UNIQUE,
 	cpf CHAR(11) UNIQUE,
 	crp VARCHAR(11) UNIQUE,
 	dthcoord TIMESTAMP NOT NULL,
