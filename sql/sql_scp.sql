@@ -3,26 +3,26 @@
 
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
-	nomeinscrito VARCHAR NOT NULL,
-	dtnascimento TIMESTAMP NOT NULL,
+	nomeinscrito VARCHAR(100) NOT NULL,
+	dtnascimento DATE NOT NULL,
 	testavpsico BOOLEAN NOT NULL DEFAULT FALSE,
-	tipoencaminhamento VARCHAR(50) NOT NULL CHECK (tipoencaminhamento IN ('CAPS,CRAS,CREAS,DEAM,DPDF,MPDFT,SES,SEJUS,UBS,Clinica Ana Lucia Chaves Fecury(Unieuro Asa Sul)')),
+	tipoencaminhamento VARCHAR(50) NOT NULL CHECK (tipoencaminhamento IN ('CAPS','CRAS','CREAS','DEAM','DPDF','MPDFT','SES','SEJUS','UBS','Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul')),
 	nomeresp VARCHAR(50),
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11),
-	estadocivilresp VARCHAR(25),
+	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	tellcellresp VARCHAR(15),
 	emailresp VARCHAR(45),
-	estadocivilinscrito VARCHAR(25) NOT NULL UNIQUE CHECK (estadocivilinscrito IN ('Solteiro, Casado, Divorciado, Viúvo, União Estável, Nenhum, Outros')),
+	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
 	tellcellinscrito VARCHAR(16) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
 	emailinscrito VARCHAR(50) NOT NULL,
-	identidadedegenero VARCHAR(25) NOT NULL CHECK (identidadedegenero IN('Masculino, Feminino, Não Binário, Transgênero, Outra')),
-	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca, Preta, Parda, Amarela, Indígena e Outra')),
+	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outra')),
+	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outra')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
 	confirmlgpd BOOLEAN NOT NULL, 
-	dthinscricao TIMESTAMP NOT NULL,
+	dthinscricao DATE NOT NULL,
 	status BOOLEAN DEFAULT TRUE
 );
 
@@ -30,24 +30,24 @@ CREATE TABLE inscritoconvenio (
 
 CREATE TABLE inscritocomunidade (
 	idfichacomunidade SERIAL PRIMARY KEY,
-	nomeinscrito VARCHAR(50) NOT NULL,
-	dtnascimento TIMESTAMP NOT NULL,
+	nomeinscrito VARCHAR(100) NOT NULL,
+	dtnascimento DATE NOT NULL,
 	nomeresp VARCHAR(50),
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
-	estadocivilresp VARCHAR(25),
+	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	tellcellresp VARCHAR(45),
 	emailresp VARCHAR(45),
-	estadocivilinscrito VARCHAR(25) NOT NULL UNIQUE CHECK (estadocivilinscrito IN ('Solteiro, Casado, Divorciado, Viúvo, União Estável, Nenhum, Outros')),
+	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
 	tellcellinscrito VARCHAR(15) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
 	emailinscrito VARCHAR(45) NOT NULL,
-	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino, Feminino, Não Binário, Transgênero, Outra')),
-	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca, Preta, Parda, Amarela, Indígena e Outra')),
+	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outra')),
+	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outra')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
 	confirmlgpd BOOLEAN NOT NULL,
-	dthinscricao TIMESTAMP NOT NULL,
+	dthinscricao DATE NOT NULL,
 	status BOOLEAN DEFAULT TRUE
 );
 
@@ -58,9 +58,9 @@ CREATE TABLE endereco(
 	idfichacomunidade INT UNIQUE,
 	cidade VARCHAR(40) NOT NULL,
 	bairro VARCHAR(50),
-	rua VARCHAR(10) NOT NULL,
+	rua VARCHAR(100) NOT NULL,
 	uf CHAR(2) DEFAULT 'DF' CHECK(uf in('DF')) NOT NULL,
-	cep INT UNIQUE NOT NULL,
+	cep CHAR(10) UNIQUE NOT NULL,
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio(idfichaconvenio),
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade) 
 );
@@ -179,20 +179,25 @@ CREATE TABLE disponibilidade(
 );
 
 /* Criando a entidade Coordenador */
-CREATE TABLE coordenador(
+CREATE TABLE coordenador (
 	idcoordenador SERIAL PRIMARY KEY,
-	nome VARCHAR(50),
-	senha VARCHAR(255) UNIQUE,
-	cpf CHAR(11) UNIQUE,
-	crp INT NOT NULL UNIQUE,
+	nome VARCHAR(50) NOT NULL,
+	senha VARCHAR(255) NOT NULL,
+	cpf CHAR(11) UNIQUE NOT NULL,
+	crp INT NOT NULL UNIQUE, /* CRP do coordenador que está sendo cadastrado*/
+	crpcoord INT, /* CRP do coordenador que já existe no banco*/
 	dthcoord TIMESTAMP NOT NULL,
 	status BOOLEAN DEFAULT TRUE,
-	FOREIGN KEY (crp) REFERENCES coordenador(crp)
+	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
 
-/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
-ALTER TABLE coordenador
-ALTER COLUMN senha TYPE VARCHAR(255);
+/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash
+
+	ALTER TABLE coordenador
+
+	ALTER COLUMN senha TYPE VARCHAR(255);
+
+*/
 
 /* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
 ALTER TABLE coordenador
@@ -200,7 +205,7 @@ ALTER COLUMN senha TYPE VARCHAR(255);
 
 CREATE TABLE supervisor (
 	idsupervisor SERIAL PRIMARY KEY,
-	crpcoord INT UNIQUE NOT NULL,
+	crpcoord INT NOT NULL, /*Removi o UNIQUE assim ele pode cadastrar vários supervisores*/
 	nome VARCHAR(50) NOT NULL,
 	cpf CHAR(11) NOT NULL UNIQUE,
 	crp INT NOT NULL UNIQUE,
@@ -219,7 +224,7 @@ DROP CONSTRAINT supervisor_crpcoord_fkey; */
 
 CREATE TABLE secretaria (
 	idsecretaria SERIAL PRIMARY KEY,
-	crpcoord INT UNIQUE NOT NULL,
+	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	cpf CHAR(11) NOT NULL UNIQUE,
 	codfuncionario INT NOT NULL UNIQUE,
@@ -231,7 +236,7 @@ CREATE TABLE secretaria (
 
 CREATE TABLE resptec(
 	idresptec SERIAL PRIMARY KEY,
-	crpcoord INT NOT NULL UNIQUE,
+	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	senha VARCHAR(255) NOT NULL,
 	cpf CHAR(11) NOT NULL UNIQUE,
@@ -243,8 +248,8 @@ CREATE TABLE resptec(
 
 CREATE TABLE estagiario (
 	idestagiario SERIAL PRIMARY KEY,
-	crpsup INT NOT NULL UNIQUE,
-	crpcoord INT NOT NULL UNIQUE,
+	crpsup INT NOT NULL,
+	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
 	senha VARCHAR(10) NOT NULL,
