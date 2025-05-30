@@ -181,13 +181,19 @@ CREATE TABLE disponibilidade(
 /* Criando a entidade Coordenador */
 CREATE TABLE coordenador(
 	idcoordendor SERIAL PRIMARY KEY,
+	idcoordenador INT UNIQUE,
 	nome VARCHAR(50),
 	senha VARCHAR(255) UNIQUE,
 	cpf CHAR(11) UNIQUE,
 	crp VARCHAR(11) UNIQUE,
 	dthcoord TIMESTAMP NOT NULL,
-	status BOOLEAN DEFAULT TRUE
+	status BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (idcoordenador) REFERENCES coordenador(idcoordernador)
 );
+
+/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
+ALTER TABLE coordenador
+ALTER COLUMN senha TYPE VARCHAR(255);
 
 /* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
 ALTER TABLE coordenador
