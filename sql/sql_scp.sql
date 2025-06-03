@@ -1,6 +1,15 @@
 
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
+
+/* 
+
+	OBSERVAÇÃO: VAMOS CRIAR UMA NOVA TABELA PARA O ESTAGIÁRIO ESCOLHER INSCRITO, POIS UM ESTAGIÁRIO PODE ESCOLHER VARIOS OU NENHUM INSCRITO 
+	
+	O INSCRITO PODE SER ESCOLIDO PPOR VÁRIOS OU NEM UM ESTAGIÁRIO	
+
+*/
+
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,
@@ -266,6 +275,18 @@ CREATE TABLE estagiario (
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+);
+
+
+/* estagiainscrito */
+
+CREATE TABLE  escolheins(
+
+	idestagiario INT,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
+	status BOOLEAN DEFAULT FALSE,
+	dthescolha TIMESTAMP
 );
 
 select * from coordenador;
