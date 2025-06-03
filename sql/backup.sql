@@ -340,6 +340,33 @@ CREATE TABLE prontuario (
 
 );
 
+CREATE TABLE fichafreqest(
+	idfichafreq SERIAL PRIMARY KEY,
+	ra INT NOT NULL,
+	crpsup INT,
+	crpcoord INT,
+	fichafreq BYTEA, 
+	FOREIGN KEY (ra) REFERENCES estagiario (ra),
+	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+);
+
+CREATE TABLE anamnese(
+	idanamnese SERIAL PRIMARY KEY,
+	idprontuario INT,
+	anamnesedoc BYTEA,
+	dthanexo TIMESTAMP,
+	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
+);
+
+CREATE TABLE laudomed(
+	idlaudo SERIAL PRIMARY KEY,
+	idprontuario INT,
+	laudodoc BYTEA,
+	dthanexo TIMESTAMP,
+	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
+);
+
 CREATE TABLE arqinscrito(
 	idarqinscrito SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -389,4 +416,24 @@ CREATE TABLE soliarquivamento(
 	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
+
+CREATE TABLE htocorrencia(
+	idhtc SERIAL PRIMARY KEY,
+	idprontuario INT,
+	idarqinscrito INT,
+	ra INT,
+	crpsup INT,
+	crpcoord INT,
+	nomepessoa VARCHAR(50) NOT NULL,
+	dthora TIMESTAMP NOT NULL DEFAULT NOW(),
+	comparecimento BOOLEAN DEFAULT FALSE,
+	faltas INT NOT NULL,
+	justificativa VARCHAR(255) NOT NULL,
+	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+	FOREIGN KEY (ra) REFERENCES estagiario (ra),
+	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
+);
+
 

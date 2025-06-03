@@ -417,3 +417,23 @@ CREATE TABLE soliarquivamento(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
+CREATE TABLE htocorrencia(
+	idhtc SERIAL PRIMARY KEY,
+	idprontuario INT,
+	idarqinscrito INT,
+	ra INT,
+	crpsup INT,
+	crpcoord INT,
+	nomepessoa VARCHAR(50) NOT NULL,
+	dthora TIMESTAMP NOT NULL DEFAULT NOW(),
+	comparecimento BOOLEAN DEFAULT FALSE,
+	faltas INT NOT NULL,
+	justificativa VARCHAR(255) NOT NULL,
+	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+	FOREIGN KEY (ra) REFERENCES estagiario (ra),
+	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
+);
+
+
