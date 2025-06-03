@@ -267,11 +267,14 @@ ALTER TABLE estagiario
 DROP CONSTRAINT estagiario_crpcoord_fkey;
 
 DROP TABLE estagiario; */
+
+
+/* Criando tabela sala */
 CREATE TABLE sala(
 	idsala SERIAL PRIMARY KEY,
-	codfuncionario INT,
-	crpresp INT,
-	crpcoord INT,
+	codfuncionario INT, /* FK para secretária */
+	crpresp INT, /* Fk para responsável tec */
+	crpcoord INT, /* FK para coordenador */
 	numsala INT NOT NULL,
 	tiposala VARCHAR(10) NOT NULL,
 	capacidade INT NOT NULL,
@@ -281,6 +284,8 @@ CREATE TABLE sala(
 	FOREIGN KEY (codfuncionario) REFERENCES secretaria (codfuncionario),
 	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp)
 );
+
+/* Criando tabela Agendamento */
 
 CREATE TABLE agendamento(
 	idagendamento SERIAL PRIMARY KEY,
@@ -300,6 +305,8 @@ CREATE TABLE agendamento(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
+/* Criando tabela sala agendamento*/
+
 CREATE TABLE salaagendamento(
 	idsolicitacoes SERIAL PRIMARY KEY,
 	idagendamento INT NOT NULL,
@@ -310,4 +317,25 @@ CREATE TABLE salaagendamento(
 	FOREIGN KEY (idagendamento) REFERENCES agendamento(idagendamento),
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (ra) REFERENCES estagiario (ra)
+);
+
+/* CRIANDO TABELA PRONTUÁRIO */
+
+CREATE TABLE prontuario (
+
+	idprontuario SERIAL PRIMARY KEY,
+	crpcoord INT, 
+	crpsup INT ,
+	ra INT ,
+	idfichaconvenio INT,
+	idfichacomunidade INT, 
+	tcle BYTEA NOT NULL,
+	dthprontuario TIMESTAMP NOT NULL,
+	status BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
+	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+	FOREIGN KEY (ra) REFERENCES estagiario (ra),
+	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
+	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
+
 );
