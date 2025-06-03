@@ -1,6 +1,15 @@
 
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
+
+/* 
+
+	OBSERVAÇÃO: VAMOS CRIAR UMA NOVA TABELA PARA O ESTAGIÁRIO ESCOLHER INSCRITO, POIS UM ESTAGIÁRIO PODE ESCOLHER VARIOS OU NENHUM INSCRITO 
+	
+	O INSCRITO PODE SER ESCOLIDO PPOR VÁRIOS OU NEM UM ESTAGIÁRIO	
+
+*/
+
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,
@@ -9,7 +18,7 @@ CREATE TABLE inscritoconvenio (
 	tipoencaminhamento VARCHAR(50) NOT NULL CHECK (tipoencaminhamento IN ('CAPS','CRAS','CREAS','DEAM','DPDF','MPDFT','SES','SEJUS','UBS','Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul')),
 	nomeresp VARCHAR(50),
 	grauresp VARCHAR(25),
-	cpfresp CHAR(11),
+	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	tellcellresp VARCHAR(15),
 	emailresp VARCHAR(45),
@@ -22,7 +31,7 @@ CREATE TABLE inscritoconvenio (
 	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outra')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
 	confirmlgpd BOOLEAN NOT NULL, 
-	dthinscricao DATE NOT NULL,
+	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
 
@@ -47,15 +56,15 @@ CREATE TABLE inscritocomunidade (
 	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outra')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
 	confirmlgpd BOOLEAN NOT NULL,
-	dthinscricao DATE NOT NULL,
+	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE endereco(
 
 	idendereco SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	cidade VARCHAR(40) NOT NULL,
 	bairro VARCHAR(50),
 	rua VARCHAR(100) NOT NULL,
@@ -69,8 +78,8 @@ CREATE TABLE endereco(
 
 CREATE TABLE tipoterapia(
 	idtipoterapia SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,	
+	idfichaconvenio INT,
+	idfichacomunidade INT,	
 	individualift BOOLEAN DEFAULT FALSE,
 	individualadt BOOLEAN DEFAULT FALSE,
 	individualadto BOOLEAN DEFAULT FALSE,
@@ -86,8 +95,8 @@ CREATE TABLE tipoterapia(
 
 CREATE TABLE pcdsnd(
 	idpcdnd SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	tea BOOLEAN DEFAULT FALSE,
 	tdah BOOLEAN DEFAULT FALSE,
 	dffs BOOLEAN DEFAULT FALSE, /* campo referente ao atributo deficiência física ou motora*/
@@ -104,8 +113,8 @@ CREATE TABLE pcdsnd(
 
 CREATE TABLE motivoacompanhamento(
 	idmotivoacamo SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	ansiedade BOOLEAN DEFAULT FALSE,
 	assediomoral BOOLEAN DEFAULT FALSE,
 	depressao BOOLEAN DEFAULT FALSE,
@@ -131,8 +140,8 @@ CREATE TABLE motivoacompanhamento(
 
 CREATE TABLE medicamento(
 	idmedicamento SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	ansiolitico BOOLEAN DEFAULT FALSE,
 	antidepressivo BOOLEAN DEFAULT FALSE,
 	antipsicotico BOOLEAN DEFAULT FALSE,
@@ -147,8 +156,8 @@ CREATE TABLE medicamento(
 
 CREATE TABLE doencafisica(
 	iddoencafisica SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	doencaresp BOOLEAN DEFAULT FALSE, /* atributo referente a doenca respiratório*/
 	cancer BOOLEAN DEFAULT FALSE,
 	diabete BOOLEAN DEFAULT FALSE,
@@ -168,8 +177,8 @@ CREATE TABLE doencafisica(
 
 CREATE TABLE disponibilidade(
 	iddisponibilidade SERIAL PRIMARY KEY,
-	idfichaconvenio INT UNIQUE,
-	idfichacomunidade INT UNIQUE,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
 	manha BOOLEAN DEFAULT FALSE,
 	tarde BOOLEAN DEFAULT FALSE,
 	noite BOOLEAN DEFAULT FALSE,
@@ -186,7 +195,8 @@ CREATE TABLE coordenador (
 	cpf CHAR(11) UNIQUE NOT NULL,
 	crp INT NOT NULL UNIQUE, /* CRP do coordenador que está sendo cadastrado*/
 	crpcoord INT, /* CRP do coordenador que já existe no banco*/
-	dthcoord TIMESTAMP NOT NULL,
+	dthcoord TIMESTAMP NOT NULL DEFAULT NOW(),
+	emailinst VARCHAR (255) NOT NULL, /* email-institucuinal do coordenador*/
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
@@ -199,9 +209,11 @@ CREATE TABLE coordenador (
 
 */
 
-/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash*/
-ALTER TABLE coordenador
-ALTER COLUMN senha TYPE VARCHAR(255);
+/* 
+	Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash 
+	ALTER TABLE coordenador
+	ALTER COLUMN senha TYPE VARCHAR(255); 
+*/
 
 CREATE TABLE supervisor (
 	idsupervisor SERIAL PRIMARY KEY,
@@ -210,7 +222,8 @@ CREATE TABLE supervisor (
 	cpf CHAR(11) NOT NULL UNIQUE,
 	crp INT NOT NULL UNIQUE,
 	senha VARCHAR(255),
-	dthsup TIMESTAMP NOT NULL,
+	emailinst VARCHAR (255), /*email institucional do supervisor*/
+	dthsup TIMESTAMP NOT NULL DEFAULT NOW(), 
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)	
 );
@@ -229,7 +242,8 @@ CREATE TABLE secretaria (
 	cpf CHAR(11) NOT NULL UNIQUE,
 	codfuncionario INT NOT NULL UNIQUE,
 	senha VARCHAR(255) NOT NULL,
-	dthsec TIMESTAMP NOT NULL,
+	dthsec TIMESTAMP NOT NULL DEFAULT NOW(),
+	emailinst VARCHAR (255), /* email institucional da secretaria*/
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
@@ -241,7 +255,8 @@ CREATE TABLE resptec(
 	senha VARCHAR(255) NOT NULL,
 	cpf CHAR(11) NOT NULL UNIQUE,
 	crpresp INT NOT NULL UNIQUE,
-	dthresp TIMESTAMP NOT NULL,
+	dthresp TIMESTAMP NOT NULL DEFAULT NOW(),
+	emailinst VARCHAR (255) NOT NULL, /* Email institucional da responsável técnica*/ 
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
@@ -255,10 +270,23 @@ CREATE TABLE estagiario (
 	senha VARCHAR(10) NOT NULL,
 	nivelestagio VARCHAR(10) NOT NULL,
 	semestre VARCHAR(10) NOT NULL, 
-	emailinst VARCHAR(45) NOT NULL UNIQUE,
+	emailinst VARCHAR(45) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
+	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+);
+
+
+/* estagiainscrito */
+
+CREATE TABLE  escolheins(
+
+	idestagiario INT,
+	idfichaconvenio INT,
+	idfichacomunidade INT,
+	status BOOLEAN DEFAULT FALSE,
+	dthescolha TIMESTAMP
 );
 
 select * from coordenador;
@@ -278,7 +306,7 @@ CREATE TABLE sala(
 	numsala INT NOT NULL,
 	tiposala VARCHAR(10) NOT NULL,
 	capacidade INT NOT NULL,
-	dthsala TIMESTAMP NOT NULL,
+	dthsala TIMESTAMP NOT NULL DEFAULT NOW(),
 	status BOOLEAN NOT NULL DEFAULT FALSE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
 	FOREIGN KEY (codfuncionario) REFERENCES secretaria (codfuncionario),
@@ -293,11 +321,11 @@ CREATE TABLE agendamento(
 	codfuncionario INT,
 	crpresp INT,
 	crpcoord INT,
-	confirmsec BOOLEAN,
+	confirmsec BOOLEAN DEFAULT FALSE,
 	dthconfirmsec TIMESTAMP,
-	confirmresp BOOLEAN,
+	confirmresp BOOLEAN DEFAULT FALSE,
 	dthconfirmresp TIMESTAMP,
-	confirmcoord BOOLEAN,
+	confirmcoord BOOLEAN DEFAULT FALSE,
 	dthconfirmcoord TIMESTAMP,
 	FOREIGN KEY (idsala) REFERENCES sala(idsala),
 	FOREIGN KEY (codfuncionario) REFERENCES secretaria (codfuncionario),
@@ -330,7 +358,7 @@ CREATE TABLE prontuario (
 	idfichaconvenio INT,
 	idfichacomunidade INT, 
 	tcle BYTEA NOT NULL,
-	dthprontuario TIMESTAMP NOT NULL,
+	dthprontuario TIMESTAMP NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
@@ -355,7 +383,7 @@ CREATE TABLE anamnese(
 	idanamnese SERIAL PRIMARY KEY,
 	idprontuario INT,
 	anamnesedoc BYTEA,
-	dthanexo TIMESTAMP,
+	dthanexo TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
 );
 
@@ -363,7 +391,7 @@ CREATE TABLE laudomed(
 	idlaudo SERIAL PRIMARY KEY,
 	idprontuario INT,
 	laudodoc BYTEA,
-	dthanexo TIMESTAMP,
+	dthanexo TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
 );
 
@@ -372,7 +400,7 @@ CREATE TABLE arqinscrito(
 	idfichaconvenio INT,
 	idfichacomunidade INT,
 	status BOOLEAN DEFAULT TRUE,
-	dtharquinscrito TIMESTAMP NOT NULL,
+	dtharquinscrito TIMESTAMP NOT NULL DEFAULT NOW(),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)	
 );
