@@ -267,3 +267,47 @@ ALTER TABLE estagiario
 DROP CONSTRAINT estagiario_crpcoord_fkey;
 
 DROP TABLE estagiario; */
+CREATE TABLE sala(
+	idsala SERIAL PRIMARY KEY,
+	codfuncionario INT,
+	crpresp INT,
+	crpcoord INT,
+	numsala INT NOT NULL,
+	tiposala VARCHAR(10) NOT NULL,
+	capacidade INT NOT NULL,
+	dthsala TIMESTAMP NOT NULL,
+	status BOOLEAN NOT NULL DEFAULT FALSE,
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
+	FOREIGN KEY (codfuncionario) REFERENCES secretaria (codfuncionario),
+	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp)
+);
+
+CREATE TABLE agendamento(
+	idagendamento SERIAL PRIMARY KEY,
+	idsala INT NOT NULL,
+	codfuncionario INT,
+	crpresp INT,
+	crpcoord INT,
+	confirmsec BOOLEAN,
+	dthconfirmsec TIMESTAMP,
+	confirmresp BOOLEAN,
+	dthconfirmresp TIMESTAMP,
+	confirmcoord BOOLEAN,
+	dthconfirmcoord TIMESTAMP,
+	FOREIGN KEY (idsala) REFERENCES sala(idsala),
+	FOREIGN KEY (codfuncionario) REFERENCES secretaria (codfuncionario),
+	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
+	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+);
+
+CREATE TABLE salaagendamento(
+	idsolicitacoes SERIAL PRIMARY KEY,
+	idagendamento INT NOT NULL,
+	crpsup INT,
+	ra INT,
+	dthsolisup TIMESTAMP,
+	dthsoliest TIMESTAMP,
+	FOREIGN KEY (idagendamento) REFERENCES agendamento(idagendamento),
+	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+	FOREIGN KEY (ra) REFERENCES estagiario (ra)
+);
