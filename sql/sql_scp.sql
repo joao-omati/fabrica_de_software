@@ -262,7 +262,7 @@ CREATE TABLE estagiario (
 	nivelestagio VARCHAR(10) NOT NULL,
 	semestre VARCHAR(10) NOT NULL, 
 	emailinst VARCHAR(45) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
-	dthestg TIMESTAMP DEFAULT DEFAULT NOW(),
+	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
