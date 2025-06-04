@@ -286,7 +286,7 @@ CREATE TABLE  escolheins(
 	idfichaconvenio INT,
 	idfichacomunidade INT,
 	status BOOLEAN DEFAULT FALSE,
-	dthescolha TIMESTAMP
+	dthescolha TIMESTAMP DEFAULT NOW()
 );
 
 select * from coordenador;
