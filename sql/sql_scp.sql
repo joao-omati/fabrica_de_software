@@ -27,10 +27,10 @@ CREATE TABLE inscritoconvenio (
 	tellcellinscrito VARCHAR(16) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
 	emailinscrito VARCHAR(50) NOT NULL,
-	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outra')),
-	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outra')),
+	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outros')),
+	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outras')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
-	confirmlgpd BOOLEAN NOT NULL, 
+	confirmlgpd BOOLEAN NOT NULL DEFAULT FALSE, 
 	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
@@ -55,7 +55,7 @@ CREATE TABLE inscritocomunidade (
 	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outra')),
 	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outra')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
-	confirmlgpd BOOLEAN NOT NULL,
+	confirmlgpd BOOLEAN NOT NULL DEFAULT FALSE,
 	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
