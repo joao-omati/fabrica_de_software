@@ -60,8 +60,7 @@ CREATE TABLE inscritocomunidade (
 	status BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE endereco(
-
+CREATE TABLE endereco (
 	idendereco SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
