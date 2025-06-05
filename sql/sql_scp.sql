@@ -286,6 +286,9 @@ CREATE TABLE  escolheins(
 	idfichacomunidade INT,
 	status BOOLEAN DEFAULT FALSE,
 	dthescolha TIMESTAMP DEFAULT NOW()
+	FOREIGN KEY (idestagiario) REFERENCES estagiario (idestagiario)
+	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio)
+	FOREIGN KEY (idestagiario) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
 select * from coordenador;
@@ -364,8 +367,14 @@ CREATE TABLE prontuario (
 	FOREIGN KEY (ra) REFERENCES estagiario (ra),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
-
 );
+
+CREATE TABLE folhaevo (
+	idfolhaevolução SERIAL PRIMARY KEY,
+	idprontuario NOT NULL,
+	folhaevolucao BYTEA NOT NULL,
+	dthanexo TIMESTAMP NOT NULL DEFAULT NOW()
+)
 
 CREATE TABLE fichafreqest(
 	idfichafreq SERIAL PRIMARY KEY,
