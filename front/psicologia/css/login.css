@@ -1,0 +1,308 @@
+/* ================== VARIÁVEIS GLOBAIS ================== */
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor--botao-hover: #003366;
+}
+
+/* ================== CONFIGURAÇÃO GLOBAL ================== */
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ================== BARRA SUPERIOR COM ACESSIBILIDADE ================== */
+.top-bar {
+  background-color: var(--cor-realce-destaque);
+  color: var(--cor-texto-principal);
+  padding: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* ================== CABEÇALHO COM LOGO ================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-text strong {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logo-text small {
+  color: var(--cor-texto-secundaria);
+  font-size: 12px;
+}
+
+/* ================== BOTÃO VOLTAR ================== */
+.voltar {
+  text-align: left;
+  padding: 10px 20px;
+  background-color: var(--cor-primaria);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.voltar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* ================== BANNER SUPERIOR DO LOGIN ================== */
+.login-banner {
+  background-color: #002f6c;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ================== CONTAINER DO FORMULÁRIO DE LOGIN ================== */
+.login-container {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container img {
+  height: 100px;
+}
+
+/* Título do login */
+h2 {
+  letter-spacing: 2px;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+/* Inputs, select e botão */
+input,
+.select-perfil,
+.btn {
+  width: 320px;
+  max-width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Dropdown com ícone de seta personalizada */
+.select-perfil {
+  appearance: none;
+  background-color: #fff;
+  background-image: url("../img/seta-para-baixo.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  color: #333;
+}
+
+/* Link "Esqueceu a senha?" */
+.forgot {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.forgot a {
+  color: #002f6c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Botão de login */
+.btn {
+  background-color: var(--cor--botao-hover);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ================== RODAPÉ COM CONTATO ================== */
+.rodape {
+  position: absolute; /* ou remova */
+  bottom: 0;
+  width: 100%;
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  flex-wrap: wrap;
+  overflow-x: hidden; /* ajuda a prevenir estouros */
+}
+
+
+.rodape .contato {
+  display: flex;
+  align-items: center;
+}
+
+.imgwpp {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.suporte,
+.atendimento {
+  margin: 0;
+}
+
+.atendimento {
+  margin-left: 70px;
+}
+
+.suporte {
+  margin-right: 100px;
+}
+
+/* ================== MEDIA QUERIES (RESPONSIVIDADE) ================== */
+
+/* Tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    margin-left: 0;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .voltar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .rodape {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .login-container {
+    padding: 15px;
+  }
+
+  .logo-text strong {
+    font-size: 14px;
+  }
+
+  .logo-text small {
+    font-size: 10px;
+  }
+
+  .login-banner {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .top-bar {
+    font-size: 12px;
+    justify-content: center;
+  }
+}
+
+/* Celulares pequenos (≤ 480px) */
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .login-container {
+    padding: 10px;
+  }
+
+  input,
+  .select-perfil,
+  .btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .forgot {
+    font-size: 12px;
+  }
+
+  .imgwpp {
+    width: 24px;
+    height: 24px;
+  }
+
+  .rodape {
+    font-size: 14px;
+    padding: 15px 10px;
+  }
+}
+
+/* Telas muito grandes (≥ 1600px) */
+@media (min-width: 1600px) {
+  .login-container {
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
