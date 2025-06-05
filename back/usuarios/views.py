@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  # Adicionei o AuthenticationForm
 from django.contrib.auth import login, logout  # Importe estas funções
 
+@method_decorator(login_required(login_url = 'login'), name = 'dispatch')
 class RegisterView(UserPassesTestMixin, View):
     """View de registro restrita a 1 usuário específico"""
     template_name = 'register.html'
