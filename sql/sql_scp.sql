@@ -20,11 +20,11 @@ CREATE TABLE inscritoconvenio (
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
-	tellcellresp VARCHAR(15),
+	tellcellresp VARCHAR(20),
 	emailresp VARCHAR(45),
 	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
-	tellcellinscrito VARCHAR(16) NOT NULL,
+	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
 	emailinscrito VARCHAR(50) NOT NULL,
 	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outros')),
@@ -45,11 +45,11 @@ CREATE TABLE inscritocomunidade (
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
-	tellcellresp VARCHAR(45),
+	tellcellresp VARCHAR(20),
 	emailresp VARCHAR(45),
 	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
-	tellcellinscrito VARCHAR(15) NOT NULL,
+	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
 	emailinscrito VARCHAR(45) NOT NULL,
 	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outros')),
@@ -111,7 +111,7 @@ CREATE TABLE pcdsnd(
 /* Criando tabela do motivo de acompanhamento*/
 
 CREATE TABLE motivoacompanhamento(
-	idmotivoacamo SERIAL PRIMARY KEY,
+	idmotivoacamp SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
 	ansiedade BOOLEAN DEFAULT FALSE,
@@ -166,7 +166,7 @@ CREATE TABLE doencafisica(
 	hcpt BOOLEAN DEFAULT FALSE, /* atributo referente a hipertensao ou cardiopatia */
 	luposatm BOOLEAN DEFAULT FALSE, /* atributo referente ao lupos ou outras doencas autoimune */
 	obesidade BOOLEAN DEFAULT FALSE, 
-	pblmrenal BOOLEAN DEFAULT FALSE,/* atributo referente a problemas renais*/
+	pblmarenal BOOLEAN DEFAULT FALSE,/* atributo referente a problemas renais*/
 	outro BOOLEAN DEFAULT FALSE,
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio(idfichaconvenio),
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
@@ -269,7 +269,7 @@ CREATE TABLE estagiario (
 	senha VARCHAR(10) NOT NULL,
 	nivelestagio VARCHAR(10) NOT NULL,
 	semestre VARCHAR(10) NOT NULL, 
-	emailinst VARCHAR(45) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
+	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
@@ -280,7 +280,7 @@ CREATE TABLE estagiario (
 /* estagiainscrito */
 
 CREATE TABLE  escolheins(
-
+	idescolheins SERIAL PRIMARY KEY,
 	idestagiario INT,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
