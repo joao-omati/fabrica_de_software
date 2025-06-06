@@ -168,6 +168,22 @@ WHERE
 	p.tea = TRUE OR
 	p.dfa = TRUE;
 
+-- Inserindo alguns dados na tabela motivoacompanhamento
+INSERT INTO motivoacompanhamento(idfichacomunidade,tristeza,chorofc,depressao) 
+VALUES (
+	20,
+	TRUE,
+	TRUE,
+	TRUE
+);
+
+INSERT INTO motivoacompanhamento(idfichacomunidade,tristeza,chorofc,depressao)
+VALUES
+	(7, TRUE,TRUE,TRUE),
+	(18, TRUE,TRUE,TRUE),
+	(25,TRUE, TRUE,TRUE);
+
+--
 
 
 
