@@ -1,8 +1,3 @@
-/* 
-  Variáveis de cores principais usadas em todo o layout.
-  Facilita alterações e manutenção do tema visual.
-*/
-
 :root {
   --cor-primaria: #004a8f;
   --cor-secundaria: #ffffff;
@@ -12,347 +7,319 @@
   --cor-botao-hover: #003366;
 }
 
-/* 
-  Estilização global do body: remove margem, define fonte padrão,
-  cor de fundo e texto, centraliza o conteúdo e define altura mínima.
-*/
-body {
+* {
   margin: 0;
-  font-family: "Roboto", "Open Sans", sans-serif;
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* 
-  Barra superior com logo, menu e botão de login. Responsiva e espaçada.
-*/
-.top-bar {
+body {
+  text-align: center;
+  background-color: #f9f9f9;
+  color: var(--cor-texto-principal);
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;  /* Permite que os elementos se ajustem melhor em telas pequenas */
+}
+
+.header-container img {
+  width: 200px;
+}
+
+.header-container h1 {
+  font-size: 20px;
+  margin: 0;
+  flex: 1;
+  text-align: center; /* Centraliza o título */
+}
+
+.login-icon {
+  font-size: 30px;
+  color: var(--cor-texto-principal);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero img {
+  width: 50%;
+}
+
+.hero h2 {
+  font-size: 35px;
+  margin-top: 20px;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.hero button {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 10px 80px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* ATENDIMENTOS */
+.atendimentos {
+  padding: 40px 20px;
+}
+
+.atendimentos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card-atendimento {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px;
-  background-color: #fff;
-  flex-wrap: wrap;
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  text-align: left;
+}
+
+.conteudo-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.conteudo-texto h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.conteudo-texto p {
+  font-size: 15px;
+  color: var(--cor-texto-secundaria);
+}
+
+.conteudo-texto button {
+  margin-top: 12px;
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.conteudo-imagem img {
+  width: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* SOBRE */
+.sobre {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.sobre p {
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 800px; /* Limita a largura para evitar que o texto fique muito esticado */
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.sobre h3 {
+  margin-top: 70px;
+}
+
+.sobre img {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* FAQ */
+.faq {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.faq h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.faq-item {
+  background: #fff;
+  margin: 10px auto;
+  padding: 20px 20px;
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-toggle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: var(--cor-texto-principal);
+}
+
+.faq-answer {
+  color: var(--cor-texto-secundaria);
+  display: none;
   margin-top: 10px;
 }
 
-/* Logo e texto ao lado da imagem */
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  height: 50px;
-  margin-right: 10px;
-}
-
-.logo-text {
-  text-align: left;
-}
-
-.logo-text strong {
-  color: var(--cor-primaria);
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.logo-text small {
-  color: var(--cor-texto-secundaria);
-  font-size: 12px;
-}
-
-/* Menu de navegação centralizado com espaçamento */
-.menu {
-  display: flex;
-  gap: 100px;
-  justify-content: center;
-  flex: 1;
-  margin-right: 60px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: var(--cor-primaria);
-  font-weight: bold;
-  font-size: 14px;
-}
-
-/* Botão de login com fundo colorido e texto branco */
-.btn-login {
-  background-color: var(--cor-primaria);
-  color: #fff;
-  padding: 6px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-/* 
-  Conteúdo principal da página: textos e imagem lado a lado.
-  Responsivo com padding e espaçamento entre blocos.
-*/
-.conteudo-principal {
-  display: flex;
-  align-items: flex-start;
-  padding: 40px 60px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-/* Texto informativo à esquerda com títulos e parágrafos estilizados */
-.texto-informativo {
-  flex: 1;
-  min-width: 300px;
-  max-width: 600px;
-  text-align: left;
-  margin-left: 50px;
+/* FOOTER */
+footer {
+  text-align: center;
   margin-top: 40px;
-}
-
-.texto-informativo h3 {
-  color: #b08500;
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-family: "Roboto";
-}
-
-.texto-informativo p {
-  font-size: 18px;
-  line-height: 1.6;
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: justify;
-  font-family: "Open Sans";
-}
-
-.texto-informativo h4 {
-  color: var(--cor-primaria);
-  font-size: 16px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-/* Imagem ilustrativa à direita com padding e margem superior */
-.imagem-ilustrativa {
-  flex: 1;
-  min-width: 300px;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  margin-top: 40px;
+  color: var(--cor-texto-secundaria);
 }
 
-.imagem-ilustrativa img {
-  width: 100%;
-  max-width: 680px; /* você pode ajustar esse valor conforme desejar */
-  height: auto;
-  border-radius: 8px;
-  object-fit: contain;
-}
+/* RESPONSIVIDADE */
 
-/* 
-  Área de botões com espaçamento grande.
-  Responsivo e centralizado.
-*/
-.botoes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 200px;
-  width: 100%;
-  margin-top: 80px;
-}
-
-.botoes button {
-  padding: 14px 50px;
-  font-size: 14px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: #003366;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.botoes button:hover {
-  background-color: #fff;
-  color: #003366;
-}
-
-/* Rodapé com informações de contato, suporte e alinhamento flexível */
-.rodape {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--cor-primaria);
-  color: white;
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
-  flex-wrap: wrap;
-}
-
-.rodape .contato {
-  display: flex;
-  align-items: center;
-}
-
-.imgwpp {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
-
-.suporte,
-.atendimento {
-  margin: 0;
-}
-
-.atendimento {
-  margin-left: 70px;
-}
-
-.suporte {
-  margin-right: 100px;
-}
-
-/* 
-  Responsividade: ajustes de layout para telas menores.
-  Divide em três breakpoints principais: até 1024px, 768px e 480px.
-*/
-@media (max-width: 1024px) {
-  .conteudo-principal {
+/* Telas menores que 992px (notebooks, tablets na horizontal) */
+@media (max-width: 992px) {
+  .header-container {
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px;
-    gap: 30px;
   }
 
-  .menu {
-    gap: 50px;
-    margin-right: 0;
+  .header-container h1 {
+    margin-left: 0;
+    text-align: center;
   }
 
-  .botoes {
-    gap: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  .top-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
+  .hero img {
+    width: 80%;
   }
 
-  .menu {
-    flex-direction: column;
-    gap: 15px;
-    margin: 0;
-  }
-
-  .btn-login {
-    margin-top: 10px;
-  }
-
-  .conteudo-principal {
-    padding: 20px;
-  }
-
-  .texto-informativo,
-  .imagem-ilustrativa {
-    max-width: 100%;
-    padding: 0 10px;
-  }
-
-  .imagem-ilustrativa {
-    padding: 20px 0;
-  }
-
-  .botoes {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-  }
-
-  .botoes button {
-    width: 90%;
-    max-width: 300px;
-    padding: 12px 0;
-  }
-
-  .rodape {
+  .card-atendimento {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
   }
 
-  .atendimento,
-  .suporte {
-    margin: 0;
+  .conteudo-texto {
+    align-items: center;
   }
 
-  .imagem-ilustrativa img {
-    max-width: 90%;
+  .conteudo-texto button {
+    align-self: center;
+  }
+
+  .conteudo-imagem img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .sobre p {
+    padding: 0 30px;
   }
 }
 
-@media (max-width: 480px) {
-  .logo-text strong {
+/* Telas menores que 768px (tablets em pé e celulares grandes) */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .card-atendimento {
+    padding: 20px 10px;
+  }
+
+  .conteudo-texto h3 {
+    font-size: 20px;
+  }
+
+  .conteudo-texto p {
     font-size: 14px;
   }
 
-  .logo-text small {
-    font-size: 10px;
+  .faq-item {
+    padding: 15px;
+  }
+}
+
+/* Telas menores que 576px (celulares pequenos) */
+@media (max-width: 576px) {
+  .header-container img {
+    width: 150px;
   }
 
-  .top-bar {
-    font-size: 11px;
+  .hero h2 {
+    font-size: 24px;
   }
 
-  .menu a {
+  .hero p {
     font-size: 14px;
   }
 
-  .btn-login {
+  .hero button {
+    padding: 8px 40px;
+    font-size: 14px;
+  }
+
+  .conteudo-texto h3 {
+    font-size: 18px;
+  }
+
+  .conteudo-texto p {
     font-size: 13px;
-    padding: 5px 12px;
   }
 
-  .texto-informativo h3 {
-    font-size: 16px;
-  }
-
-  .texto-informativo p,
-  .texto-informativo h4 {
+  .conteudo-texto button {
     font-size: 13px;
+    padding: 6px 20px;
   }
 
-  .botoes button {
-    font-size: 13px;
-    padding: 10px 0;
+  .faq h2,
+  .sobre h2,
+  .atendimentos h2 {
+    font-size: 22px;
   }
 
-  .rodape {
-    font-size: 16px;
-    padding: 15px 10px;
-  }
-
-  .imgwpp {
-    width: 24px;
-    height: 24px;
+  .sobre p {
+    padding: 0 20px;
+    font-size: 14px;
   }
 }

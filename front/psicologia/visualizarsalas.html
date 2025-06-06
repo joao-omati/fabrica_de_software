@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Visualizar Salas - Clínica de Psicologia - Unieuro</title>
+        <link rel="stylesheet" href="./css/secretaria.css">
+        <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <img src="./img/unieurologo.png" alt="Logo Unieuro">
+                <h1><strong>Clínica Psicológica</strong></h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="./img/avatar.png" alt="Marta Vieira">
+                        </div>
+                        <div class="user-details">
+                            <h3>Marta Vieira</h3>
+                            <p>Secretária da Clínica</p>
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                            <li><a href="menusolicitacoes.html"><i class="fas fa-calendar-check"></i> Solicitações de Agendamento</a></li>
+                            <li class="active"><a href="visualizarsalas.html"><i class="fas fa-door-open"></i> Visualizar Salas</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9 main-content">
+                    <h2 class="page-title">Visualizar Salas</h2>
+                    <p class="page-description">Clique para visualizar as informações da sala</p>
+                    
+                    <div class="salas-grid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=1'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 1">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 1 - Infantil</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=2'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 2">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 2 - Infantil</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=3'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 3">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 3 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=4'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 4">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 4 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=5'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 5">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 5 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=6'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 6">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 6 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=7'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 7">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 7 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=8'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 8">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 8 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=9'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 9">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 9 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="sala-card" onclick="location.href='sala-detalhes.html?sala=10'">
+                                    <div class="sala-image">
+                                        <img src="./img/fotosala.PNG" alt="Sala 10">
+                                    </div>
+                                    <div class="sala-info">
+                                        <h4>Sala 10 - Normal</h4>
+                                        <ul>
+                                            <li>8 horários disponíveis</li>
+                                            <li>3 horários agendados</li>
+                                            <li>2 solicitações</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/visualizarsalas.js"></script>
+    </body>
+</html>
