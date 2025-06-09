@@ -1,0 +1,329 @@
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor-botao-hover: #003366;
+  --cor-disponivel: #4CAF50;
+  --cor-agendado: #FFC107;
+  --cor-indisponivel: #F44336;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  text-align: center;
+  background-color: #f9f9f9;
+  color: var(--cor-texto-principal);
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container img {
+  width: 200px;
+}
+
+.header-container h1 {
+  font-size: 20px;
+  margin: 0 20px;
+  flex: 1;
+  margin-left: 400px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  width: 200px;
+}
+
+.search-button {
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.login-icon {
+  font-size: 24px;
+  color: var(--cor-primaria);
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: #fff;
+  padding: 20px 0;
+  min-height: calc(100vh - 140px);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-details h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.user-details p {
+  font-size: 12px;
+  color: var(--cor-texto-secundaria);
+  margin: 5px 0 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: var(--cor-texto-principal);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.sidebar-nav a i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar-nav li.active a {
+  background-color: #f0f7ff;
+  color: var(--cor-primaria);
+  border-left: 4px solid var(--cor-primaria);
+}
+
+.sidebar-nav a:hover {
+  background-color: #f5f5f5;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  padding: 30px;
+  text-align: left;
+}
+
+/* SEÇÃO DA SALA */
+.sala-section {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sala-header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sala-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.horario-consultas {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.sala-content {
+  display: flex;
+  padding: 20px;
+}
+
+.sala-image {
+  width: 200px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.sala-image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.horarios-grid {
+  flex: 1;
+}
+
+.horarios-table {
+  width: 100%;
+}
+
+.horarios-table table {
+  width: 100%;
+  margin: 0;
+}
+
+.horarios-table th {
+  background-color: #f8f9fa;
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 5px;
+  font-size: 14px;
+  border: 1px solid #dee2e6;
+}
+
+.horarios-table td {
+  text-align: center;
+  padding: 8px 5px;
+  border: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.horario {
+  font-size: 12px;
+  color: var(--cor-texto-secundaria);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  width: 80px;
+}
+
+.status.disponivel {
+  background-color: #e8f5e9;
+  color: var(--cor-disponivel);
+}
+
+.status.agendado {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.indisponivel {
+  background-color: #f8d7da;
+  color: var(--cor-indisponivel);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: var(--cor-texto-secundaria);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+  .header-container h1 {
+    margin-left: 20px;
+  }
+  
+  .sala-content {
+    flex-direction: column;
+  }
+  
+  .sala-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+  
+  .header-container h1 {
+    order: 3;
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .search-container {
+    order: 2;
+    margin-right: 0;
+  }
+  
+  .sidebar {
+    min-height: auto;
+  }
+  
+  .sala-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+  
+  .horarios-table {
+    overflow-x: auto;
+  }
+  
+  .status {
+    width: 60px;
+    font-size: 10px;
+    padding: 3px 5px;
+  }
+}
+
