@@ -291,7 +291,7 @@ CREATE TABLE  escolheins(
 	dthescolha TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY (idestagiario) REFERENCES estagiario (idestagiario),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
-	FOREIGN KEY (idestagiario) REFERENCES inscritocomunidade (idfichacomunidade)
+	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
 select * from coordenador;
@@ -418,7 +418,6 @@ CREATE TABLE arqinscrito(
 
 CREATE TABLE arquivamento(
 	idarquivamento SERIAL PRIMARY KEY,
-	idsolicitacao INT NOT NULL,
 	crpcoord INT,
 	crpresp INT,
 	idprontuario INT,
@@ -433,7 +432,7 @@ CREATE TABLE arquivamento(
 );
 
 CREATE TABLE soliarquivamento(
-	idsloicitacao SERIAL PRIMARY KEY,
+	idsolicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
 	idarqinscrito INT,
 	idarquivamento INT NOT NULL,
