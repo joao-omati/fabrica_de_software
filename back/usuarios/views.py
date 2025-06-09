@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  # Adicionei o AuthenticationForm
-from django.contrib.auth import login, logout  # Importe estas funções
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
+from django.urls import reverse_lazy
+from .models import Conta  # Com "C" maiúsculo  # Importe seu modelo
 
-@method_decorator(login_required(login_url = 'login'), name = 'dispatch')
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class RegisterView(UserPassesTestMixin, View):
-    """View de registro restrita a 1 usuário específico"""
     template_name = 'register.html'
     form_class = UserCreationForm
     login_url = '/admin/login/'
@@ -22,10 +23,6 @@ class RegisterView(UserPassesTestMixin, View):
             raise PermissionDenied("Você não tem permissão para acessar esta página.")
         return super().handle_no_permission()
     
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-    
     def get(self, request):
         return render(request, self.template_name, {'user_form': self.form_class()})
     
@@ -37,11 +34,12 @@ class RegisterView(UserPassesTestMixin, View):
         return render(request, self.template_name, {'user_form': form})
 
 class LoginView(View):
-    """View para login de usuários"""
     template_name = 'login.html'
     form_class = AuthenticationForm
     
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('perfil_estagiario')
         return render(request, self.template_name, {'form': self.form_class()})
     
     def post(self, request):
@@ -49,12 +47,16 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('pagina_principal')  # Altere para o nome da sua URL de destino
+            return redirect('perfil_estagiario')
         return render(request, self.template_name, {'form': form})
 
 class LogoutView(View):
-    """View para logout de usuários"""
-    
     def get(self, request):
         logout(request)
-        return redirect('login')  # Redireciona para a página de login após logout
+        return redirect('login')
+
+class PerfilEstagiarioView(View):
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return render(request, 'perfil_estagiario.html')
