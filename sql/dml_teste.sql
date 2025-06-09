@@ -89,7 +89,7 @@ INSERT INTO inscritocomunidade (
 INSERT INTO endereco (idfichacomunidade, cidade, bairro, 
 					  rua, cep)
 VALUES 
-    (6, 'Águas Claras', 'Avenida das Araucárias', 'Lote 1835', '71936-250'),
+    
     (7, 'Samambaia', 'QN 408 Conjunto F', 'Samambaia Norte', '72318-556'),
     (8, 'Ceilândia', 'QNM 20 Conjunto A', 'Ceilândia Sul', '72210-201'),
     (9, 'Sobradinho', 'Quadra 14 Conjunto E', 'Setor de Mansões', '73025-145'),
