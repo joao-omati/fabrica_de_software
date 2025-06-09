@@ -269,7 +269,7 @@ CREATE TABLE estagiario (
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(10) NOT NULL,
+	senha VARCHAR(255) NOT NULL,
 	nivelestagio VARCHAR(10) NOT NULL,
 	semestre VARCHAR(10) NOT NULL, 
 	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
