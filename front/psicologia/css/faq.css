@@ -1,0 +1,203 @@
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor-botao-hover: #003366;
+}
+
+/* ================== CONFIGURAÇÃO GLOBAL ================== */
+body {
+  margin: 0;
+  font-family: "Roboto", "Open Sans", sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* ================== BARRA SUPERIOR COM ACESSIBILIDADE ================== */
+.top-bar {
+  background-color: var(--cor-realce-destaque);
+  color: var(--cor-texto-principal);
+  padding: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* ================== CABEÇALHO COM LOGO ================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.btn-login {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Logo e texto ao lado da imagem */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-text strong {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logo-text small {
+  color: var(--cor-texto-secundaria);
+  font-size: 12px;
+}
+
+/* ================== BANNER SUPERIOR DO LOGIN ================== */
+.login-banner {
+  background-color: #002f6c;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.faq-container h2 {
+  color: var(--cor-primaria);
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+.faq-box {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.faq-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #004080;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.faq-toggle {
+  font-size: 22px;
+  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+  user-select: none;
+}
+
+.faq-item.opened {
+  /* mantém a pergunta e o toggle lado a lado */
+  flex-direction: row;
+  align-items: center;
+}
+
+.faq-answer {
+  display: none;
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 14px;
+  color: #cccccc;
+  width: 100%;
+}
+
+/* Rodapé com informações de contato, suporte e alinhamento flexível */
+/* Estilos gerais para o rodapé */
+.rodape {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  flex-wrap: wrap;
+}
+
+/* Estilos para telas entre 1091px e 1621px */
+@media (min-width: 1091px) and (max-width: 1621px) {
+  .rodape {
+    padding: 9px 2px;
+  }
+}
+
+/* Estilos para telas menores que 1091px */
+@media (max-width: 1090px) {
+  .rodape {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+
+/* Estilos para telas menores que 768px */
+@media (max-width: 767px) {
+  .rodape {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+.rodape .contato {
+  display: flex;
+  align-items: center;
+}
+
+.imgwpp {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.suporte,
+.atendimento {
+  margin: 0;
+}
+
+.atendimento {
+  margin-left: 70px;
+}
+
+.suporte {
+  margin-right: 100px;
+}

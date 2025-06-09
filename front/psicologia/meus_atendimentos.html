@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clínica de Psicologia - Meus Atendimentos</title>
+        <link rel="stylesheet" href="./css/meus_atendimentos.css">
+        <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <!--BARRA DE NAVEGAÇÃO CONTENDO LOGO, TEXTO E BARRA DE PESQUISA-->
+        <header>
+            <div class="header-container">
+                <img src="./img/unieurologo.png" alt="Logo Unieuro">
+                <h1><strong>Clínica Psicológica</strong></h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="./img/iconusuario.png" alt="Lucas Carvalho">
+                        </div>
+                        <div class="user-details">
+                            <h3>Lucas Carvalho</h3>
+                            <p>Estagiário de Psicologia</p>
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
+                            <li><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
+                            <li><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
+                            <li class="active"><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
+                            <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9 main-content">
+                    <div class="page-header">
+                        <h2 class="page-title">Meus Atendimentos</h2>
+                        <div class="date-info">
+                            <span>Hoje - 03/06 - Terça</span>
+                        </div>
+                    </div>
+
+                    <!-- Consultas Recentes -->
+                    <div class="consultas-recentes">
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="consulta-info">
+                                <h4>Consulta com Maria Clara</h4>
+                                <p>Segunda-feira, 2 de Junho de 2025 - 12:30</p>
+                            </div>
+                        </div>
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="consulta-info">
+                                <h4>Consulta com João Perez</h4>
+                                <p>Segunda-feira, 2 de Junho de 2025 - 16:30</p>
+                            </div>
+                        </div>
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="consulta-info">
+                                <h4>Avaliação Psicológica com Carla Mendes</h4>
+                                <p>Segunda-feira, 2 de Junho de 2025 - 16:30</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solicitações de Agendamento -->
+                    <div class="solicitacoes-agendamento">
+                        <h3>Solicitações de Agendamento</h3>
+                        <p class="subtitle">Verifique as suas Solicitações</p>
+                        
+                        <div class="status-solicitacoes">
+                            <div class="status-header">Status das Solicitações</div>
+                            <div class="status-items">
+                                <div class="status-item">
+                                    <span class="status-label">Sala 2 - Instant</span>
+                                    <span class="status-text">Enviada em 10/05/2025 às 16h00</span>
+                                    <span class="status-badge confirmado">Agendamento Confirmado</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Sala 7 - Normal</span>
+                                    <span class="status-text">Enviada em 25/05/2025 às 16h00</span>
+                                    <span class="status-badge rejeitado">Agendamento Rejeitado</span>
+                                    <div class="status-details">
+                                        <small>Motivo: Secretária rejeitou sua solicitação de agendamento</small>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Sala 10 - Normal</span>
+                                    <span class="status-text">Enviada em 25/05/2025 às 16h00</span>
+                                    <span class="status-badge rejeitado">Agendamento Rejeitado</span>
+                                    <div class="status-details">
+                                        <small>Motivo: Secretária rejeitou sua solicitação de agendamento</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consultar Salas -->
+                    <div class="consultar-salas">
+                        <h3>Consultar Salas</h3>
+                        <p class="subtitle">Solicite o Agendamento de Salas e Consulte suas Disponibilidades</p>
+                        
+                        <div class="sala-consulta">
+                            <div class="sala-header-consulta">
+                                <span class="sala-nome">Sala 1 - Instant</span>
+                                <span class="horario-consultas">Horário das Consultas</span>
+                            </div>
+                            <div class="sala-content-consulta">
+                                <div class="sala-image">
+                                    <img src="./img/fotosala.PNG" alt="Sala 1">
+                                </div>
+                                <div class="modal-agendamento">
+                                    <div class="modal-header">
+                                        <h4>Confirmar Solicitação de Agendamento</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="agendamento-info">
+                                            <p><strong>Sala 1 - Normal</strong></p>
+                                            <p>Dia 14 de Março de 2025 às 08:00</p>
+                                        </div>
+                                        <div class="modal-actions">
+                                            <button class="btn btn-outline-secondary">Cancelar</button>
+                                            <button class="btn btn-primary">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/meus_atendimentos.js"></script>
+    </body>
+</html>
+
