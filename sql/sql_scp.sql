@@ -10,6 +10,9 @@
 
 */
 
+CREATE SCHEMA testes_psicofbsoftware;
+SET search_path TO testes_psicofbsoftware;
+
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,

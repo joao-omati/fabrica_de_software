@@ -3,6 +3,9 @@
 
 -- Comando que pode ser útil para ver o último id de uma tabela: SELECT setval('inscritoconvenio_idfichaconvenio_seq', (SELECT MAX(idfichaconvenio) FROM inscritoconvenio));
 
+-- ####################################################################
+-- PASSO 1: DADOS BASE (Inscritos e Profissionais)
+-- ####################################################################
 INSERT INTO 
 	inscritoconvenio (idfichaconvenio, nomeinscrito, dtnascimento, testavpsico, tipoencaminhamento, nomeresp, grauresp, cpfresp, estadocivilresp, tellcellresp, emailresp, estadocivilinscrito, cpfinscrito, tellcellinscrito, contatourgencia, nomecontatourgencia, emailinscrito, identidadegenero, etnia, religiao, confirmlgpd, dthinscricao, status) 
 VALUES
@@ -50,7 +53,42 @@ VALUES
 	(18, 'Heloisa Santos Silva', '1996-02-04', 'Fernando Silva', 'Pai', '89012345679', 'Divorciado', '91909876543', 'fernando.silva@email.com', 'Casado', '78901234568', '91987654321', '91999012345', 'Bianca Silva', 'heloisa.silva@email.com', 'Feminino', 'Amarela', 'Hinduísmo', TRUE, '2024-05-18', TRUE),
 	(19, 'Igor Vasconcelos Costa', '2004-08-20', 'Juliana Costa', 'Mãe', '90123456780', 'Viúvo', '11987654321', 'juliana.costa@email.com', 'Solteiro', '89012345679', '11998765432', '11991234567', 'Miguel Costa', 'igor.costa@email.com', 'Masculino', 'Indígena', 'Islamismo', TRUE, '2024-05-19', TRUE),
 	(20, 'Juliana Dantas Almeida', '1991-04-10', 'Cesar Almeida', 'Pai', '01234567893', 'Solteiro', '21976543210', 'cesar.almeida@email.com', 'Divorciado', '90123456780', '21987654321', '21992345678', 'Alice Almeida', 'juliana.almeida@email.com', 'Feminino', 'Parda', 'Judaismo', TRUE, '2024-05-20', TRUE);
-	
+ 
+-- Inserindo Coordenadores
+INSERT INTO coordenador (idcoordenador, nome, senha, cpf, crp, emailinst) VALUES
+(1, 'Dr. Ricardo Borges', 'senha_hash_123', '12345678901', 10101, 'ricardo.borges@clinica.com'),
+(2, 'Dra. Amanda Souza', 'senha_hash_456', '23456789012', 20202, 'amanda.souza@clinica.com');
+UPDATE coordenador SET crpcoord = 10101 WHERE crp = 20202; -- Vincula o segundo ao primeiro
+
+-- Inserindo Supervisores
+INSERT INTO supervisor (idsupervisor, crpcoord, nome, cpf, crp, senha, emailinst) VALUES
+(1, 10101, 'Marcos Andrade', '34567890123', 30303, 'senha_hash_sup1', 'marcos.andrade@clinica.com'),
+(2, 10101, 'Livia Pereira', '45678901234', 40404, 'senha_hash_sup2', 'livia.pereira@clinica.com'),
+(3, 20202, 'Rogerio Martins', '56789012345', 50505, 'senha_hash_sup3', 'rogerio.martins@clinica.com'),
+(4, 20202, 'Sofia Ribeiro', '67890123456', 60606, 'senha_hash_sup4', 'sofia.ribeiro@clinica.com'),
+(5, 10101, 'Carlos Eduardo', '78901234567', 70707, 'senha_hash_sup5', 'carlos.eduardo@clinica.com');
+
+-- Inserindo Secretarias
+INSERT INTO secretaria (idsecretaria, crpcoord, nome, cpf, codfuncionario, senha, emailinst) VALUES
+(1, 10101, 'Beatriz Lima', '98765432109', 101, 'senha_hash_sec1', 'beatriz.lima@clinica.com'),
+(2, 20202, 'Cesar Augusto', '87654321098', 102, 'senha_hash_sec2', 'cesar.augusto@clinica.com');
+
+-- Inserindo Responsáveis Técnicos
+INSERT INTO resptec (idresptec, crpcoord, nome, senha, cpf, crpresp, emailinst) VALUES
+(1, 10101, 'Dra. Helena Costa', 'senha_hash_rt1', '76543210987', 80808, 'helena.costa@clinica.com');
+
+-- Inserindo Estagiários
+INSERT INTO estagiario (idestagiario, crpsup, crpcoord, nome, ra, senha, nivelestagio, semestre, emailinst) VALUES
+(1, 30303, 10101, 'Estagiario Um', 110011, 'senha_est1', 'Básico', '5', 'est1@email.com'),
+(2, 40404, 10101, 'Estagiario Dois', 220022, 'senha_est2', 'Específico', '7', 'est2@email.com'),
+(3, 50505, 20202, 'Estagiario Tres', 330033, 'senha_est3', 'Básico', '6', 'est3@email.com'),
+(4, 60606, 20202, 'Estagiario Quatro', 440044, 'senha_est4', 'Específico', '8', 'est4@email.com'),
+(5, 70707, 10101, 'Estagiario Cinco', 550055, 'senha_est5', 'Básico', '5', 'est5@email.com');
+
+-- ####################################################################
+-- PASSO 2: INSERTS PARA TABELAS SOLICITADAS E ATRIBUTOS COMPOSTOS
+-- ####################################################################
+
 INSERT INTO endereco (idfichacomunidade, cidade, bairro, 
 					  rua, cep)
 VALUES 
@@ -106,8 +144,139 @@ VALUES
 	(7, TRUE,TRUE,TRUE),
 	(18, TRUE,TRUE,TRUE),
 	(14,TRUE, TRUE,TRUE);
- 
 
+-- Tabela: medicamento
+INSERT INTO medicamento (idmedicamento, idfichacomunidade, ansiolitico, antidepressivo) 
+VALUES 
+	(1, 1, TRUE, TRUE), 
+	(2, 2, FALSE, TRUE), 
+	(3, 3, TRUE, FALSE), 
+	(4, 4, FALSE, FALSE), 
+	(5, 5, TRUE, TRUE);
+
+-- Tabela: doencafisica
+INSERT INTO doencafisica (iddoencafisica, idfichacomunidade, doencaresp, hcpt, obesidade) 
+VALUES 
+	(1, 1, FALSE, TRUE, TRUE), 
+	(2, 2, TRUE, FALSE, FALSE), 
+	(3, 3, FALSE, FALSE, FALSE), 
+	(4, 4, TRUE, TRUE, FALSE), 
+	(5, 5, FALSE, FALSE, TRUE);
+
+-- Tabela: disponibilidade
+INSERT INTO disponibilidade (iddisponibilidade, idfichacomunidade, manha, tarde, noite, sabado) 
+VALUES 
+	(1, 1, TRUE, TRUE, FALSE, TRUE), 
+	(2, 2, FALSE, TRUE, TRUE, FALSE), 
+	(3, 3, TRUE, FALSE, FALSE, TRUE), 
+	(4, 4, FALSE, TRUE, FALSE, FALSE), 
+	(5, 5, TRUE, FALSE, TRUE, TRUE);
+
+-- Tabela: escolheins
+INSERT INTO escolheins (idescolheins, idestagiario, idfichacomunidade, status)
+VALUES 
+	(1, 1, 1, TRUE), 
+	(2, 2, 2, TRUE), 
+	(3, 3, 3, FALSE), 
+	(4, 4, 4, TRUE), 
+	(5, 5, 5, FALSE);
+
+-- Tabela: sala
+INSERT INTO sala (idsala, codfuncionario, crpresp, crpcoord, numsala, tiposala, capacidade, status) 
+VALUES
+	(1, 101, 80808, 10101, 101, 'Individual', 2, TRUE),
+	(2, 101, 80808, 10101, 102, 'Individual', 2, TRUE),
+	(3, 102, 80808, 20202, 201, 'Grupo', 10, TRUE),
+	(4, 102, 80808, 20202, 202, 'Casal', 3, FALSE),
+	(5, 101, 80808, 10101, 301, 'Individual', 2, TRUE);
+
+-- Tabela: agendamento
+INSERT INTO agendamento (idagendamento, idsala, codfuncionario, crpresp, crpcoord, confirmsec, confirmresp, confirmcoord) VALUES
+(1, 1, 101, 80808, 10101, TRUE, TRUE, TRUE),
+(2, 2, 101, 80808, 10101, TRUE, TRUE, FALSE),
+(3, 3, 102, 80808, 20202, TRUE, FALSE, FALSE),
+(4, 4, 102, 80808, 20202, FALSE, FALSE, FALSE),
+(5, 5, 101, 80808, 10101, TRUE, TRUE, TRUE);
+
+-- Tabela: salaagendamento
+INSERT INTO salaagendamento (idsolicitacoes, idagendamento, crpsup, ra, dthsolisup, dthsoliest) VALUES
+(1, 1, 30303, 110011, NOW(), NOW()),
+(2, 2, 40404, 220022, NOW(), NOW()),
+(3, 3, 50505, 330033, NOW(), NOW()),
+(4, 4, 60606, 440044, NOW(), NOW()),
+(5, 5, 70707, 550055, NOW(), NOW());
+
+-- Tabela: prontuario
+INSERT INTO prontuario (idprontuario, crpcoord, crpsup, ra, idfichacomunidade, tcle) VALUES
+(1, 10101, 30303, 110011, 1, DECODE('placeholder_tcle_1', 'escape')),
+(2, 10101, 40404, 220022, 2, DECODE('placeholder_tcle_2', 'escape')),
+(3, 20202, 50505, 330033, 3, DECODE('placeholder_tcle_3', 'escape')),
+(4, 20202, 60606, 440044, 4, DECODE('placeholder_tcle_4', 'escape')),
+(5, 10101, 70707, 550055, 5, DECODE('placeholder_tcle_5', 'escape'));
+
+-- Tabela: folhaevo
+INSERT INTO folhaevo (idfolhaevolução, idprontuario, folhaevolucao)
+VALUES 
+	(1, 1, DECODE('arquivo_evolução_1', 'escape')), 
+	(2, 2, DECODE('arquivo_evolução_2', 'escape')), 
+	(3, 3, DECODE('arquivo_evolução_3', 'escape')), 
+	(4, 4, DECODE('arquivo_evolução_4', 'escape')), 
+	(5, 5, DECODE('arquivo_evolução_5', 'escape'));
+
+-- Tabela: fichafreqest
+INSERT INTO fichafreqest (idfichafreq, ra, crpsup, crpcoord, fichafreq)
+VALUES 
+	(1, 110011, 30303, 10101, DECODE('freq_1', 'escape')), 
+	(2, 220022, 40404, 10101, DECODE('freq_2', 'escape')), 
+	(3, 330033, 50505, 20202, DECODE('freq_3', 'escape')), 
+	(4, 440044, 60606, 20202, DECODE('freq_4', 'escape')), 
+	(5, 550055, 70707, 10101, DECODE('freq_5', 'escape'));
+
+-- Tabela: anamnese
+INSERT INTO anamnese (idanamnese, idprontuario, anamnesedoc)
+VALUES 
+	(1, 1, DECODE('anamnese_1', 'escape')), 
+	(2, 2, DECODE('anamnese_2', 'escape')), 
+	(3, 3, DECODE('anamnese_3', 'escape')), 
+	(4, 4, DECODE('anamnese_4', 'escape')), 
+	(5, 5, DECODE('anamnese_5', 'escape'));
+
+-- Tabela: laudomed
+INSERT INTO laudomed (idlaudo, idprontuario, laudodoc) 
+VALUES
+	(1, 1, DECODE('laudo_1', 'escape')),
+	(2, 2, DECODE('laudo_2', 'escape')), 
+	(3, 3, DECODE('laudo_3', 'escape')), 
+	(4, 4, DECODE('laudo_4', 'escape')), 
+	(5, 5, DECODE('laudo_5', 'escape'));
+
+-- Tabela: arqinscrito
+INSERT INTO arqinscrito (idarqinscrito, idfichacomunidade, status)
+VALUES (1, 1, TRUE), (2, 2, TRUE), (3, 3, FALSE), (4, 4, TRUE), (5, 5, FALSE);
+
+-- Tabela: arquivamento
+INSERT INTO arquivamento (idarquivamento, crpcoord, crpresp, idprontuario, idarqinscrito, justificativa) VALUES
+(1, 10101, 80808, 1, 1, 'Paciente teve alta'),
+(2, 10101, 80808, 2, 2, 'Paciente abandonou tratamento'),
+(3, 20202, 80808, 3, 3, 'Paciente mudou de cidade'),
+(4, 20202, 80808, 4, 4, 'Tratamento concluído com sucesso'),
+(5, 10101, 80808, 5, 5, 'Solicitação do paciente');
+
+-- Tabela: soliarquivamento
+INSERT INTO soliarquivamento (idsolicitacao, idarquivamento, idprontuario, ra, crpsup, crpresp, crpcoord, descricao) VALUES
+(1, 1, 1, 110011, 30303, 80808, 10101, 'Solicito arquivamento por alta.'),
+(2, 2, 2, 220022, 40404, 80808, 10101, 'Solicito arquivamento por abandono.'),
+(3, 3, 3, 330033, 50505, 80808, 20202, 'Solicito arquivamento por mudança.'),
+(4, 4, 4, 440044, 60606, 80808, 20202, 'Solicito arquivamento por conclusão.'),
+(5, 5, 5, 550055, 70707, 80808, 10101, 'Solicito arquivamento a pedido do paciente.');
+
+-- Tabela: htocorrencia (Histórico de Ocorrência)
+INSERT INTO htocorrencia (idhtc, idprontuario, ra, crpsup, crpcoord, nomepessoa, faltas, justificativa) VALUES
+(1, 1, 110011, 30303, 10101, 'Ana Silva', 0, 'Sessão realizada normalmente.'),
+(2, 2, 220022, 40404, 10101, 'Bruno Costa', 1, 'Paciente faltou sem justificativa.'),
+(3, 3, 330033, 50505, 20202, 'Carla Dias', 0, 'Sessão remarcada a pedido do paciente.'),
+(4, 4, 440044, 60606, 20202, 'Daniel Farias', 2, 'Paciente com 2 faltas consecutivas.'),
+(5, 5, 550055, 70707, 10101, 'Eduarda Lima', 0, 'Sessão de encerramento realizada.');
 
 
 
