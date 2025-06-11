@@ -11,6 +11,19 @@ SELECT * FROM supervisor;
 SELECT * FROM secretaria;
 SELECT * FROM resptec;
 SELECT * FROM estagiario;
+SELECT * FROM escolheins;
+SELECT * FROM sala;
+SELECT * FROM agendamento;
+SELECT * FROM salaagendamento;
+SELECT * FROM prontuario;
+SELECT * FROM folhaevo;
+SELECT * FROM fichafreqest;
+SELECT * FROM anamnese;
+SELECT * FROM laudomed;
+SELECT * FROM arqinscrito;
+SELECT * FROM arquivamento;
+SELECT * FROM soliarquivamento;
+SELECT * FROM htocorrencia;
 
 INSERT INTO 
 	inscritoconvenio (nomeinscrito, dtnascimento, testavpsico, tipoencaminhamento, nomeresp, grauresp, cpfresp, estadocivilresp, tellcellresp, emailresp, estadocivilinscrito, cpfinscrito, tellcellinscrito, contatourgencia, nomecontatourgencia, emailinscrito, identidadegenero, etnia, religiao, confirmlgpd, dthinscricao, status) 
@@ -176,3 +189,120 @@ INSERT INTO estagiario (crpsup, crpcoord, nome, ra, senha, nivelestagio, semestr
 (90123, 34567, 'Luisa Dias', 1004, MD5('luisaEstg!'), 'Básico', '2º Semestre', 'luisa.d@aluno.instituicao.com', TRUE),
 (01234, 23456, 'Gabriel Alves', 1005, MD5('gabriel-e$tg'), 'Intermediário', '4º Semestre', 'gabriel.a@aluno.instituicao.com', TRUE);
 
+INSERT INTO 
+	escolheins (idestagiario, idfichaconvenio, idfichacomunidade, status, dthescolha) 
+VALUES
+	(16, 2, NULL, TRUE, NOW()),  -- Exemplo: Estagiário ID 16 escolheu inscrição de convênio ID 2
+	(17, NULL, 7, TRUE, NOW()),  -- Exemplo: Estagiário ID 17 escolheu inscrição de comunidade ID 7
+	(18, 3, NULL, FALSE, NOW()), -- Exemplo: Estagiário ID 18 escolheu inscrição de convênio ID 3
+	(19, NULL, 9, TRUE, NOW()),  -- Exemplo: Estagiário ID 19 escolheu inscrição de comunidade ID 9
+	(20, 5, NULL, FALSE, NOW()); -- Exemplo: Estagiário ID 20 escolheu inscrição de convênio ID 5
+
+INSERT INTO 
+	sala (codfuncionario, crpresp, crpcoord, numsala, tiposala, capacidade, dthsala, status) 
+VALUES
+	(1001, 60001, 12345, 101, 'Clínica', 10, NOW(), TRUE),
+	(1002, 60002, 23456, 102, 'Ateliê', 8, NOW(), TRUE),
+	(1003, 60003, 34567, 103, 'Grupo', 15, NOW(), TRUE),
+	(1004, 60004, 45678, 201, 'Reunião', 5, NOW(), FALSE),
+	(1005, 60005, 56789, 202, 'Clínica', 12, NOW(), TRUE);
+	
+INSERT INTO 
+	agendamento (idsala, codfuncionario, crpresp, crpcoord, confirmsec, dthconfirmsec, confirmresp, dthconfirmresp, confirmcoord, dthconfirmcoord) 
+VALUES
+	(16, 1001, 60001, 12345, TRUE, '2025-06-10 10:00:00', TRUE, '2025-06-10 10:30:00', TRUE, '2025-06-10 11:00:00'),
+	(17, 1002, 60002, 23456, TRUE, '2025-06-10 14:00:00', FALSE, NULL, FALSE, NULL),
+	(18, 1003, NULL, 12345, TRUE, '2025-06-11 09:00:00', FALSE, NULL, TRUE, '2025-06-11 09:45:00'),
+	(19, NULL, 60004, 23456, FALSE, NULL, TRUE, '2025-06-11 15:00:00', FALSE, NULL),
+	(20, 1004, 60003, 12345, TRUE, '2025-06-12 11:00:00', TRUE, '2025-06-12 11:15:00', TRUE, '2025-06-12 11:30:00');
+
+INSERT INTO 
+	salaagendamento (idagendamento, crpsup, ra, dthsolisup, dthsoliest) 
+VALUES
+	(11, 67890, 1001, '2025-06-10 09:30:00', NULL),
+	(12, 78901, NULL, NULL, '2025-06-10 13:45:00'),
+	(13, 89012, 1003, '2025-06-11 08:30:00', '2025-06-11 08:45:00'),
+	(14, NULL, 1004, NULL, '2025-06-11 14:30:00'),
+	(15, 01234, 1005, '2025-06-12 10:45:00', NULL);
+
+INSERT INTO 
+	prontuario (crpcoord, crpsup, ra, idfichaconvenio, idfichacomunidade, tcle, dthprontuario, status) 
+VALUES
+	(12345, 67890, 1001, 2, NULL, 'Uma versão em bytes do TCLE do paciente João Pedro Silva. Este é um texto de exemplo.', '2025-06-10 10:00:00', TRUE),
+	(23456, 78901, 1002, NULL, 7, 'Uma versão em bytes do TCLE da paciente Mariana Gomes. Este é um texto de exemplo para o prontuário da comunidade.', '2025-06-10 14:30:00', TRUE),
+	(12345, 89012, 1003, 3, NULL, 'TCLE digitalizado do paciente Felipe Souza. Conteúdo exemplo para prontuário de convênio.', '2025-06-11 09:15:00', TRUE),
+	(34567, 90123, 1004, NULL, 9, 'Arquivo de consentimento da paciente Luisa Dias. Exemplo de dados para prontuário da comunidade.', '2025-06-11 16:00:00', TRUE),
+	(23456, 01234, 1005, 4, NULL, 'Prontuário e TCLE do paciente Gabriel Alves. Texto de demonstração para a ficha de convênio.', '2025-06-12 11:45:00', TRUE);
+
+INSERT INTO 
+	folhaevo (idprontuario, folhaevolucao, dthanexo) 
+VALUES
+	(6, DECODE('466f6c686145766f6c7563616f31', 'hex'), NOW()), -- Conteúdo binário de exemplo para "FolhaEvolucao1"
+	(7, DECODE('466f6c686145766f6c7563616f32', 'hex'), NOW()), -- Conteúdo binário de exemplo para "FolhaEvolucao2"
+	(8, DECODE('466f6c686145766f6c7563616f33', 'hex'), NOW()), -- Conteúdo binário de exemplo para "FolhaEvolucao3"
+	(9, DECODE('466f6c686145766f6c7563616f34', 'hex'), NOW()), -- Conteúdo binário de exemplo para "FolhaEvolucao4"
+	(10, DECODE('466f6c686145766f6c7563616f35', 'hex'), NOW()); -- Conteúdo binário de exemplo para "FolhaEvolucao5"
+
+INSERT INTO 
+	fichafreqest (ra, crpsup, crpcoord, fichafreq) 
+VALUES
+	(1001, 67890, 12345, DECODE('46696368614672657145737431', 'hex')), -- Exemplo binário: "FichaFreqEst1"
+	(1002, 78901, 23456, DECODE('46696368614672657145737432', 'hex')), -- Exemplo binário: "FichaFreqEst2"
+	(1003, 89012, 12345, DECODE('46696368614672657145737433', 'hex')), -- Exemplo binário: "FichaFreqEst3"
+	(1004, 90123, 34567, DECODE('46696368614672657145737434', 'hex')), -- Exemplo binário: "FichaFreqEst4"
+	(1005, 01234, 23456, DECODE('46696368614672657145737435', 'hex')); -- Exemplo binário: "FichaFreqEst5"
+
+INSERT INTO 
+	anamnese (idprontuario, anamnesedoc, dthanexo) 
+VALUES
+	(6, DECODE('416e616d6e657365446f6331', 'hex'), NOW()), -- Exemplo de conteúdo binário para "AnamneseDoc1"
+	(7, DECODE('416e616d6e657365446f6332', 'hex'), NOW()), -- Exemplo de conteúdo binário para "AnamneseDoc2"
+	(8, DECODE('416e616d6e657365446f6333', 'hex'), NOW()), -- Exemplo de conteúdo binário para "AnamneseDoc3"
+	(9, DECODE('416e616d6e657365446f6334', 'hex'), NOW()), -- Exemplo de conteúdo binário para "AnamneseDoc4"
+	(10, DECODE('416e616d6e657365446f6335', 'hex'), NOW()); -- Exemplo de conteúdo binário para "AnamneseDoc5"
+
+INSERT INTO 
+	laudomed (idprontuario, laudodoc, dthanexo) 
+VALUES
+	(6, DECODE('4c6175646f4d656469636f3031', 'hex'), '2025-06-15 10:00:00'), -- Exemplo binário para "LaudoMedico01"
+	(7, DECODE('4c6175646f4d656469636f3032', 'hex'), '2025-06-16 11:30:00'), -- Exemplo binário para "LaudoMedico02"
+	(8, DECODE('4c6175646f4d656469636f3033', 'hex'), '2025-06-17 09:00:00'), -- Exemplo binário para "LaudoMedico03"
+	(9, DECODE('4c6175646f4d656469636f3034', 'hex'), '2025-06-18 14:00:00'), -- Exemplo binário para "LaudoMedico04"
+	(10, DECODE('4c6175646f4d656469636f3035', 'hex'), '2025-06-19 16:45:00'); -- Exemplo binário para "LaudoMedico05"
+
+INSERT INTO 
+	arqinscrito (idfichaconvenio, idfichacomunidade, status, dtharquinscrito) 
+VALUES
+	(2, NULL, TRUE, '2025-06-11 10:00:00'), -- Arquivo relacionado ao inscrito de convênio ID 2
+	(NULL, 7, TRUE, '2025-06-11 10:05:00'), -- Arquivo relacionado ao inscrito de comunidade ID 7
+	(3, NULL, FALSE, '2025-06-11 10:10:00'), -- Arquivo relacionado ao inscrito de convênio ID 3
+	(NULL, 8, TRUE, '2025-06-11 10:15:00'), -- Arquivo relacionado ao inscrito de comunidade ID 8
+	(4, NULL, TRUE, '2025-06-11 10:20:00'); -- Arquivo relacionado ao inscrito de convênio ID 4
+
+
+INSERT INTO 
+	arquivamento (idsolicitacao, crpcoord, crpresp, idprontuario, idarqinscrito, justificativa) 
+VALUES
+	(1, 12345, 60001, 6, NULL,'Prontuário e solicitação finalizados com sucesso.'),
+	(2, 23456, NULL, 7,1, 'Documentação do inscrito da comunidade arquivada.'),
+	(3, 34567, 60002, 8,NULL, 'Processo do convênio encerrado e arquivado.'),
+	(4, 45678, NULL, 9,2, 'Folha de evolução e prontuário completos.'),
+	(5, 56789, 60003,10, 3, 'Caso de estagiário concluído, arquivamento padrão.');
+
+INSERT INTO 
+	soliarquivamento (idprontuario, idarqinscrito, idarquivamento, ra, dthsoliestagiario, crpsup, confirmsup, dthsolisup, crpresp, confirmresp, crpcoord, confirmcoord, descricao) 
+VALUES
+	(6 , NULL, 1, 1001, '2025-06-11 11:00:00', NULL, NULL, NULL, NULL, NULL, 12345, TRUE, 'Solicitação de arquivamento para prontuário completo.'),
+	(7 , 1, 2, NULL, NULL, 67890, TRUE, '2025-06-11 11:15:00', NULL, NULL, 23456, FALSE, 'Solicitação do supervisor para arquivamento do arquivo do inscrito.'),
+	(8 , NULL, 3, 1002, '2025-06-11 11:30:00', 78901, FALSE, '2025-06-11 11:35:00', 60001, FALSE, 12345, TRUE, 'Estagiário e supervisor solicitam arquivamento do caso.'),
+	(9 , 2, 4, NULL, NULL, NULL, NULL, NULL, 60002, TRUE, 34567, TRUE, 'Responsável técnico confirma arquivamento da documentação.'),
+	(10, NULL, 5, 1003, '2025-06-11 11:45:00', 89012, TRUE, '2025-06-11 11:50:00', 60003, FALSE, 23456, FALSE, 'Solicitação de arquivamento pendente de algumas confirmações.');
+
+INSERT INTO 
+	htocorrencia (idprontuario, idarqinscrito, ra, crpsup, crpcoord, nomepessoa, faltas, justificativa, comparecimento) 
+VALUES
+	(6, NULL, 1001, 67890, 12345, 'João Pedro Silva', 1, 'Paciente faltou à sessão inicial de avaliação.', FALSE),
+	(7, 1, 1002, 78901, 23456, 'Mariana Gomes', 0, 'Compareceu a todas as sessões agendadas.', TRUE),
+	(8, NULL, 1003, 89012, 12345, 'Felipe Souza', 2, 'Faltou a duas sessões devido a problemas de saúde.', FALSE),
+	(9, 2, NULL, 90123, 34567, 'Luisa Dias', 0, 'Sessões concluídas conforme o planejado.', TRUE),
+	(10, NULL, 1005, 01234, 23456, 'Gabriel Alves', 1, 'Ausência devido a compromisso familiar urgente.', FALSE);
