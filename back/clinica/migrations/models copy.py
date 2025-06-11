@@ -175,7 +175,7 @@ class Fichafreqest(models.Model):
 
 
 class Folhaevo(models.Model):
-    idfolhaevolução = models.AutoField(primary_key=True)
+    idfolhaevolucao = models.AutoField(primary_key=True)
     idprontuario = models.IntegerField()
     folhaevolucao = models.BinaryField()
     dthanexo = models.DateTimeField()
