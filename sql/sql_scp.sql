@@ -291,7 +291,7 @@ CREATE TABLE  escolheins(
 	dthescolha TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY (idestagiario) REFERENCES estagiario (idestagiario),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
-	FOREIGN KEY (idestagiario) REFERENCES inscritocomunidade (idfichacomunidade)
+	FOREIGN KEY (idfichacomunidad) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
 select * from coordenador;
