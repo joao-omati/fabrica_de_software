@@ -1,3 +1,4 @@
+<<<<<<< HEAD:back/clinica/migrations/models copy.py
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -460,3 +461,5 @@ class Tipoterapia(models.Model):
     class Meta:
         managed = False
         db_table = 'tipoterapia'
+=======
+>>>>>>> bc6f3c0ecc3b0e8170682a57f1e21e9e0b79d748:back/clinica/migrations/models.py
