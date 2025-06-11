@@ -26,6 +26,7 @@ CREATE TABLE inscritoconvenio (
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
 	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
+	nomecontatourgencia VARCHAR(50)NOT NULL,
 	emailinscrito VARCHAR(50) NOT NULL,
 	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outros')),
 	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outras')),
@@ -34,6 +35,7 @@ CREATE TABLE inscritoconvenio (
 	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
+
 
 /* Criando a Tabela Inscrito Comunidade, ele é a nossa ficha de inscrição */
 
@@ -51,6 +53,7 @@ CREATE TABLE inscritocomunidade (
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
 	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
+	nomecontatourgencia VARCHAR(50)NOT NULL,
 	emailinscrito VARCHAR(45) NOT NULL,
 	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outros')),
 	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outras')),
