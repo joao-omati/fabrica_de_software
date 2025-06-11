@@ -76,6 +76,9 @@ class Coordenador(models.Model):
     emailinst = models.CharField(max_length=255)
     status = models.BooleanField(blank=True, null=True)
 
+    def __str__(self):
+        return self.nome
+
     class Meta:
         managed = False
         db_table = 'coordenador'
@@ -225,6 +228,9 @@ class Inscritocomunidade(models.Model):
     dthinscricao = models.DateField()
     status = models.BooleanField(blank=True, null=True)
 
+    def __str__(self):
+        return self.nomeinscrito
+
     class Meta:
         managed = False
         db_table = 'inscritocomunidade'
@@ -253,6 +259,9 @@ class Inscritoconvenio(models.Model):
     confirmlgpd = models.BooleanField()
     dthinscricao = models.DateField()
     status = models.BooleanField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nomeinscrito
 
     class Meta:
         managed = False
