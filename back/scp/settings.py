@@ -56,7 +56,11 @@ ROOT_URLCONF = 'scp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+
+            BASE_DIR / 'templates',  #
+        ],
+    
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'teste',
         'USER': 'postgres',
-        'PASSWORD': '2{U|Ny9_\\5sV',
+        'PASSWORD': '02122004d',
         'HOST': 'localhost',
         'PORT': '5432',
     }

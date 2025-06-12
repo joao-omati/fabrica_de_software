@@ -217,6 +217,7 @@ class Inscritocomunidade(models.Model):
     cpfinscrito = models.CharField(unique=True, max_length=11)
     tellcellinscrito = models.CharField(max_length=20)
     contatourgencia = models.CharField(max_length=15)
+    nomecontatourgencia = models.CharField(max_length=50)
     emailinscrito = models.CharField(max_length=45)
     identidadegenero = models.CharField(max_length=25)
     etnia = models.CharField(max_length=15)
