@@ -8,7 +8,7 @@
   --cor--botao-hover: #003366;
 }
 
-/* === CONFIGURAÇÃO GLOBAL === */
+/* === RESET E BASE === */
 * {
   box-sizing: border-box;
 }
@@ -100,7 +100,7 @@ form h6 {
   font-size: 14px;
 }
 
-/* === GRADE DO FORMULÁRIO === */
+/* === GRADE === */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -119,6 +119,10 @@ select {
   color: #000;
   appearance: none;
   padding-right: 35px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
 }
 
 input {
@@ -128,13 +132,6 @@ input {
 
 input::placeholder {
   color: #444;
-}
-
-select {
-  background-image: url("data:image/svg+xml,...");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
 }
 
 /* === CHECKBOX FORA DO DROPDOWN === */
@@ -216,7 +213,7 @@ button[type="submit"]:hover {
   background-color: #003366;
 }
 
-/* === DROPDOWNS === */
+/* === DROPDOWN === */
 .dropdown-container {
   position: relative;
   width: 100%;
@@ -232,7 +229,7 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: url("data:image/svg+xml,...");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 16px;
