@@ -1,4 +1,4 @@
-/* ================== VARIÁVEIS GLOBAIS ================== */
+/* === VARIÁVEIS GLOBAIS === */
 :root {
   --cor-primaria: #004a8f;
   --cor-secundaria: #ffffff;
@@ -8,10 +8,13 @@
   --cor--botao-hover: #003366;
 }
 
-/* ================== CONFIGURAÇÃO GLOBAL ================== */
+/* === CONFIGURAÇÃO GLOBAL === */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  box-sizing: border-box;
   font-family: Arial, sans-serif;
   background-color: #fff;
   color: #333;
@@ -20,7 +23,7 @@ body {
   overflow-y: auto;
 }
 
-/* ================== BARRA SUPERIOR COM ACESSIBILIDADE ================== */
+/* === TOPO === */
 .top-bar {
   background-color: var(--cor-realce-destaque);
   color: var(--cor-texto-principal);
@@ -31,7 +34,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* ================== CABEÇALHO COM LOGO ================== */
+/* === CABEÇALHO === */
 .header {
   display: flex;
   justify-content: space-between;
@@ -72,7 +75,7 @@ body {
   font-size: 12px;
 }
 
-/* ================== BANNER SUPERIOR DO LOGIN ================== */
+/* === BANNER LOGIN === */
 .login-banner {
   background-color: #002f6c;
   color: white;
@@ -81,23 +84,23 @@ body {
   margin-top: 10px;
 }
 
+/* === FORMULÁRIO === */
 form {
   max-width: 1000px;
   margin: 30px auto;
-  padding: 0;
+  padding: 0 20px;
   text-align: left;
 }
 
 form h6 {
   font-weight: bold;
   color: #000;
-  border-bottom: none;
-  padding-bottom: 0;
   margin-top: 30px;
   margin-bottom: 10px;
   font-size: 14px;
 }
 
+/* === GRADE DO FORMULÁRIO === */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -105,6 +108,7 @@ form h6 {
   margin-bottom: 15px;
 }
 
+/* === INPUTS E SELECTS === */
 input,
 select {
   padding: 10px;
@@ -112,8 +116,14 @@ select {
   border: none;
   border-radius: 4px;
   background-color: #e0e0e0;
-  box-sizing: border-box;
   color: #000;
+  appearance: none;
+  padding-right: 35px;
+}
+
+input {
+  background-image: none;
+  padding-right: 10px;
 }
 
 input::placeholder {
@@ -121,10 +131,13 @@ input::placeholder {
 }
 
 select {
-  color: #000;
-  background-color: #e0e0e0;
+  background-image: url("data:image/svg+xml,...");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
 }
 
+/* === CHECKBOX FORA DO DROPDOWN === */
 .checkbox {
   display: flex;
   align-items: center;
@@ -138,12 +151,39 @@ select {
   margin: 0;
 }
 
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: #004a8f;
+  border-color: #004a8f;
+}
+
+.checkbox input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* === OUTROS ELEMENTOS === */
 small,
-acordo {
+.acordo {
   font-size: 14px;
   color: #000;
-  border: none;
-  border-radius: 5px;
   line-height: 1.6;
   display: block;
   margin-bottom: 5px;
@@ -153,10 +193,8 @@ acordo {
   padding: 15px;
   border-radius: 5px;
   background-color: var(--cor-realce-destaque);
-  /* opcional para leve destaque */
   margin-top: 20px;
 }
-
 
 button[type="submit"] {
   background-color: #004a8f;
@@ -171,10 +209,168 @@ button[type="submit"] {
   letter-spacing: 1px;
   transition: background-color 0.3s ease;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto 0;
 }
 
 button[type="submit"]:hover {
   background-color: #003366;
+}
+
+/* === DROPDOWNS === */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-header {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("data:image/svg+xml,...");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 35px;
+}
+
+.dropdown-header:hover {
+  background-color: #d0d0d0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #d0d0d0;
+  background-color: #e0e0e0;
+}
+
+.checkbox-item:last-child {
+  border-bottom: none;
+}
+
+.checkbox-item:hover {
+  background-color: #d0d0d0;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  appearance: none;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+  background-color: #004a8f;
+  border-color: #004a8f;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-item label {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  flex: 1;
+  margin: 0;
+}
+
+/* === CAMPO "OUTROS" === */
+.other-input {
+  padding: 10px 12px;
+  border-top: 1px solid #d0d0d0;
+  background-color: #e0e0e0;
+}
+
+.other-input input {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .header h1 {
+    text-align: left;
+    margin: 10px 0 0 0;
+  }
+
+  .logo {
+    justify-content: flex-start;
+  }
+
+  .dropdown-content {
+    position: static;
+    max-height: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .dropdown-container {
+    margin-bottom: 15px;
+  }
+
+  input,
+  select,
+  .dropdown-header {
+    font-size: 16px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
 }

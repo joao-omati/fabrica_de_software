@@ -52,3 +52,37 @@ document.querySelector('form').addEventListener('submit', e => {
 
   if (!formValido) e.preventDefault();
 });
+
+function toggleDropdown(dropdownId) {
+  // Fechar todos os outros dropdowns antes de abrir o atual
+  const allDropdowns = document.querySelectorAll('.dropdown-content');
+  allDropdowns.forEach(function (dropdown) {
+    if (dropdown.id !== dropdownId) {
+      dropdown.style.display = 'none';
+      dropdown.classList.remove('show');
+    }
+  });
+
+  // Abrir/fechar o dropdown atual
+  const dropdown = document.getElementById(dropdownId);
+
+  if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+    dropdown.style.display = 'block';
+    dropdown.classList.add('show');
+  } else {
+    dropdown.style.display = 'none';
+    dropdown.classList.remove('show');
+  }
+}
+
+function toggleOtherInput(checkboxId, inputId) {
+  const checkbox = document.getElementById(checkboxId);
+  const inputDiv = document.getElementById(inputId);
+
+  if (checkbox.checked) {
+    inputDiv.style.display = 'block';
+  } else {
+    inputDiv.style.display = 'none';
+    inputDiv.querySelector('input').value = '';
+  }
+}

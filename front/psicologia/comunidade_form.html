@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ficha de Comunidade</title>
-        <link rel="stylesheet" href="./css/testeeavaliacao.css">
+        <link rel="stylesheet" href="./css/comunidade.css">
         <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
     </head>
     <body>
@@ -23,15 +23,24 @@
         <div class="login-banner">
             FICHA DE COMUNIDADE
         </div>
+
         <form>
-            <h6>Convênio</h6>
+            <h6>Comunidade</h6>
             <select>
                 <option disabled selected>Tipo de Encaminhamento</option>
-                <option value="solteiro">teste</option>
-                <option value="casado">Teste</option>
-                <option value="divorciado">Teste</option>
+                <option value="solteiro">CAPS</option>
+                <option value="casado">CRAS</option>
+                <option value="divorciado">CREAS</option>
+                <option value="divorciado">DEAM</option>
+                <option value="divorciado">DPDF</option>
+                <option value="divorciado">MPDFT</option>
+                <option value="divorciado">SES</option>
+                <option value="divorciado">SEJUS</option>
+                <option value="divorciado">UBS</option>
+                <option value="divorciado">Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul</option>
             </select>
         </form>
+
         <form>
             <h6>Dados Pessoais do Inscrito</h6>
             <div class="grid">
@@ -65,19 +74,163 @@
                     <option value="casado">Casado(a)</option>
                     <option value="divorciado">Divorciado(a)</option>
                     <option value="viuvo">Viúvo(a)</option>
-                    <option value="separado">Separado(a)</option>
+                    <option value="separado">União Estável</option>
+                    <option value="separado">Nenhum</option>
                     <option value="outros">Outros</option>
                 </select>
-                <select>
-                    <option disabled selected>Motivos da Busca do Tratamento/acompanham...</option>
-                    <option value="ansiedade">Ansiedade</option>
-                    <option value="depressao">Depressão</option>
-                    <option value="stress">Estresse</option>
-                    <option value="autoestima">Autoestima</option>
-                    <option value="problemas_familiares">Problemas Familiares</option>
-                    <option value="transtornos_mentais">Transtornos Mentais</option>
-                    <option value="outros">Outros</option>
-                </select>
+                <!-- Campo modificado: Motivos da Busca do Tratamento -->
+                <div class="dropdown-container">
+                    <div class="dropdown-header" onclick="toggleDropdown('motivos-tratamento')">
+                        <span>Motivos da Busca do Tratamento/Acompanhamento</span>
+                    </div>
+                    <div class="dropdown-content" id="motivos-tratamento">
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="ansiedade"
+                                name="motivos_tratamento"
+                                value="ansiedade"
+                            >
+                            <label for="ansiedade">Ansiedade</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="depressao"
+                                name="motivos_tratamento"
+                                value="depressao"
+                            >
+                            <label for="depressao">Assédio Moral</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="stress"
+                                name="motivos_tratamento"
+                                value="stress"
+                            >
+                            <label for="stress">Depressão</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="autoestima"
+                                name="motivos_tratamento"
+                                value="autoestima"
+                            >
+                            <label for="autoestima">Dificuldade de Aprendizagem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="problemas_familiares"
+                                name="motivos_tratamento"
+                                value="problemas_familiares"
+                            >
+                            <label for="problemas_familiares">Humor instável</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Insônia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Isolamento Social</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Luto</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Tristeza</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Apatia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Choro Fácil</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Exaustão</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Fadiga</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Faltanismo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Violência Doméstica</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="outros_motivos"
+                                name="motivos_tratamento"
+                                value="outros"
+                                onchange="toggleOtherInput('outros_motivos', 'outros_motivos_text')"
+                            >
+                            <label for="outros_motivos">Outros</label>
+                        </div>
+                    </div>
+                </div>
                 <input
                     type="text"
                     id="telefone"
@@ -86,19 +239,163 @@
                     maxlength="11"
                     required
                 >
-                <select>
-                    <option disabled selected>Uso de Medicação</option>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                    <option value="prefiro_nao_dizer">Prefiro não dizer</option>
-                </select>
+                <!-- Campo modificado: Uso de Medicação -->
+                <div class="dropdown-container">
+                    <div class="dropdown-header" onclick="toggleDropdown('uso-medicacao')">
+                        <span>Uso de Medicação</span>
+                    </div>
+                    <div class="dropdown-content" id="uso-medicacao">
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="ansiolitico"
+                                name="uso_medicacao"
+                                value="ansiolitico"
+                            >
+                            <label for="ansiolitico">Ansiolítico (Rivotril, Alprazolam, Clonazepam, Diazepam)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="antidepressivo"
+                                name="uso_medicacao"
+                                value="antidepressivo"
+                            >
+                            <label for="antidepressivo">Antidepressivo (Fluoxetina, Escitalopram, Paroxetina, Sertralina, Venlafaxina, Amitriptilina, Bupropiona, Imipramina)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="antipsicotico"
+                                name="uso_medicacao"
+                                value="antipsicotico"
+                            >
+                            <label for="antipsicotico">Antipsicótico (Asenapina, Clozapina, Iloperidona, Lurasidona, Olanzapina, Quetiapina, Risperidona, Ziprasidona)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="estabilizador_humor"
+                                name="uso_medicacao"
+                                value="estabilizador_humor"
+                            >
+                            <label for="estabilizador_humor">Estabilizador de Humor (Lítio, Oxcarbazepina, Lamotrigina, Depakote)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="memoria_atencao"
+                                name="uso_medicacao"
+                                value="memoria_atencao"
+                            >
+                            <label for="memoria_atencao">Para Memória, Atenção e Concentração (Venvanse, Ritalina)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="nao_uso_medicacao"
+                                name="uso_medicacao"
+                                value="nao_uso"
+                            >
+                            <label for="nao_uso_medicacao">Não uso medicação</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="outros_medicacao"
+                                name="uso_medicacao"
+                                value="outros"
+                                onchange="toggleOtherInput('outros_medicacao', 'outros_medicacao_text')"
+                            >
+                            <label for="outros_medicacao">Outros</label>
+                        </div>
+                        <div class="other-input" id="outros_medicacao_text" style="display: none;">
+                            <input type="text" placeholder="Especifique outros medicamentos..." name="outros_medicacao_especificar">
+                        </div>
+                    </div>
+                </div>
                 <input type="email" placeholder="E-mail" required>
-                <select>
-                    <option disabled selected>Pessoas com Deficiência e/ou Neurodivergências</option>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                    <option value="prefiro_nao_dizer">Prefiro não dizer</option>
-                </select>
+                <!-- Campo modificado: Pessoas com defiência e/ou Neurodivergências -->
+                <div class="dropdown-container">
+                    <div class="dropdown-header" onclick="toggleDropdown('motivos-tratamento')">
+                        <span>Pessoas com defiência e/ou Neurodivergências</span>
+                    </div>
+                    <div class="dropdown-content" id="motivos-tratamento">
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="ansiedade"
+                                name="motivos_tratamento"
+                                value="ansiedade"
+                            >
+                            <label for="ansiedade">TEA</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="depressao"
+                                name="motivos_tratamento"
+                                value="depressao"
+                            >
+                            <label for="depressao">TDAH</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="stress"
+                                name="motivos_tratamento"
+                                value="stress"
+                            >
+                            <label for="stress">Deficiência Física ou Motora</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="autoestima"
+                                name="motivos_tratamento"
+                                value="autoestima"
+                            >
+                            <label for="autoestima">Deficiência Visual</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="problemas_familiares"
+                                name="motivos_tratamento"
+                                value="problemas_familiares"
+                            >
+                            <label for="problemas_familiares">Deficiência Auditiva</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Transtorno de Aprendizagem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="transtornos_mentais"
+                                name="motivos_tratamento"
+                                value="transtornos_mentais"
+                            >
+                            <label for="transtornos_mentais">Altas habilidades ou super dotação</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="outros_motivos"
+                                name="motivos_tratamento"
+                                value="outros"
+                                onchange="toggleOtherInput('outros_motivos', 'outros_motivos_text')"
+                            >
+                            <label for="outros_motivos">Outros</label>
+                        </div>
+                    </div>
+                </div>
                 <select name="identidade_genero" required>
                     <option value="" disabled selected>Identidade de Gênero</option>
                     <option value="feminino">Feminino</option>
@@ -107,17 +404,114 @@
                     <option value="transgenero">Transgênero</option>
                     <option value="outro">Outro</option>
                 </select>
-                <select name="doencas_fisicas" required>
-                    <option value="" disabled selected>Doenças Físicas Diagnosticadas</option>
-                    <option value="nenhuma">Nenhuma</option>
-                    <option value="diabetes">Diabetes</option>
-                    <option value="hipertensao">Hipertensão</option>
-                    <option value="asma">Asma</option>
-                    <option value="epilepsia">Epilepsia</option>
-                    <option value="doenca_autoimune">Doença autoimune</option>
-                    <option value="doenca_cronica">Doença crônica</option>
-                    <option value="prefiro_nao_dizer">Prefiro não informar</option>
-                </select>
+                <!-- Campo modificado: Doenças Físicas Diagnosticadas -->
+                <div class="dropdown-container">
+                    <div class="dropdown-header" onclick="toggleDropdown('doencas-fisicas')">
+                        <span>Doenças Físicas Diagnosticadas</span>
+                    </div>
+                    <div class="dropdown-content" id="doencas-fisicas">
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="nenhuma_doenca"
+                                name="doencas_fisicas"
+                                value="nenhuma"
+                            >
+                            <label for="nenhuma_doenca">Doença Respiratória</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="nenhuma_doenca"
+                                name="doencas_fisicas"
+                                value="nenhuma"
+                            >
+                            <label for="nenhuma_doenca">Câncer</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="diabetes"
+                                name="doencas_fisicas"
+                                value="diabetes"
+                            >
+                            <label for="diabetes">Diabetes</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="hipertensao"
+                                name="doencas_fisicas"
+                                value="hipertensao"
+                            >
+                            <label for="hipertensao">Disfunção Sexual</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="asma"
+                                name="doencas_fisicas"
+                                value="asma"
+                            >
+                            <label for="asma">Doença Degenerativa</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="epilepsia"
+                                name="doencas_fisicas"
+                                value="epilepsia"
+                            >
+                            <label for="epilepsia">Escleorose Múltipla</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="doenca_autoimune"
+                                name="doencas_fisicas"
+                                value="doenca_autoimune"
+                            >
+                            <label for="doenca_autoimune">hipertensão ou Cardiopatia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="doenca_cronica"
+                                name="doencas_fisicas"
+                                value="doenca_cronica"
+                            >
+                            <label for="doenca_cronica">Lupos ou outras doenças autoimune</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="prefiro_nao_informar"
+                                name="doencas_fisicas"
+                                value="prefiro_nao_informar"
+                            >
+                            <label for="prefiro_nao_informar">Obesidade</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="prefiro_nao_informar"
+                                name="doencas_fisicas"
+                                value="prefiro_nao_informar"
+                            >
+                            <label for="prefiro_nao_informar">Problemas renais</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input
+                                type="checkbox"
+                                id="outros_doencas"
+                                name="doencas_fisicas"
+                                value="outros"
+                                onchange="toggleOtherInput('outros_doencas', 'outros_doencas_text')"
+                            >
+                            <label for="outros_doencas">Outros</label>
+                        </div>
+                    </div>
+                </div>
                 <select name="cor_etnia" required>
                     <option value="" disabled selected>Cor e Etnia</option>
                     <option value="branca">Branca</option>
@@ -130,12 +524,21 @@
                     <option disabled selected>Tipo de Terapia</option>
                     <option value="familia">Terapia Familiar</option>
                     <option value="grupal">Terapia em Grupo</option>
+                    <option value="Terapia Casal">Terapia Casal</option>
+                    <option value="Individual">Individual</option>
                 </select>
                 <select required>
                     <option disabled selected>Religião</option>
                     <option value="catolica">Católica</option>
+                    <option value="Evangélico">Evangélico</option>
+                    <option value="Budismo">Budismo</option>
                     <option value="espirita">Espírita</option>
-                    <option value="sem_religiao">Sem religião</option>
+                    <option value="Induísmo">Induísmo</option>
+                    <option value="Islamismo">Islamismo</option>
+                    <option value="Judaísmo">Judaísmo</option>
+                    <option value="Religião de Matriz Africana">Religião de Matriz Africana</option>
+                    <option value="Sem religião">Sem religião</option>
+                    <option value="Outros">Outros</option>
                 </select>
                 <select required>
                     <option disabled selected>Disponibilidade</option>
@@ -171,7 +574,8 @@
                     <option value="casado">Casado(a)</option>
                     <option value="divorciado">Divorciado(a)</option>
                     <option value="viuvo">Viúvo(a)</option>
-                    <option value="separado">Separado(a)</option>
+                    <option value="separado">União Estável</option>
+                    <option value="separado">Nenhum</option>
                     <option value="outros">Outros</option>
                 </select>
                 <input
@@ -221,6 +625,5 @@
             <button type="submit">SALVAR INSCRIÇÃO</button>
         </form>
         <script src="./js/comunidade.js"></script>
-    </div>
-</body>
+    </body>
 </html>
