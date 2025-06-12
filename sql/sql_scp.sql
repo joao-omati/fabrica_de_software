@@ -431,6 +431,8 @@ CREATE TABLE arquivamento(
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
+
+-- Tirei o Default False dos booleans para evitar complicações no futuro, neste boolean vamos permitir null
 CREATE TABLE soliarquivamento(
 	idsolicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
@@ -439,12 +441,12 @@ CREATE TABLE soliarquivamento(
 	ra INT,
 	dthsoliestagiario TIMESTAMP,
 	crpsup INT,
-	confirmsup BOOLEAN DEFAULT FALSE,
+	confirmsup BOOLEAN,
 	dthsolisup TIMESTAMP,
 	crpresp INT,
-	confirmresp BOOLEAN DEFAULT FALSE,
+	confirmresp BOOLEAN,
 	crpcoord INT,
-	confirmcoord BOOLEAN DEFAULT FALSE,
+	confirmcoord BOOLEAN,
 	descricao VARCHAR(255),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
