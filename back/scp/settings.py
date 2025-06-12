@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuarios',
     'clinica',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'scp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
+        'NAME': 'teste',
         'USER': 'postgres',
-        'PASSWORD': 'joao9902',
+        'PASSWORD': '2{U|Ny9_\\5sV',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_DIRS = [
+STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
