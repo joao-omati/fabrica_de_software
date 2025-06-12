@@ -4,3 +4,6 @@ from django.shortcuts import render, redirect
 
 def homepage(request):
     return render(request, "index.html")
+
+def inscricao_convenio(request):
+    return render(request, "convenio_form.html")
