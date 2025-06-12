@@ -158,48 +158,188 @@ header {
 }
 
 .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .page-title {
-    font-size: 24px;
+    font-size: 28px;
     margin: 0;
     color: var(--cor-primaria);
+    font-weight: bold;
 }
 
-.date-info {
+.page-subtitle {
     color: var(--cor-texto-secundaria);
     font-size: 14px;
+    margin-bottom: 30px;
 }
 
-/* CONSULTAS RECENTES */
-.consultas-recentes {
-    margin-bottom: 40px;
+/* CALENDÁRIO */
+.calendar-container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: var(--cor-primaria);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.calendar-month {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+    margin: 0;
+}
+
+.calendar-grid {
+    width: 100%;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.weekday {
+    text-align: center;
+    font-size: 12px;
+    color: var(--cor-texto-secundaria);
+    font-weight: bold;
+    padding: 5px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.calendar-day:hover {
+    background-color: #f0f7ff;
+}
+
+.calendar-day.selected-day {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.current-day {
+    background-color: var(--cor-primaria);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-today {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--cor-texto-secundaria);
+}
+
+/* DATA SELECIONADA */
+.selected-date {
+    margin-bottom: 20px;
+}
+
+.selected-date h3 {
+    font-size: 18px;
+    color: var(--cor-texto-principal);
+    margin: 0;
+}
+
+/* STATUS DAS CONSULTAS */
+.consultas-status {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-label {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+    margin-bottom: 5px;
+}
+
+.status-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+}
+
+/* LISTA DE CONSULTAS */
+.consultas-lista {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .consulta-item {
     display: flex;
     align-items: center;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-bottom: 1px solid #eee;
 }
 
-.consulta-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #e3f2fd;
-    color: var(--cor-primaria);
+.consulta-item:last-child {
+    border-bottom: none;
+}
+
+.consulta-avatar {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.consulta-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.consulta-info {
+    flex: 1;
 }
 
 .consulta-info h4 {
@@ -211,191 +351,44 @@ header {
 .consulta-info p {
     font-size: 14px;
     color: var(--cor-texto-secundaria);
-    margin: 0;
+    margin: 2px 0;
 }
 
-/* SOLICITAÇÕES DE AGENDAMENTO */
-.solicitacoes-agendamento {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.solicitacoes-agendamento h3 {
-    font-size: 18px;
-    margin: 0 0 5px;
-    color: var(--cor-texto-principal);
-}
-
-.subtitle {
-    color: var(--cor-texto-secundaria);
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.status-solicitacoes {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.status-header {
-    background-color: var(--cor-primaria);
-    color: white;
-    padding: 10px 15px;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.status-items {
-    padding: 0;
-}
-
-.status-item {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.status-item:last-child {
-    border-bottom: none;
-}
-
-.status-label {
-    font-weight: 600;
-    color: var(--cor-texto-principal);
-}
-
-.status-text {
-    color: var(--cor-texto-secundaria);
-    font-size: 14px;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 600;
-    width: fit-content;
-}
-
-.status-badge.confirmado {
-    background-color: #e8f5e9;
-    color: var(--cor-disponivel);
-}
-
-.status-badge.rejeitado {
-    background-color: #f8d7da;
-    color: var(--cor-indisponivel);
-}
-
-.status-details {
-    margin-top: 5px;
-}
-
-.status-details small {
-    color: var(--cor-texto-secundaria);
+.consulta-tipo {
     font-style: italic;
 }
 
-/* CONSULTAR SALAS */
-.consultar-salas {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.consultar-salas h3 {
-    font-size: 18px;
-    margin: 0 0 5px;
-    color: var(--cor-texto-principal);
-}
-
-.sala-consulta {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 20px;
-}
-
-.sala-header-consulta {
-    background-color: #e3f2fd;
-    padding: 10px 15px;
+.consulta-actions {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     align-items: center;
 }
 
-.sala-nome {
-    font-weight: 600;
+.btn-confirmado {
+    background-color: var(--cor-disponivel);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-detalhes {
+    background-color: transparent;
     color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.horario-consultas {
-    font-size: 14px;
-    color: var(--cor-texto-secundaria);
-}
-
-.sala-content-consulta {
-    display: flex;
-    padding: 20px;
-}
-
-.sala-image {
-    width: 200px;
-    margin-right: 20px;
-    flex-shrink: 0;
-}
-
-.sala-image img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.modal-agendamento {
-    flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.modal-header {
+.btn-detalhes:hover {
     background-color: var(--cor-primaria);
     color: white;
-    padding: 15px;
-}
-
-.modal-header h4 {
-    margin: 0;
-    font-size: 16px;
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.agendamento-info {
-    margin-bottom: 20px;
-}
-
-.agendamento-info p {
-    margin: 5px 0;
-    color: var(--cor-texto-principal);
-}
-
-.modal-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
 }
 
 /* FOOTER */
@@ -412,14 +405,12 @@ footer {
         margin-left: 20px;
     }
 
-    .sala-content-consulta {
-        flex-direction: column;
+    .calendar-container {
+        max-width: 100%;
     }
 
-    .sala-image {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
+    .consultas-status {
+        justify-content: space-around;
     }
 }
 
@@ -444,19 +435,20 @@ footer {
         min-height: auto;
     }
 
-    .page-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .sala-header-consulta {
+    .consulta-item {
         flex-direction: column;
         text-align: center;
-        gap: 5px;
+        gap: 15px;
     }
 
-    .modal-actions {
+    .consulta-actions {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .consultas-status {
+        flex-direction: column;
+        gap: 15px;
     }
 }
+

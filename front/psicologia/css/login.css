@@ -161,7 +161,8 @@ input,
 
 /* ================== RODAPÉ COM CONTATO ================== */
 .rodape {
-  position: absolute; /* ou remova */
+  position: absolute;
+  /* ou remova */
   bottom: 0;
   width: 100%;
   background-color: var(--cor-primaria);
@@ -172,7 +173,8 @@ input,
   align-items: center;
   font-size: 18px;
   flex-wrap: wrap;
-  overflow-x: hidden; /* ajuda a prevenir estouros */
+  overflow-x: hidden;
+  /* ajuda a prevenir estouros */
 }
 
 

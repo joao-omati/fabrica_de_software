@@ -14,14 +14,17 @@
         <header>
             <div class="header-container">
                 <img src="./img/unieurologo.png" alt="Logo Unieuro">
-                <h1><strong>Clínica Psicológica</strong></h1>
+                <h1>
+                    <strong>Clínica Psicológica</strong>
+                </h1>
                 <div class="search-container">
                     <input type="text" placeholder="Pesquisar" class="search-input">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
         </header>
-
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
@@ -37,156 +40,134 @@
                     </div>
                     <nav class="sidebar-nav">
                         <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
-                            <li><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
-                            <li class="active"><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
-                            <li><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
-                            <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                            <li>
+                                <a href="estagiario.html">
+                                    <i class="fas fa-home"></i> Início
+                                </a>
+                            </li>
+                            <li>
+                                <a href="prontuarios_form.html">
+                                    <i class="fas fa-file-medical"></i> Prontuários
+                                </a>
+                            </li>
+                            <li>
+                                <a href="selecao_inscritos_estagiario.html">
+                                    <i class="fas fa-users"></i> Seleção de Inscritos
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="visualizacao_salas_estagiario.html">
+                                    <i class="fas fa-door-open"></i> Visualização de Salas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="meus_atendimentos_estagiario.html">
+                                    <i class="fas fa-calendar-check"></i> Consultas Agendadas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="gerar_relatorio.html">
+                                    <i class="fas fa-file-alt"></i> Gerar Relatório Acadêmico
+                                </a>
+                            </li>
+                            <li>
+                                <a href="perfil_estagiario.html">
+                                    <i class="fas fa-user"></i> Perfil
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
-
                 <!-- Main Content -->
                 <div class="col-md-9 main-content">
-                    <!-- Sala 2 - Instant -->
-                    <div class="sala-section">
-                        <div class="sala-header">
-                            <h3>Sala 2 - Instant</h3>
-                            <span class="horario-consultas">Horário das Consultas</span>
+                    <div class="page-header">
+                        <h2 class="page-title">Meus Atendimentos</h2>
+                        <div class="date-info">
+                            <span>Hoje - 03/06 - Terça</span>
                         </div>
-                        <div class="sala-content">
-                            <div class="sala-image">
-                                <img src="./img/fotosala.PNG" alt="Sala 2">
+                    </div>
+                    <!-- Consultas Recentes -->
+                    <div class="consultas-recentes">
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
                             </div>
-                            <div class="horarios-grid">
-                                <div class="horarios-table">
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th>Segunda</th>
-                                                <th>Terça</th>
-                                                <th>Quarta</th>
-                                                <th>Quinta</th>
-                                                <th>Sexta</th>
-                                                <th>Sábado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="consulta-info">
+                                <h4>Consulta com Maria Clara</h4>
+                                <p>Segunda-feira, 24 de Abril de 2023 - 12:30</p>
+                            </div>
+                        </div>
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="consulta-info">
+                                <h4>Consulta com João Perez</h4>
+                                <p>Segunda-feira, 24 de Abril de 2023 - 15:00</p>
+                            </div>
+                        </div>
+                        <div class="consulta-item">
+                            <div class="consulta-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="consulta-info">
+                                <h4>Avaliação Psicológica com Carla Mendes</h4>
+                                <p>Segunda-feira, 24 de Abril de 2023 - 16:30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Solicitações de Agendamento -->
+                    <div class="solicitacoes-agendamento">
+                        <h3>Solicitações de Agendamento</h3>
+                        <p class="subtitle">Verifique as suas Solicitações</p>
+                        <div class="status-solicitacoes">
+                            <div class="status-header">
+                                <span>Status das Solicitações</span>
+                                <div class="status-buttons">
+                                    <button class="btn btn-primary">Novo</button>
+                                    <button class="btn btn-outline-secondary">Modificar</button>
+                                </div>
+                            </div>
+                            <div class="status-items-grid">
+                                <div class="status-grid-header">
+                                    <div class="header-cell">Sala</div>
+                                    <div class="header-cell">Enviada em</div>
+                                    <div class="header-cell">Status</div>
+                                </div>
+                                <div class="status-item-grid">
+                                    <div class="grid-cell">Sala 2 - Infantil</div>
+                                    <div class="grid-cell">Enviada em 10/04/2025 às 10h40</div>
+                                    <div class="grid-cell"><span class="status-badge confirmado">Agendamento Confirmado</span></div>
+                                </div>
+                                <div class="status-item-grid">
+                                    <div class="grid-cell">Sala 7 - Normal</div>
+                                    <div class="grid-cell">Enviada em 22/05/2025 às 10h30</div>
+                                    <div class="grid-cell"><span class="status-badge aguardando">Aguardando Confirmação</span></div>
+                                </div>
+                                <div class="status-item-grid">
+                                    <div class="grid-cell">Sala 10 - Normal</div>
+                                    <div class="grid-cell">Enviada em 25/05/2025 às 10h00</div>
+                                    <div class="grid-cell">
+                                        <span class="status-badge rejeitado">Agendamento Negado <br> <small>Motivo: Solicitação Duplicada de Agendamento</small></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Sala 3 - Normal -->
-                    <div class="sala-section">
-                        <div class="sala-header">
-                            <h3>Sala 3 - Normal</h3>
-                            <span class="horario-consultas">Horário das Consultas</span>
-                        </div>
-                        <div class="sala-content">
-                            <div class="sala-image">
-                                <img src="./img/fotosala.PNG" alt="Sala 3">
+                    <!-- Consultar Salas -->
+                    <div class="consultar-salas">
+                        <h3>Consultar Salas</h3>
+                        <p class="subtitle">Solicite o Agendamento de Salas e Consulte suas Disponibilidades</p>
+                        <div class="sala-consulta">
+                            <div class="sala-header-consulta">
+                                <span class="sala-nome">Sala 1 - Infantil</span>
+                                <span class="horario-consultas">Horário das Consultas</span>
                             </div>
-                            <div class="horarios-grid">
-                                <div class="horarios-table">
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th>Segunda</th>
-                                                <th>Terça</th>
-                                                <th>Quarta</th>
-                                                <th>Quinta</th>
-                                                <th>Sexta</th>
-                                                <th>Sábado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="sala-content-consulta">
+                                <div class="sala-image">
+                                    <img src="./img/fotosala.PNG" alt="Sala 1">
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sala 4 - Normal -->
-                    <div class="sala-section">
-                        <div class="sala-header">
-                            <h3>Sala 4 - Normal</h3>
-                            <span class="horario-consultas">Horário das Consultas</span>
-                        </div>
-                        <div class="sala-content">
-                            <div class="sala-image">
-                                <img src="./img/fotosala.PNG" alt="Sala 4">
-                            </div>
-                            <div class="horarios-grid">
-                                <div class="horarios-table">
+                                <div class="horarios-grid">
                                     <table class="table table-sm">
                                         <thead>
                                             <tr>
@@ -200,36 +181,28 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
-                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span><br><span class="status disponivel">Disponível</span></td>
                                             </tr>
                                             <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">08:30 - 09:30</span><br><span class="status disponivel">Disponível</span></td>
                                             </tr>
                                             <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status agendado">Agendado</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
-                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status agendado">Agendado</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="horario">09:30 - 10:30</span><br><span class="status disponivel">Disponível</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -240,7 +213,6 @@
                 </div>
             </div>
         </div>
-
         <footer>
             <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
         </footer>

@@ -31,7 +31,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;  /* Permite que os elementos se ajustem melhor em telas pequenas */
+  flex-wrap: wrap;
+  /* Permite que os elementos se ajustem melhor em telas pequenas */
 }
 
 .header-container img {
@@ -42,12 +43,14 @@ header {
   font-size: 20px;
   margin: 0;
   flex: 1;
-  text-align: center; /* Centraliza o título */
+  text-align: center;
+  /* Centraliza o título */
 }
 
 .login-icon {
   font-size: 30px;
   color: var(--cor-texto-principal);
+  text-decoration: none;
 }
 
 /* HERO */
@@ -76,6 +79,11 @@ header {
   padding: 10px 80px;
   border-radius: 20px;
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 /* ATENDIMENTOS */
@@ -148,7 +156,8 @@ header {
 .sobre p {
   text-align: justify;
   margin: 0 auto;
-  max-width: 800px; /* Limita a largura para evitar que o texto fique muito esticado */
+  max-width: 800px;
+  /* Limita a largura para evitar que o texto fique muito esticado */
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 20px;

@@ -14,14 +14,17 @@
         <header>
             <div class="header-container">
                 <img src="./img/unieurologo.png" alt="Logo Unieuro">
-                <h1><strong>Clínica Psicológica</strong></h1>
+                <h1>
+                    <strong>Clínica Psicológica</strong>
+                </h1>
                 <div class="search-container">
                     <input type="text" placeholder="Pesquisar" class="search-input">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
         </header>
-
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
@@ -37,21 +40,50 @@
                     </div>
                     <nav class="sidebar-nav">
                         <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
-                            <li class="active"><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
-                            <li><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
-                            <li><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
-                            <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                            <li>
+                                <a href="index.html">
+                                    <i class="fas fa-home"></i> Início
+                                </a>
+                            </li>
+                            <li>
+                                <a href="prontuarios_form.html">
+                                    <i class="fas fa-file-medical"></i> Prontuários
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="selecao_inscritos_estagiario.html">
+                                    <i class="fas fa-users"></i> Seleção de Inscritos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="visualizacao_salas_estagiario.html">
+                                    <i class="fas fa-door-open"></i> Visualização de Salas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="meus_atendimentos_estagiario.html">
+                                    <i class="fas fa-calendar-check"></i> Consultas Agendadas
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="gerar_relatorio_estagiario.html">
+                                    <i class="fas fa-file-alt"></i> Gerar Relatório Acadêmico
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="perfil_estagiario.html">
+                                    <i class="fas fa-user"></i> Perfil
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
-
                 <!-- Main Content -->
                 <div class="col-md-9 main-content">
                     <h2 class="page-title">Seleção de Inscritos</h2>
                     <p class="page-description">Selecione registros de pacientes, documentos e inscrições para consultas</p>
-
                     <!-- Informações da Estagiária -->
                     <div class="estagiaria-info">
                         <div class="row">
@@ -66,7 +98,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Todos os Inscritos -->
                     <div class="todos-inscritos">
                         <h3>Todos os inscritos</h3>
@@ -83,40 +114,57 @@
                                 <tbody>
                                     <tr>
                                         <td>Maria Silva</td>
-                                        <td><span class="status ativo">Ativo</span></td>
+                                        <td>
+                                            <span class="status ativo">Ativo</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Rafael Costa</td>
-                                        <td><span class="status pendente">Pendente</span></td>
+                                        <td>
+                                            <span class="status pendente">Pendente</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Rafael Costa</td>
-                                        <td><span class="status pendente">Pendente</span></td>
+                                        <td>
+                                            <span class="status pendente">Pendente</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Rafael Costa</td>
-                                        <td><span class="status pendente">Pendente</span></td>
+                                        <td>
+                                            <span class="status pendente">Pendente</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                     <!-- Meus Inscritos -->
                     <div class="meus-inscritos">
                         <div class="section-header">
                             <h3>Meus inscritos</h3>
                             <div class="search-container-small">
                                 <input type="text" placeholder="Buscar" class="search-input-small">
-                                <button class="search-button-small"><i class="fas fa-search"></i></button>
+                                <button class="search-button-small">
+                                    <i class="fas fa-search"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -132,27 +180,43 @@
                                 <tbody>
                                     <tr>
                                         <td>Maria Silva</td>
-                                        <td><span class="status ativo">Ativo</span></td>
+                                        <td>
+                                            <span class="status ativo">Ativo</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Rafael Costa</td>
-                                        <td><span class="status pendente">Pendente</span></td>
+                                        <td>
+                                            <span class="status pendente">Pendente</span>
+                                        </td>
                                         <td>14/05/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Carla Mendes</td>
-                                        <td><span class="status inativo">Inativo</span></td>
+                                        <td>
+                                            <span class="status inativo">Inativo</span>
+                                        </td>
                                         <td>28/04/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Carla Mendes</td>
-                                        <td><span class="status inativo">Inativo</span></td>
+                                        <td>
+                                            <span class="status inativo">Inativo</span>
+                                        </td>
                                         <td>28/04/2025</td>
-                                        <td><button class="btn btn-sm btn-outline-primary">Aberto</button></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Aberto</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -161,7 +225,6 @@
                 </div>
             </div>
         </div>
-
         <footer>
             <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
         </footer>
@@ -169,4 +232,3 @@
         <script src="./js/selecao_inscritos.js"></script>
     </body>
 </html>
-

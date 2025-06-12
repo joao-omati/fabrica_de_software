@@ -14,14 +14,17 @@
         <header>
             <div class="header-container">
                 <img src="./img/unieurologo.png" alt="Logo Unieuro">
-                <h1><strong>Clínica Psicológica</strong></h1>
+                <h1>
+                    <strong>Clínica Psicológica</strong>
+                </h1>
                 <div class="search-container">
                     <input type="text" placeholder="Pesquisar" class="search-input">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
         </header>
-
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
@@ -37,49 +40,83 @@
                     </div>
                     <nav class="sidebar-nav">
                         <ul>
-                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
-                            <li><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
-                            <li><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
-                            <li><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
-                            <li class="active"><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                            <li>
+                                <a href="estagiario.html">
+                                    <i class="fas fa-home"></i> Início
+                                </a>
+                            </li>
+                            <li>
+                                <a href="prontuarios_form.html">
+                                    <i class="fas fa-file-medical"></i> Prontuários
+                                </a>
+                            </li>
+                            <li>
+                                <a href="selecao_inscritos_estagiario.html">
+                                    <i class="fas fa-users"></i> Seleção de Inscritos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="visualizacao_salas_estagiario.html">
+                                    <i class="fas fa-door-open"></i> Visualização de Salas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="meus_atendimentos_estagiario.html">
+                                    <i class="fas fa-calendar-check"></i> Consultas Agendadas
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="gerar_relatorio_estagiario.html">
+                                    <i class="fas fa-file-alt"></i> Gerar Relatório Acadêmico
+                                </a>
+                            </li>
+
+                            <li class="active">
+                                <a href="perfil_estagiario.html">
+                                    <i class="fas fa-user"></i> Perfil
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
-
                 <!-- Main Content -->
                 <div class="col-md-9 main-content">
                     <h2 class="page-title">Perfil</h2>
                     <p class="page-description">Gerencie sua conta e configurações de privacidade</p>
-
                     <div class="account-form">
                         <div class="form-group">
                             <label for="nome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="nome">
                         </div>
-
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email">
                             <small class="form-text">O email é usado para fazer login e enviar notificações importantes. Para alterar seu endereço de email, mude o aqui e clique em salvar ou na confirmação do novo endereço de email.</small>
                         </div>
-
                         <div class="form-group">
                             <label for="new-password" class="form-label">Nova senha</label>
                             <div class="password-inputs">
-                                <input type="password" class="form-control" id="new-password" placeholder="Nova senha">
-                                <input type="password" class="form-control" id="confirm-password" placeholder="Confirmar nova senha">
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="new-password"
+                                    placeholder="Nova senha"
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="confirm-password"
+                                    placeholder="Confirmar nova senha"
+                                >
                             </div>
                             <small class="form-text">Para mudar sua senha, insira sua senha atual e depois sua nova. Pedimos que você faça login novamente com sua nova senha.</small>
                         </div>
-                        
-
                         <div class="form-group">
                             <label for="telefone" class="form-label">Telefone</label>
                             <input type="tel" class="form-control" id="telefone">
                             <small class="form-text">Informe seu número de telefone.</small>
                         </div>
-
                         <div class="form-actions">
                             <button type="button" class="btn btn-outline-secondary">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Salvar alterações</button>
@@ -88,7 +125,6 @@
                 </div>
             </div>
         </div>
-
         <footer>
             <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
         </footer>
@@ -96,4 +132,3 @@
         <script src="./js/perfil.js"></script>
     </body>
 </html>
-

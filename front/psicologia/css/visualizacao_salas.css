@@ -156,35 +156,243 @@ header {
   text-align: left;
 }
 
-/* SEÇÃO DA SALA */
-.sala-section {
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 24px;
+  margin: 0;
+  color: var(--cor-primaria);
+}
+
+.date-info {
+  color: var(--cor-texto-secundaria);
+  font-size: 14px;
+}
+
+/* CONSULTAS RECENTES */
+.consultas-recentes {
+  margin-bottom: 40px;
+}
+
+.consulta-item {
+  display: flex;
+  align-items: center;
   background-color: #fff;
   border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consulta-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #e3f2fd;
+  color: var(--cor-primaria);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.consulta-info h4 {
+  font-size: 16px;
+  margin: 0 0 5px;
+  color: var(--cor-texto-principal);
+}
+
+.consulta-info p {
+  font-size: 14px;
+  color: var(--cor-texto-secundaria);
+  margin: 0;
+}
+
+/* SOLICITAÇÕES DE AGENDAMENTO */
+.solicitacoes-agendamento {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
   margin-bottom: 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.solicitacoes-agendamento h3 {
+  font-size: 18px;
+  margin: 0 0 5px;
+  color: var(--cor-texto-principal);
+}
+
+.subtitle {
+  color: var(--cor-texto-secundaria);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.status-solicitacoes {
+  border: 1px solid #ddd;
+  border-radius: 8px;
   overflow: hidden;
 }
 
-.sala-header {
+.status-header {
   background-color: var(--cor-primaria);
   color: white;
-  padding: 15px 20px;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.sala-header h3 {
-  margin: 0;
+.status-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.status-buttons .btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.status-buttons .btn-primary {
+  background-color: white;
+  color: var(--cor-primaria);
+  border: 1px solid white;
+}
+
+.status-buttons .btn-outline-secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.status-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #eee;
+}
+
+.status-grid-header {
+  display: contents; /* Permite que os filhos sejam itens de grid sem criar um novo contexto de formatação */
+}
+
+.header-cell {
+  background-color: #f0f7ff;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  padding: 10px 15px;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+.status-item-grid {
+  display: contents; /* Permite que os filhos sejam itens de grid sem criar um novo contexto de formatação */
+}
+
+.grid-cell {
+  padding: 10px 15px;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.grid-cell:last-child {
+  border-right: none;
+}
+
+.status-item-grid:last-child .grid-cell {
+  border-bottom: none;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.status-badge.confirmado {
+  background-color: #e8f5e9;
+  color: var(--cor-disponivel);
+}
+
+.status-badge.aguardando {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.rejeitado {
+  background-color: #f8d7da;
+  color: var(--cor-indisponivel);
+}
+
+.status-details {
+  margin-top: 5px;
+}
+
+.status-details small {
+  color: var(--cor-texto-secundaria);
+  font-style: italic;
+}
+
+/* CONSULTAR SALAS */
+.consultar-salas {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consultar-salas h3 {
   font-size: 18px;
+  margin: 0 0 5px;
+  color: var(--cor-texto-principal);
+}
+
+.sala-consulta {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.sala-header-consulta {
+  background-color: var(--cor-primaria);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sala-nome {
+  font-weight: 600;
+  color: #fff;
 }
 
 .horario-consultas {
   font-size: 14px;
-  font-weight: normal;
+  color: var(--cor-texto-secundaria);
 }
 
-.sala-content {
+.sala-content-consulta {
   display: flex;
   padding: 20px;
 }
@@ -206,16 +414,12 @@ header {
   flex: 1;
 }
 
-.horarios-table {
-  width: 100%;
-}
-
-.horarios-table table {
+.horarios-grid table {
   width: 100%;
   margin: 0;
 }
 
-.horarios-table th {
+.horarios-grid th {
   background-color: #f8f9fa;
   color: var(--cor-texto-principal);
   font-weight: 600;
@@ -225,7 +429,7 @@ header {
   border: 1px solid #dee2e6;
 }
 
-.horarios-table td {
+.horarios-grid td {
   text-align: center;
   padding: 8px 5px;
   border: 1px solid #dee2e6;
@@ -277,15 +481,38 @@ footer {
   .header-container h1 {
     margin-left: 20px;
   }
-  
-  .sala-content {
+
+  .sala-content-consulta {
     flex-direction: column;
   }
-  
+
   .sala-image {
     width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
+  }
+
+  .status-solicitacoes .status-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .status-items-grid {
+    grid-template-columns: 1fr; /* Uma coluna para telas menores */
+  }
+
+  .header-cell,
+  .grid-cell {
+    border-right: none;
+    text-align: center;
+  }
+
+  .grid-cell:last-child {
+    border-bottom: 1px solid #eee;
+  }
+
+  .status-item-grid:last-child .grid-cell {
+    border-bottom: none;
   }
 }
 
@@ -293,37 +520,47 @@ footer {
   .header-container {
     flex-wrap: wrap;
   }
-  
+
   .header-container h1 {
     order: 3;
     width: 100%;
     margin: 10px 0;
     text-align: center;
   }
-  
+
   .search-container {
     order: 2;
     margin-right: 0;
   }
-  
+
   .sidebar {
     min-height: auto;
   }
-  
-  .sala-header {
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sala-header-consulta {
     flex-direction: column;
     text-align: center;
     gap: 5px;
   }
-  
-  .horarios-table {
+
+  .horarios-grid {
     overflow-x: auto;
   }
-  
+
   .status {
     width: 60px;
     font-size: 10px;
     padding: 3px 5px;
   }
-}
 
+  .status-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+}
