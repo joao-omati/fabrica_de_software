@@ -83,8 +83,21 @@ class Coordenador(models.Model):
 
 class Disponibilidade(models.Model):
     iddisponibilidade = models.AutoField(primary_key=True)
-    idfichaconvenio = models.ForeignKey('Inscritoconvenio', models.DO_NOTHING, db_column='idfichaconvenio', blank=True, null=True)
-    idfichacomunidade = models.ForeignKey('Inscritocomunidade', models.DO_NOTHING, db_column='idfichacomunidade', blank=True, null=True)
+    idfichaconvenio = models.ForeignKey(
+        'Inscritoconvenio',
+        models.DO_NOTHING,
+        db_column='idfichaconvenio',
+        blank=True,
+        null=True
+    )
+    idfichacomunidade = models.ForeignKey(
+        'Inscritocomunidade',
+        models.DO_NOTHING,
+        db_column='idfichacomunidade',
+        blank=True,
+        null=True,
+        related_name='disponibilidades'  # nome plural para evitar conflito
+    )
     manha = models.BooleanField(blank=True, null=True)
     tarde = models.BooleanField(blank=True, null=True)
     noite = models.BooleanField(blank=True, null=True)
@@ -123,8 +136,8 @@ class Endereco(models.Model):
     cidade = models.CharField(max_length=40)
     bairro = models.CharField(max_length=50, blank=True, null=True)
     rua = models.CharField(max_length=100)
-    uf = models.CharField(max_length=2)
-    cep = models.CharField(unique=True, max_length=10)
+    uf = models.CharField(max_length=2, default='DF')
+    cep = models.CharField(max_length=10, unique=True)
 
     class Meta:
         managed = False
@@ -204,28 +217,71 @@ class Htocorrencia(models.Model):
 
 
 class Inscritocomunidade(models.Model):
+    ESTADO_CIVIL_CHOICES = [
+        ('Solteiro', 'Solteiro'),
+        ('Casado', 'Casado'),
+        ('Divorciado', 'Divorciado'),
+        ('Viúvo', 'Viúvo'),
+        ('União Estável', 'União Estável'),
+        ('Nenhum', 'Nenhum'),
+        ('Outros', 'Outros'),
+    ]
+
+    IDENTIDADE_GENERO_CHOICES = [
+        ('Masculino', 'Masculino'),
+        ('Feminino', 'Feminino'),
+        ('Não Binário', 'Não Binário'),
+        ('Transgênero', 'Transgênero'),
+        ('Outros', 'Outros'),
+    ]
+
+    ETNIA_CHOICES = [
+        ('Branca', 'Branca'),
+        ('Preta', 'Preta'),
+        ('Parda', 'Parda'),
+        ('Amarela', 'Amarela'),
+        ('Indígena', 'Indígena'),
+        ('Outras', 'Outras'),
+    ]
+
+    RELIGIAO_CHOICES = [
+        ('Católico', 'Católico'),
+        ('Evangélico', 'Evangélico'),
+        ('Budismo', 'Budismo'),
+        ('Espirita', 'Espirita'),
+        ('Hinduísmo', 'Hinduísmo'),
+        ('Islamismo', 'Islamismo'),
+        ('Judaismo', 'Judaismo'),
+        ('Religião de Matriz Africana', 'Religião de Matriz Africana'),
+        ('Sem religião', 'Sem religião'),
+        ('Outros', 'Outros'),
+    ]
+
     idfichacomunidade = models.AutoField(primary_key=True)
     nomeinscrito = models.CharField(max_length=100)
     dtnascimento = models.DateField()
     nomeresp = models.CharField(max_length=50, blank=True, null=True)
     grauresp = models.CharField(max_length=25, blank=True, null=True)
-    cpfresp = models.CharField(unique=True, max_length=11, blank=True, null=True)
-    estadocivilresp = models.CharField(max_length=25, blank=True, null=True)
+    cpfresp = models.CharField(max_length=11, unique=True, blank=True, null=True)
+    estadocivilresp = models.CharField(max_length=25, choices=ESTADO_CIVIL_CHOICES, blank=True, null=True)
     tellcellresp = models.CharField(max_length=20, blank=True, null=True)
     emailresp = models.CharField(max_length=45, blank=True, null=True)
-    estadocivilinscrito = models.CharField(max_length=25, blank=True, null=True)
-    cpfinscrito = models.CharField(unique=True, max_length=11)
+    estadocivilinscrito = models.CharField(max_length=25, choices=ESTADO_CIVIL_CHOICES)
+    cpfinscrito = models.CharField(max_length=11, unique=True)
     tellcellinscrito = models.CharField(max_length=20)
     contatourgencia = models.CharField(max_length=15)
     nomecontatourgencia = models.CharField(max_length=50)
     emailinscrito = models.CharField(max_length=45)
-    identidadegenero = models.CharField(max_length=25)
-    etnia = models.CharField(max_length=15)
-    religiao = models.CharField(max_length=30)
-    confirmlgpd = models.BooleanField()
-    dthinscricao = models.DateField()
-    status = models.BooleanField(blank=True, null=True)
+    identidadegenero = models.CharField(max_length=25, choices=IDENTIDADE_GENERO_CHOICES)
+    etnia = models.CharField(max_length=15, choices=ETNIA_CHOICES)
+    religiao = models.CharField(max_length=30, choices=RELIGIAO_CHOICES)
+    confirmlgpd = models.BooleanField(default=False)
+    dthinscricao = models.DateField(auto_now_add=True)
+    status = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.nomeinscrito
+    
     class Meta:
         managed = False
         db_table = 'inscritocomunidade'
@@ -448,8 +504,21 @@ class Supervisor(models.Model):
 
 class Tipoterapia(models.Model):
     idtipoterapia = models.AutoField(primary_key=True)
-    idfichaconvenio = models.ForeignKey(Inscritoconvenio, models.DO_NOTHING, db_column='idfichaconvenio', blank=True, null=True)
-    idfichacomunidade = models.ForeignKey(Inscritocomunidade, models.DO_NOTHING, db_column='idfichacomunidade', blank=True, null=True)
+    idfichaconvenio = models.ForeignKey(
+        Inscritoconvenio, 
+        models.DO_NOTHING, 
+        db_column='idfichaconvenio', 
+        blank=True, 
+        null=True
+    )
+    idfichacomunidade = models.ForeignKey(
+        Inscritocomunidade, 
+        models.DO_NOTHING, 
+        db_column='idfichacomunidade', 
+        blank=True, 
+        null=True,
+        related_name='tipoterapias'  # aqui, nome plural para o reverse lookup
+    )
     individualift = models.BooleanField(blank=True, null=True)
     individualadt = models.BooleanField(blank=True, null=True)
     individualadto = models.BooleanField(blank=True, null=True)
