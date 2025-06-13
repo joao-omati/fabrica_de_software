@@ -269,9 +269,9 @@ CREATE TABLE estagiario (
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(10) NOT NULL,
-	nivelestagio VARCHAR(10) NOT NULL,
-	semestre VARCHAR(10) NOT NULL, 
+	senha VARCHAR(255) NOT NULL,
+	nivelestagio VARCHAR(32) NOT NULL,
+	semestre VARCHAR(32) NOT NULL, 
 	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
@@ -291,7 +291,7 @@ CREATE TABLE  escolheins(
 	dthescolha TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY (idestagiario) REFERENCES estagiario (idestagiario),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
-	FOREIGN KEY (idestagiario) REFERENCES inscritocomunidade (idfichacomunidade)
+	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
 select * from coordenador;
@@ -418,7 +418,6 @@ CREATE TABLE arqinscrito(
 
 CREATE TABLE arquivamento(
 	idarquivamento SERIAL PRIMARY KEY,
-	idsolicitacao INT NOT NULL,
 	crpcoord INT,
 	crpresp INT,
 	idprontuario INT,
@@ -432,20 +431,22 @@ CREATE TABLE arquivamento(
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
+
+-- Tirei o Default False dos booleans para evitar complicações no futuro, neste boolean vamos permitir null
 CREATE TABLE soliarquivamento(
-	idsloicitacao SERIAL PRIMARY KEY,
+	idsolicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
 	idarqinscrito INT,
 	idarquivamento INT NOT NULL,
 	ra INT,
 	dthsoliestagiario TIMESTAMP,
 	crpsup INT,
-	confirmsup BOOLEAN DEFAULT FALSE,
+	confirmsup BOOLEAN,
 	dthsolisup TIMESTAMP,
 	crpresp INT,
-	confirmresp BOOLEAN DEFAULT FALSE,
+	confirmresp BOOLEAN,
 	crpcoord INT,
-	confirmcoord BOOLEAN DEFAULT FALSE,
+	confirmcoord BOOLEAN,
 	descricao VARCHAR(255),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
