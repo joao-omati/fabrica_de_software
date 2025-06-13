@@ -1,15 +1,4 @@
-
-/* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
-
-
-/* 
-
-	OBSERVAÇÃO: VAMOS CRIAR UMA NOVA TABELA PARA O ESTAGIÁRIO ESCOLHER INSCRITO, POIS UM ESTAGIÁRIO PODE ESCOLHER VARIOS OU NENHUM INSCRITO 
-	
-	O INSCRITO PODE SER ESCOLIDO PPOR VÁRIOS OU NEM UM ESTAGIÁRIO	
-
-*/
-
+-- Criação a Tabela inscrito convenio = Ficha de Inscrição(Convenio)
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,
@@ -36,9 +25,7 @@ CREATE TABLE inscritoconvenio (
 	status BOOLEAN DEFAULT TRUE
 );
 
-
-/* Criando a Tabela Inscrito Comunidade, ele é a nossa ficha de inscrição */
-
+--Criando a Tabela Inscrito Comunidade = Ficha de Inscrição(Comunidade)
 CREATE TABLE inscritocomunidade (
 	idfichacomunidade SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,
@@ -63,6 +50,7 @@ CREATE TABLE inscritocomunidade (
 	status BOOLEAN DEFAULT TRUE
 );
 
+--Criando a Tabela Endereço que é Referente ao Atributo Endereço
 CREATE TABLE endereco (
 	idendereco SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -76,8 +64,7 @@ CREATE TABLE endereco (
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade) 
 );
 
-/* Criando tabela referente ao atributo Tipo Terapia*/
-
+--Criando a Tabela tipo terapia que é Referente ao Atributo Tipo Terapia
 CREATE TABLE tipoterapia(
 	idtipoterapia SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -93,8 +80,7 @@ CREATE TABLE tipoterapia(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/* Criando tabela referente ao atributo PCDS e neuro advergências */
-
+--Criando a Tabela Referente ao Atributo PCDS e Neuro Advergências 
 CREATE TABLE pcdsnd(
 	idpcdnd SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -111,8 +97,7 @@ CREATE TABLE pcdsnd(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/* Criando tabela do motivo de acompanhamento*/
-
+-- Criando Tabela do Motivo de Acompanhamento Referente ao Atributo Motivo de Acompanhamento
 CREATE TABLE motivoacompanhamento(
 	idmotivoacamp SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -138,8 +123,7 @@ CREATE TABLE motivoacompanhamento(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/*Criando Tabela para medicação*/
-
+-- Criando Tabela para Medicação Referente ao Atributo Medicação
 CREATE TABLE medicamento(
 	idmedicamento SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -154,8 +138,7 @@ CREATE TABLE medicamento(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/* Criando Tabela para Doenças Físicas*/
-
+-- Criando Tabela Doenças Físicas Referente ao Atributo Doenças Físicas
 CREATE TABLE doencafisica(
 	iddoencafisica SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -175,8 +158,7 @@ CREATE TABLE doencafisica(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/* Criando tabela para disponibilidade */
-
+--Criando tabela Disponibilidade Referente ao Atributo Disponibilidade
 CREATE TABLE disponibilidade(
 	iddisponibilidade SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -189,7 +171,7 @@ CREATE TABLE disponibilidade(
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
 );
 
-/* Criando a entidade Coordenador */
+--Criando a Tabela Coordenador
 CREATE TABLE coordenador (
 	idcoordenador SERIAL PRIMARY KEY,
 	nome VARCHAR(50) NOT NULL,
@@ -203,23 +185,10 @@ CREATE TABLE coordenador (
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
 
-/* Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash
-
-	ALTER TABLE coordenador
-
-	ALTER COLUMN senha TYPE VARCHAR(255);
-
-*/
-
-/* 
-	Modificando a coluna senha do coordenador para ter 255 caracteres, assim irá comportar senhas hash 
-	ALTER TABLE coordenador
-	ALTER COLUMN senha TYPE VARCHAR(255); 
-*/
-
+--Criando a Tabela Supervisor
 CREATE TABLE supervisor (
 	idsupervisor SERIAL PRIMARY KEY,
-	crpcoord INT NOT NULL, /*Removi o UNIQUE assim ele pode cadastrar vários supervisores*/
+	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	cpf CHAR(11) NOT NULL UNIQUE,
 	crp INT NOT NULL UNIQUE,
@@ -230,13 +199,7 @@ CREATE TABLE supervisor (
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)	
 );
 
-
-/*ALTER TABLE supervisor
-ALTER COLUMN crp TYPE INT;*/
-
-/* ALTER TABLE supervisor
-DROP CONSTRAINT supervisor_crpcoord_fkey; */ 
-
+--Criando a Tabela Secretaria
 CREATE TABLE secretaria (
 	idsecretaria SERIAL PRIMARY KEY,
 	crpcoord INT NOT NULL,
@@ -250,6 +213,7 @@ CREATE TABLE secretaria (
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
 
+--Criando a Tabela Responsavel Tecnico
 CREATE TABLE resptec(
 	idresptec SERIAL PRIMARY KEY,
 	crpcoord INT NOT NULL,
@@ -263,15 +227,16 @@ CREATE TABLE resptec(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador(crp)
 );
 
+--Criando a Tabela Estagiario
 CREATE TABLE estagiario (
 	idestagiario SERIAL PRIMARY KEY,
 	crpsup INT NOT NULL,
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(255) NOT NULL,
-	nivelestagio VARCHAR(32) NOT NULL,
-	semestre VARCHAR(32) NOT NULL, 
+	senha VARCHAR(10) NOT NULL,
+	nivelestagio VARCHAR(10) NOT NULL,
+	semestre VARCHAR(10) NOT NULL, 
 	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
@@ -280,8 +245,7 @@ CREATE TABLE estagiario (
 );
 
 
-/* estagiainscrito */
-
+--Criando a Tabela Escolha do Estagiario
 CREATE TABLE  escolheins(
 	idescolheins SERIAL PRIMARY KEY,
 	idestagiario INT,
@@ -294,15 +258,7 @@ CREATE TABLE  escolheins(
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
-select * from coordenador;
-/* Para tirar Foreign key da tabela use o exemplo abaixo
-ALTER TABLE estagiario
-DROP CONSTRAINT estagiario_crpcoord_fkey;
-
-DROP TABLE estagiario; */
-
-
-/* Criando tabela sala */
+--Criando tabela a sala 
 CREATE TABLE sala(
 	idsala SERIAL PRIMARY KEY,
 	codfuncionario INT, /* FK para secretária */
@@ -318,8 +274,7 @@ CREATE TABLE sala(
 	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp)
 );
 
-/* Criando tabela Agendamento */
-
+-- Criando a Tabela Agendamento
 CREATE TABLE agendamento(
 	idagendamento SERIAL PRIMARY KEY,
 	idsala INT NOT NULL,
@@ -338,8 +293,7 @@ CREATE TABLE agendamento(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
-/* Criando tabela sala agendamento*/
-
+-- Criando tabela sala de agendamento
 CREATE TABLE salaagendamento(
 	idsolicitacoes SERIAL PRIMARY KEY,
 	idagendamento INT NOT NULL,
@@ -352,10 +306,8 @@ CREATE TABLE salaagendamento(
 	FOREIGN KEY (ra) REFERENCES estagiario (ra)
 );
 
-/* CRIANDO TABELA PRONTUÁRIO */
-
+--Criando a Tabela Prontuario
 CREATE TABLE prontuario (
-
 	idprontuario SERIAL PRIMARY KEY,
 	crpcoord INT, 
 	crpsup INT ,
@@ -372,6 +324,7 @@ CREATE TABLE prontuario (
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
+--Criando a Tabela Folha de Evolução
 CREATE TABLE folhaevo (
 	idfolhaevolução SERIAL PRIMARY KEY,
 	idprontuario INT NOT NULL,
@@ -379,6 +332,7 @@ CREATE TABLE folhaevo (
 	dthanexo TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+--Criando a Tabela Ficha de Frequencia
 CREATE TABLE fichafreqest(
 	idfichafreq SERIAL PRIMARY KEY,
 	ra INT NOT NULL,
@@ -390,6 +344,7 @@ CREATE TABLE fichafreqest(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
+--Criando a Tabela Anamnese
 CREATE TABLE anamnese(
 	idanamnese SERIAL PRIMARY KEY,
 	idprontuario INT,
@@ -398,6 +353,7 @@ CREATE TABLE anamnese(
 	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
 );
 
+--Criando a Tabela Laudo Medico
 CREATE TABLE laudomed(
 	idlaudo SERIAL PRIMARY KEY,
 	idprontuario INT,
@@ -406,6 +362,7 @@ CREATE TABLE laudomed(
 	FOREIGN KEY (idprontuario) REFERENCES prontuario(idprontuario)
 );
 
+--Criando a Tabela Arquivo Inscrito
 CREATE TABLE arqinscrito(
 	idarqinscrito SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
@@ -416,8 +373,10 @@ CREATE TABLE arqinscrito(
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)	
 );
 
+--Criando a Tabela Arquivamento
 CREATE TABLE arquivamento(
 	idarquivamento SERIAL PRIMARY KEY,
+	idsolicitacao INT NOT NULL,
 	crpcoord INT,
 	crpresp INT,
 	idprontuario INT,
@@ -431,22 +390,21 @@ CREATE TABLE arquivamento(
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
-
--- Tirei o Default False dos booleans para evitar complicações no futuro, neste boolean vamos permitir null
+--Criando a Tabela Solitação de Arquivamento
 CREATE TABLE soliarquivamento(
-	idsolicitacao SERIAL PRIMARY KEY,
+	idsloicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
 	idarqinscrito INT,
 	idarquivamento INT NOT NULL,
 	ra INT,
 	dthsoliestagiario TIMESTAMP,
 	crpsup INT,
-	confirmsup BOOLEAN,
+	confirmsup BOOLEAN DEFAULT FALSE,
 	dthsolisup TIMESTAMP,
 	crpresp INT,
-	confirmresp BOOLEAN,
+	confirmresp BOOLEAN DEFAULT FALSE,
 	crpcoord INT,
-	confirmcoord BOOLEAN,
+	confirmcoord BOOLEAN DEFAULT FALSE,
 	descricao VARCHAR(255),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
@@ -457,6 +415,7 @@ CREATE TABLE soliarquivamento(
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
+--Criando a Tabela Historico de Ocorrencia
 CREATE TABLE htocorrencia(
 	idhtc SERIAL PRIMARY KEY,
 	idprontuario INT,
@@ -475,5 +434,3 @@ CREATE TABLE htocorrencia(
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
 );
-
-
