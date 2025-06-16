@@ -76,9 +76,6 @@ class Coordenador(models.Model):
     emailinst = models.CharField(max_length=255)
     status = models.BooleanField(blank=True, null=True)
 
-    def __str__(self):
-        return self.nome
-
     class Meta:
         managed = False
         db_table = 'coordenador'
@@ -136,9 +133,9 @@ class Endereco(models.Model):
 
 class Escolheins(models.Model):
     idescolheins = models.AutoField(primary_key=True)
-    idestagiario = models.ForeignKey('Inscritocomunidade', models.DO_NOTHING, db_column='idestagiario', blank=True, null=True)
+    idestagiario = models.ForeignKey('Estagiario', models.DO_NOTHING, db_column='idestagiario', blank=True, null=True)
     idfichaconvenio = models.ForeignKey('Inscritoconvenio', models.DO_NOTHING, db_column='idfichaconvenio', blank=True, null=True)
-    idfichacomunidade = models.IntegerField(blank=True, null=True)
+    idfichacomunidade = models.ForeignKey('Inscritocomunidade', models.DO_NOTHING, db_column='idfichacomunidade', blank=True, null=True)
     status = models.BooleanField(blank=True, null=True)
     dthescolha = models.DateTimeField(blank=True, null=True)
 
@@ -220,6 +217,7 @@ class Inscritocomunidade(models.Model):
     cpfinscrito = models.CharField(unique=True, max_length=11)
     tellcellinscrito = models.CharField(max_length=20)
     contatourgencia = models.CharField(max_length=15)
+    nomecontatourgencia = models.CharField(max_length=50)
     emailinscrito = models.CharField(max_length=45)
     identidadegenero = models.CharField(max_length=25)
     etnia = models.CharField(max_length=15)
@@ -227,9 +225,6 @@ class Inscritocomunidade(models.Model):
     confirmlgpd = models.BooleanField()
     dthinscricao = models.DateField()
     status = models.BooleanField(blank=True, null=True)
-
-    def __str__(self):
-        return self.nomeinscrito
 
     class Meta:
         managed = False
@@ -252,6 +247,7 @@ class Inscritoconvenio(models.Model):
     cpfinscrito = models.CharField(unique=True, max_length=11)
     tellcellinscrito = models.CharField(max_length=20)
     contatourgencia = models.CharField(max_length=15)
+    nomecontatourgencia = models.CharField(max_length=50)
     emailinscrito = models.CharField(max_length=50)
     identidadegenero = models.CharField(max_length=25)
     etnia = models.CharField(max_length=15)
@@ -259,9 +255,6 @@ class Inscritoconvenio(models.Model):
     confirmlgpd = models.BooleanField()
     dthinscricao = models.DateField()
     status = models.BooleanField(blank=True, null=True)
-
-    def __str__(self):
-        return self.nomeinscrito
 
     class Meta:
         managed = False

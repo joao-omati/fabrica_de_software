@@ -1,8 +1,8 @@
 from django.urls import path, include
-from .views import homepage, inscricao_convenio
+from .views import homepage, InscricaoConvenio
 
 
 urlpatterns = [
-    path('', homepage),
-    path('inscricao-convenio/', inscricao_convenio, name='inscricao_convenio')
+    path('', homepage, name='homepage'),
+    path('inscricao-convenio/', InscricaoConvenio.as_view(), name='inscricao_convenio'),  # Alterado para usar a CBV
 ]

@@ -10,201 +10,420 @@
 {% endblock %}
 
 {% block content %}
-<div class="top-bar">
-
-    </div>
-
-    <div class="header">
-        <div class="logo">
-            <img src="{% static 'images/unieuro.png' %}" alt="UNIEURO">
-            <div class="logo-text">
-                <strong>Centro Universitário Unieuro</strong><br>
-                <small>Sua escolha para um grande futuro.</small>
-            </div>
+<div class="top-bar"></div>
+<div class="header">
+    <div class="logo">
+        <img src="{% static 'images/unieuro.png' %}" alt="UNIEURO">
+        <div class="logo-text">
+            <strong>Centro Universitário Unieuro</strong>
+            <br>
+            <small>Sua escolha para um grande futuro.</small>
         </div>
     </div>
-
-    <div class="login-banner">
-        FICHA DE CONVÊNIO
-    </div>
-
-    <form>
-        <h6>Convênio</h6>
-        <select>
-            <option disabled selected>Tipo de Encaminhamento</option>
-            <option value="solteiro">teste</option>
-            <option value="casado">Teste</option>
-            <option value="divorciado">Teste</option>
-        </select>
-    </form>
-
-    <form>
-        <h6>Dados Pessoais do Inscrito</h6>
-        <div class="grid">
-            <input type="text" id="nome" class="apenas-letras" placeholder="Nome Completo" required>
-
-            <input type="text" id="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
-
-            <input type="date" placeholder="Data de Nascimento" required>
-
-            <input type="text" placeholder="Rua" required>
-
-            <input type="text" placeholder="Bairro" required>
-
-            <input type="text" placeholder="Cidade" required>
-
-            <input type="text" placeholder="CEP" required>
-
-            <select>
-                <option disabled selected>UF</option>
-                <option value="solteiro">DF</option>
-            </select>
-
-            <select>
-                <option disabled selected>Estado Civil</option>
-                <option value="solteiro">Solteiro(a)</option>
-                <option value="casado">Casado(a)</option>
-                <option value="divorciado">Divorciado(a)</option>
-                <option value="viuvo">Viúvo(a)</option>
-                <option value="separado">Separado(a)</option>
-                <option value="outros">Outros</option>
-            </select>
-
-            <select>
-                <option disabled selected>Motivos da Busca do Tratamento/acompanham...</option>
-                <option value="ansiedade">Ansiedade</option>
-                <option value="depressao">Depressão</option>
-                <option value="stress">Estresse</option>
-                <option value="autoestima">Autoestima</option>
-                <option value="problemas_familiares">Problemas Familiares</option>
-                <option value="transtornos_mentais">Transtornos Mentais</option>
-                <option value="outros">Outros</option>
-            </select>
-
-            <input type="text" id="telefone" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
-
-            <select>
-                <option disabled selected>Uso de Medicação</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-                <option value="prefiro_nao_dizer">Prefiro não dizer</option>
-            </select>
-
-            <input type="email" placeholder="E-mail" required>
-
-            <select>
-                <option disabled selected>Pessoas com Deficiência e/ou Neurodivergências</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
-                <option value="prefiro_nao_dizer">Prefiro não dizer</option>
-            </select>
-
-            <select name="identidade_genero" required>
-                <option value="" disabled selected>Identidade de Gênero</option>
-                <option value="feminino">Feminino</option>
-                <option value="masculino">Masculino</option>
-                <option value="nao_binario">Não binário</option>
-                <option value="transgenero">Transgênero</option>
-                <option value="outro">Outro</option>
-            </select>
-
-            <select name="doencas_fisicas" required>
-                <option value="" disabled selected>Doenças Físicas Diagnosticadas</option>
-                <option value="nenhuma">Nenhuma</option>
-                <option value="diabetes">Diabetes</option>
-                <option value="hipertensao">Hipertensão</option>
-                <option value="asma">Asma</option>
-                <option value="epilepsia">Epilepsia</option>
-                <option value="doenca_autoimune">Doença autoimune</option>
-                <option value="doenca_cronica">Doença crônica</option>
-                <option value="prefiro_nao_dizer">Prefiro não informar</option>
-            </select>
-
-
-            <select name="cor_etnia" required>
-                <option value="" disabled selected>Cor e Etnia</option>
-                <option value="branca">Branca</option>
-                <option value="preta">Preta</option>
-                <option value="parda">Parda</option>
-                <option value="amarela">Amarela</option>
-                <option value="indigena">Indígena</option>
-            </select>
-
-            <select required>
-                <option disabled selected>Tipo de Terapia</option>
-                <option value="familia">Terapia Familiar</option>
-                <option value="grupal">Terapia em Grupo</option>
-            </select>
-
-            <select required>
-                <option disabled selected>Religião</option>
-                <option value="catolica">Católica</option>
-                <option value="espirita">Espírita</option>
-                <option value="sem_religiao">Sem religião</option>
-            </select>
-
-            <select required>
-                <option disabled selected>Disponibilidade</option>
-                <option value="manha">Manhã</option>
-                <option value="tarde">Tarde</option>
-                <option value="noite">Noite</option>
-                <option value="final_semana">Finais de Semana</option>
-            </select>
-        </div>
-
-        <div class="checkbox">
-            <input type="checkbox" id="menorIdade">
-            <label for="menorIdade">O Inscrito é menor de idade?</label>
-        </div>
-        
-        <h6>Dados do Responsável Legal</h6>
-        <div class="grid">
-            <input type="text" class="apenas-letras" placeholder="Nome Completo" required>
-
-            <input type="email" placeholder="E-mail" required>
-
-            <input type="text" class="cpf" placeholder="CPF" maxlength="11" required>
-            <select>
-                <option disabled selected>Estado Civil</option>
-                <option value="solteiro">Solteiro(a)</option>
-                <option value="casado">Casado(a)</option>
-                <option value="divorciado">Divorciado(a)</option>
-                <option value="viuvo">Viúvo(a)</option>
-                <option value="separado">Separado(a)</option>
-                <option value="outros">Outros</option>
-            </select>
-
-            <input type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
-
-            <input type="text" class="apenas-letras" placeholder="Grau de Parentesco" required>
-        </div>
-
-        <h6>Contato(s) de Urgência</h6>
-        <div class="grid">
-            <input type="text" class="apenas-letras" placeholder="Nome Completo" required>
-            <input type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
-        </div>
-
-        <small class="acordo">
-            <strong>
-                Ao preencher o presente formulário e submeter minha inscrição para atendimento na Clínica Escola de Psicologia do Unieuro, declaro que autorizo, 
-                em conformidade com o inciso I do art. 7, da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais – LGPD) que os dados pessoais aqui fornecidos 
-                sejam tratados e utilizados unicamente para a finalidade exclusiva de compor o banco de dados dos atendimentos a serem realizados sendo a ciência, o tratamento e 
-                o uso deles restrito aos membros da Clínica Escola de Psicologia, nos termos da LGPD.                                                                          
-                Declaro ainda que tenho conhecimento de que a revogação da presente autorização poderá ser feita a qualquer momento, mediante solicitação formal a ser registrada 
-                pelo e-mail: psicologia@unieuro.edu.br</strong>
-
-            <div class="checkbox">
-                <input type="checkbox" id="deAcordo">
-                <label for="deAcordo">De Acordo</label>
-            </div>
-
-        </small>
-
-        <button type="submit">SALVAR INSCRIÇÃO</button>
-    </form>
-
-    <script src="{% static 'js/convenio.js' %}"></script>
-
+    <h1>Clínica Psicológica</h1>
 </div>
+<div class="login-banner">
+    FICHA DE CONVÊNIO
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="checkbox">
+        <input name="testavpsico" type="checkbox" id="testavpsico" required>
+        <label for="testavpsico">Fez avaliação psicológica?</label>
+    </div>
+    <h6>Dados Pessoais do Inscrito</h6>
+    <div class="grid">
+        <input name="nomeinscrito" type="text" id="nome" class="apenas-letras" placeholder="Nome Completo" required>
+        <input name="cpfinscrito" type="text" id="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
+        <input name="dtnascimento" type="date" placeholder="Data de Nascimento" required>
+        <input name="rua" name="" type="text" placeholder="Rua" required> <!-- para a tabela endereço -->
+        <input name="bairro" type="text" placeholder="Bairro" required> <!-- para a tabela endereço -->
+        <input name="cidade" type="text" placeholder="Cidade" required> <!-- para a tabela endereço -->
+        <input name="cep" type="text" placeholder="CEP" required> <!-- para a tabela endereço -->
+
+        <select name="uf">
+            <option disabled selected>UF</option>
+            <option value="DF">DF</option>
+        </select>
+
+        <select name="tipoencaminhamento">
+            <option disabled selected>Tipo de encaminhamento</option>
+            <option value="CAPS">CAPS</option>
+            <option value="CRAS">CRAS</option>
+            <option value="CREAS">CREAS</option>
+            <option value="DEAM">DEAM</option>
+            <option value="DPDF">DPDF</option>
+            <option value="MPDFT">MPDFT</option>
+            <option value="SES">SES</option>
+            <option value="SEJUS">SEJUS</option>
+            <option value="UBS">UBS</option>
+            <option value="Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul">Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul</option>
+        </select>
+
+        <select name="estadocivilinscrito">
+            <option disabled selected>Estado Civil</option>
+            <option value="Solteiro">Solteiro(a)</option>
+            <option value="Casado">Casado(a)</option>
+            <option value="Divorciado">Divorciado(a)</option>
+            <option value="Viúvo">Viúvo(a)</option>
+            <option value="União Estável">União Estável</option>
+            <option value="Nenhum">Nenhum</option>
+            <option value="Outros">Outros</option>
+        </select>
+        <!-- Campo modificado: Motivos da Busca do Tratamento -->
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('motivos-tratamento')">
+                <span>Motivos da Busca do Tratamento/Acompanhamento</span>
+            </div>
+            <div class="dropdown-content" id="motivos-tratamento">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ansiedade" name="ansiedade">
+                    <label for="ansiedade">Ansiedade</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="assediomoral" name="assediomoral">
+                    <label for="assediomoral">Assédio Moral</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="depressao" name="depreessao">
+                    <label for="depressao">Depressão</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dfaprendizagem" name="dfaprendizagem">
+                    <label for="dfaprendizagem">Dificuldade de Aprendizagem</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="humorinstavel" name="humorinstavel">
+                    <label for="humorinstavel">Humor instável</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="insonia" name="insonia">
+                    <label for="insonia">Insônia</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="isolasocial" name="isolasocial">
+                    <label for="isolasocial">Isolamento Social</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="luto" name="luto">
+                    <label for="luto">Luto</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="tristeza" name="tristeza">
+                    <label for="tristeza">Tristeza</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="apatia" name="apatia">
+                    <label for="apatia">Apatia</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="chorofc" name="chorofc">
+                    <label for="chorofc">Choro Fácil</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="exaustao" name="exaustao">
+                    <label for="exaustao">Exaustão</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="fadiga" name="fadiga">
+                    <label for="fadiga">Fadiga</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="faltanimo" name="faltanimo">
+                    <label for="faltanimo">Faltanismo</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="vldt" name="vldt">
+                    <label for="vldt">Violência Doméstica</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="assediosexual" name="assediosexual">
+                    <label for="assediosexual">Assédio Sexual</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="outros_motivos" name="motivotratoutro" onchange="toggleOtherInput('outros_motivos', 'outros_motivos_text')">
+                    <label for="outros_motivos">Outros</label>
+                </div>
+            </div>
+        </div>
+
+        <input name="tellcellinscrito" type="text" id="telefone" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+        <!-- Campo modificado: Uso de Medicação -->
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('uso-medicacao')">
+                <span>Uso de Medicação</span>
+            </div>
+            <div class="dropdown-content" id="uso-medicacao">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ansiolitico" name="ansiolitico">
+                    <label for="ansiolitico">Ansiolítico (Rivotril, Alprazolam, Clonazepam, Diazepam)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="antidepressivo" name="antidepressivo">
+                    <label for="antidepressivo">Antidepressivo (Fluoxetina, Escitalopram, Paroxetina, Sertralina,
+                        Venlafaxina, Amitriptilina, Bupropiona, Imipramina)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="antipsicotico" name="antipsicotico">
+                    <label for="antipsicotico">Antipsicótico (Asenapina, Clozapina, Iloperidona, Lurasidona, Olanzapina,
+                        Quetiapina, Risperidona, Ziprasidona)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="estabhumor" name="estabhumor">
+                    <label for="estabhumor">Estabilizador de Humor (Lítio, Oxcarbazepina, Lamotrigina, Depakote)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="memoriatct" name="memoriatct">
+                    <label for="memoriatct">Para Memória, Atenção e Concentração (Venvanse, Ritalina)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="outro" name="outromedicamento" onchange="toggleOtherInput('outros_medicacao', 'outros_medicacao_text')">
+                    <label for="outro">Outros</label>
+                </div>
+                <div class="other-input" id="outros_medicacao_text" style="display: none;">
+                    <input type="text" placeholder="Especifique outros medicamentos..."
+                        name="outros_medicacao_especificar">
+                </div>
+            </div>
+        </div>
+
+        <input name="emailinscrito" type="email" placeholder="E-mail" required>
+
+        <!-- Campo modificado: Pessoas com defiência e/ou Neurodivergências -->
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('deficiencias-neurodiv')">
+                <span>Pessoas com defiência e/ou Neurodivergências</span>
+            </div>
+            <div class="dropdown-content" id="deficiencias-neurodiv">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="tea" name="tea">
+                    <label for="tea">TEA</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="tdah" name="tdah">
+                    <label for="tdah">TDAH</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dffs" name="dffs">
+                    <label for="dffs">Deficiência Física ou Motora</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dfv" name="dfv">
+                    <label for="dfv">Deficiência Visual</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="dfa" name="dfa">
+                    <label for="dfa">Deficiência Auditiva</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ttap" name="ttap">
+                    <label for="ttap">Transtorno de Aprendizagem</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ahst" name="ahst">
+                    <label for="ahst">Altas habilidades ou super dotação</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="outro" name="outropcdsnd" onchange="toggleOtherInput('outros_motivos', 'outros_motivos_text')">
+                    <label for="outro">Outros</label>
+                </div>
+            </div>
+        </div>
+
+        <select name="identidadegenero" required>
+            <option value="" disabled selected>Identidade de Gênero</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Não Binário">Não binário</option>
+            <option value="Transgênero">Transgênero</option>
+            <option value="Outros">Outro</option>
+        </select>
+        <!-- Campo modificado: Doenças Físicas Diagnosticadas -->
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('doencas-fisicas')">
+                <span>Doenças Físicas Diagnosticadas</span>
+            </div>
+            <div class="dropdown-content" id="doencas-fisicas">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doencaresp" name="doencaresp">
+                    <label for="doencaresp">Doença Respiratória</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="cancer" name="cancer">
+                    <label for="cancer">Câncer</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="diabete" name="diabete">
+                    <label for="diabete">Diabete</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="disfusexual" name="disfusexual">
+                    <label for="disfusexual">Disfunção Sexual</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="doencadgt" name="doencadgt">
+                    <label for="doencadgt">Doença Degenerativa</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="escleorosemlt" name="escleorosemlt">
+                    <label for="escleorosemlt">Escleorose Múltipla</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="hcpt" name="hcpt">
+                    <label for="hcpt">hipertensão ou Cardiopatia</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="luposatm" name="luposatm">
+                    <label for="luposatm">Lupos ou outras doenças autoimune</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="obesidade" name="obesidade">
+                    <label for="obesidade">Obesidade</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="pblmarenal" name="pblmarenal">
+                    <label for="pblmarenal">Problemas renais</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="outro" name="outradoenca" onchange="toggleOtherInput('outros_doencas', 'outros_doencas_text')">
+                    <label for="outro">Outros</label>
+                </div>
+            </div>
+        </div>
+
+        <select name="etnia" required>
+            <option value="" disabled selected>Cor e Etnia</option>
+            <option value="Branca">Branca</option>
+            <option value="Preta">Preta</option>
+            <option value="Parda">Parda</option>
+            <option value="Amarela">Amarela</option>
+            <option value="Indígena">Indígena</option>
+            <option value="Outras">Outras</option>
+        </select>
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('tipo-terapia')">
+                <span>Tipo de Terapia</span>
+            </div>
+            <div class="dropdown-content" id="tipo-terapia">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="individuaift" name="individuaift">
+                    <label for="individuaift">Individual Infantil</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="individualadt" name="individualadt">
+                    <label for="individualadt">Individual Adulto</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="individualadto" name="individualadto">
+                    <label for="individualadto">Individual Adulto 2</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="individualids" name="individualids">
+                    <label for="individualids">Individual Idoso</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="familia" name="familia">
+                    <label for="familia">Familia</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="grupo" name="grupo">
+                    <label for="grupo">Grupo</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="casal" name="casal">
+                    <label for="casal">Casal</label>
+                </div>
+            </div>
+        </div>
+
+        <select required name="religiao">
+            <option disabled selected>Religião</option>
+            <option value="Católico">Católica</option>
+            <option value="Evangélico">Evangélica</option>
+            <option value="Budismo">Budismo</option>
+            <option value="Espirita">Espírita</option>
+            <option value="Hinduísmo">Hinduísmo</option>
+            <option value="Islamismo">Islamismo</option>
+            <option value="Judaismo">Judaísmo</option>
+            <option value="Religião de Matriz Africana">Religião de Matriz Africana</option>
+            <option value="Sem religião">Sem religião</option>
+            <option value="Outros">Outros</option>
+        </select>
+        <div class="dropdown-container">
+            <div class="dropdown-header" onclick="toggleDropdown('disponibilidade')">
+                <span>Disponibilidade</span>
+            </div>
+            <div class="dropdown-content" id="disponibilidade">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="manha" name="manha">
+                    <label for="manha">Manhã (Segunda a Sexta)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="tarde" name="tarde">
+                    <label for="tarde">Tarde (Segunda a Sexta)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="noite" name="noite">
+                    <label for="noite">Noite (Segunda a Sexta)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sabado" name="sabado">
+                    <label for="sabado">Finais de Semana (Somente pela manhã - 8h30 ás 12:00)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkbox">
+        <input type="checkbox" id="menorIdade">
+        <label for="menorIdade">O Inscrito é menor de idade?</label>
+    </div>
+
+    <h6>Dados do Responsável Legal</h6>
+    <div class="grid">
+        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" required>
+        <input name="emailresp" type="email" placeholder="E-mail" required>
+        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" required>
+        <select name="estadocivilresp">
+            <option disabled selected>Estado Civil</option>
+            <option value="Solteiro">Solteiro(a)</option>
+            <option value="Casado">Casado(a)</option>
+            <option value="Divorciado">Divorciado(a)</option>
+            <option value="Viúvo">Viúvo(a)</option>
+            <option value="União Estável">União Estável</option>
+            <option value="Nenhum">Nenhum</option>
+            <option value="Outros">Outros</option>
+        </select>
+        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" required>
+    </div>
+
+    <h6>Contato(s) de Urgência</h6>
+    <div class="grid">
+        <input name="nomecontatourgencia" type="text" class="apenas-letras" placeholder="Nome Completo" required>
+        <input name="contatourgencia" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+    </div>
+    <small class="acordo">
+        <strong>
+            Ao preencher o presente formulário e submeter minha inscrição para atendimento na Clínica Escola de
+            Psicologia do Unieuro, declaro que autorizo,
+            em conformidade com o inciso I do art. 7, da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais –
+            LGPD) que os dados pessoais aqui fornecidos
+            sejam tratados e utilizados unicamente para a finalidade exclusiva de compor o banco de dados dos
+            atendimentos a serem realizados sendo a ciência, o tratamento e
+            o uso deles restrito aos membros da Clínica Escola de Psicologia, nos termos da LGPD.
+            Declaro ainda que tenho conhecimento de que a revogação da presente autorização poderá ser feita a qualquer
+            momento, mediante solicitação formal a ser registrada
+            pelo e-mail: psicologia@unieuro.edu.br
+        </strong>
+        <div class="checkbox">
+            <input name="confirmlgpd" type="checkbox" id="deAcordo" required>
+            <label for="deAcordo">De Acordo</label>
+        </div>
+    </small>
+    
+    <button type="submit">SALVAR INSCRIÇÃO</button>
+</form>
+<script src="{% static 'js/convenio.js' %}"></script>
 {% endblock %}
