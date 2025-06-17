@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, CreateView
 from .models import Inscritoconvenio, Endereco, Motivoacompanhamento, Medicamento, Pcdsnd, Doencafisica, Tipoterapia, Disponibilidade
-from datetime import datetime
+from datetime import datetime, date
 
 
 # Create your views here.
@@ -21,13 +21,13 @@ class InscricaoConvenio(View):
         nomeinscrito = request.POST['nomeinscrito']
         dtnascimento = request.POST['dtnascimento']
         tipoencaminhamento = request.POST['tipoencaminhamento']
-        nomeresp = request.POST['nomeresp']
-        grauresp = request.POST['grauresp']
-        cpfresp = request.POST['cpfresp']
-        estadocivilresp = request.POST['estadocivilresp']
-        tellcellresp = request.POST['tellcellresp']
-        emailresp = request.POST['emailresp']
-        estadocivilinscrito = request.POST['estadocivilinscrito']
+        nomeresp = request.POST.get('nomeresp')
+        grauresp = request.POST.get('grauresp')
+        cpfresp = request.POST.get('cpfresp')
+        estadocivilresp = request.POST.get('estadocivilresp')
+        tellcellresp = request.POST.get('tellcellresp')
+        emailresp = request.POST.get('emailresp')
+        estadocivilinscrito = request.POST.get('estadocivilinscrito')
         cpfinscrito = request.POST['cpfinscrito']
         tellcellinscrito = request.POST['tellcellinscrito']
         nomecontatourgencia = request.POST['nomecontatourgencia']
@@ -39,10 +39,65 @@ class InscricaoConvenio(View):
         dthinscricao = datetime.now()
         confirmlgpd = request.POST.get('confirmlgpd') == 'on'
         cidade = request.POST['cidade']
-        bairro = request.POST['bairro']
+        bairro = request.POST.get('bairro')
         rua = request.POST['rua']
         uf = request.POST['uf']
         cep = request.POST['cep']
+
+        errors = []
+
+        required_fields = {
+            "nomeinscrito": nomeinscrito,
+            "dtnascimento": dtnascimento,
+            "testavpsico": testavpsico,
+            "tipoencaminhamento": tipoencaminhamento,
+            "cpfinscrito": cpfinscrito,
+            "tellcellinscrito": tellcellinscrito,
+            "contatourgencia": contatourgencia,
+            "nomecontatourgencia": nomecontatourgencia,
+            "emailinscrito": emailinscrito,
+            "identidadegenero": identidadegenero,
+            "etnia": etnia,
+            "religiao": religiao,
+            "confirmlgpd": confirmlgpd,
+            "cidade": cidade,
+            "rua": rua,
+            "uf": uf,
+            "cep": cep    
+        }
+
+        for field_name, value in required_fields.items():
+            if value in [None, '', False]:
+                errors.append(f"O campo '{field_name}' é obrigatório.")
+
+        # Verifica se é menor de idade
+        try:
+            data_nascimento = datetime.strptime(dtnascimento, "%Y-%m-%d").date()
+            hoje = date.today()
+            idade = hoje.year - data_nascimento.year - (
+                (hoje.month, hoje.day) < (data_nascimento.month, data_nascimento.day)
+            )
+
+            if idade < 18:
+                responsavel_fields = {
+                    "nomeresp": nomeresp,
+                    "grauresp": grauresp,
+                    "cpfresp": cpfresp,
+                    "estadocivilresp": estadocivilresp,
+                    "tellcellresp": tellcellresp,
+                    "emailresp": emailresp
+                }
+                for field_name, value in responsavel_fields.items():
+                    if value in [None, '']:
+                        errors.append(f"Como o inscrito é menor de idade, o campo '{field_name}' é obrigatório.")
+        except ValueError:
+            errors.append("Data de nascimento inválida.")
+
+        # Se houver erros, retorna com mensagem
+        if errors:
+            return render(request, 'convenio_form.html', {'errors': errors})
+        
+
         ansiedade = request.POST.get('ansiedade') == 'on'
         assediomoral = request.POST.get('assediomoral') == 'on'
         depressao = request.POST.get('depressao') == 'on'
@@ -123,6 +178,12 @@ class InscricaoConvenio(View):
         Disponibilidade.objects.create(idfichaconvenio=inscritoconvenio, manha=manha, tarde=tarde, noite=noite, sabado=sabado)
 
         return redirect('homepage')
+    
+    # not null: nomeinscrito, dtnascimento, testeavpsico, tipoencaminhamento, cpfinscrito, tellcellinscrito, contatourgencia, nomecontatourgencia, emailinscrito, identidadegenero, etnia, religiao, confirmlgpd, 
+        # cidade, rua, uf, cep, 
+    # De acordo com a data de nascimento fazer uma calculo para descobrir a idade
+    #   se menor de idade os campos nomeresp, grauresp, cpfresp, estadocivilresp, tellcellresp, emailresp SÃO OBRIGATÓRIOS
+    
         
 
 

@@ -25,7 +25,16 @@
 <div class="login-banner">
     FICHA DE CONVÊNIO
 </div>
-
+{% if errors %}
+  <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px;">
+      <strong>Ocorreram erros:</strong>
+      <ul>
+          {% for error in errors %}
+              <li>{{ error }}</li>
+          {% endfor %}
+      </ul>
+  </div>
+{% endif %}
 <form method="POST">
     {% csrf_token %}
     <div class="checkbox">
@@ -382,9 +391,9 @@
 
     <h6>Dados do Responsável Legal</h6>
     <div class="grid">
-        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" required>
-        <input name="emailresp" type="email" placeholder="E-mail" required>
-        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" required>
+        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" >
+        <input name="emailresp" type="email" placeholder="E-mail" >
+        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" >
         <select name="estadocivilresp">
             <option disabled selected>Estado Civil</option>
             <option value="Solteiro">Solteiro(a)</option>
@@ -395,8 +404,8 @@
             <option value="Nenhum">Nenhum</option>
             <option value="Outros">Outros</option>
         </select>
-        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
-        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" required>
+        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" >
+        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" >
     </div>
 
     <h6>Contato(s) de Urgência</h6>
