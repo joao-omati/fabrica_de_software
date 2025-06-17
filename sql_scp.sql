@@ -1,3 +1,4 @@
+-- Active: 1749756924575@@127.0.0.1@5432@scp
 
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
@@ -20,20 +21,22 @@ CREATE TABLE inscritoconvenio (
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
-	tellcellresp VARCHAR(15),
+	tellcellresp VARCHAR(20),
 	emailresp VARCHAR(45),
 	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
-	tellcellinscrito VARCHAR(16) NOT NULL,
+	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
+	nomecontatourgencia VARCHAR(50)NOT NULL,
 	emailinscrito VARCHAR(50) NOT NULL,
-	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outra')),
-	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outra')),
+	identidadegenero VARCHAR(25) NOT NULL CHECK (identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero','Outros')),
+	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Outras')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
-	confirmlgpd BOOLEAN NOT NULL, 
+	confirmlgpd BOOLEAN NOT NULL DEFAULT FALSE, 
 	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
+
 
 /* Criando a Tabela Inscrito Comunidade, ele é a nossa ficha de inscrição */
 
@@ -45,23 +48,23 @@ CREATE TABLE inscritocomunidade (
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
-	tellcellresp VARCHAR(45),
+	tellcellresp VARCHAR(20),
 	emailresp VARCHAR(45),
 	estadocivilinscrito VARCHAR(25) CHECK (estadocivilinscrito IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
 	cpfinscrito CHAR(11) NOT NULL UNIQUE,
-	tellcellinscrito VARCHAR(15) NOT NULL,
+	tellcellinscrito VARCHAR(20) NOT NULL,
 	contatourgencia VARCHAR(15) NOT NULL,
+	nomecontatourgencia VARCHAR(50)NOT NULL,
 	emailinscrito VARCHAR(45) NOT NULL,
-	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outra')),
-	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outra')),
+	identidadegenero VARCHAR(25) NOT NULL CHECK(identidadegenero IN('Masculino', 'Feminino', 'Não Binário', 'Transgênero', 'Outros')),
+	etnia VARCHAR(15) NOT NULL CHECK (etnia IN('Branca', 'Preta', 'Parda', 'Amarela', 'Indígena','Outras')),
 	religiao VARCHAR(30) NOT NULL CHECK (religiao IN('Católico','Evangélico','Budismo','Espirita', 'Hinduísmo', 'Islamismo', 'Judaismo', 'Religião de Matriz Africana', 'Sem religião', 'Outros')),
-	confirmlgpd BOOLEAN NOT NULL,
+	confirmlgpd BOOLEAN NOT NULL DEFAULT FALSE,
 	dthinscricao DATE NOT NULL DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE endereco(
-
+CREATE TABLE endereco (
 	idendereco SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
@@ -112,7 +115,7 @@ CREATE TABLE pcdsnd(
 /* Criando tabela do motivo de acompanhamento*/
 
 CREATE TABLE motivoacompanhamento(
-	idmotivoacamo SERIAL PRIMARY KEY,
+	idmotivoacamp SERIAL PRIMARY KEY,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
 	ansiedade BOOLEAN DEFAULT FALSE,
@@ -167,7 +170,7 @@ CREATE TABLE doencafisica(
 	hcpt BOOLEAN DEFAULT FALSE, /* atributo referente a hipertensao ou cardiopatia */
 	luposatm BOOLEAN DEFAULT FALSE, /* atributo referente ao lupos ou outras doencas autoimune */
 	obesidade BOOLEAN DEFAULT FALSE, 
-	pblmrenal BOOLEAN DEFAULT FALSE,/* atributo referente a problemas renais*/
+	pblmarenal BOOLEAN DEFAULT FALSE,/* atributo referente a problemas renais*/
 	outro BOOLEAN DEFAULT FALSE,
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio(idfichaconvenio),
 	FOREIGN  KEY (idfichacomunidade) REFERENCES inscritocomunidade(idfichacomunidade)
@@ -267,10 +270,10 @@ CREATE TABLE estagiario (
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(10) NOT NULL,
-	nivelestagio VARCHAR(10) NOT NULL,
-	semestre VARCHAR(10) NOT NULL, 
-	emailinst VARCHAR(45) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
+	senha VARCHAR(255) NOT NULL,
+	nivelestagio VARCHAR(32) NOT NULL,
+	semestre VARCHAR(32) NOT NULL, 
+	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
@@ -281,12 +284,15 @@ CREATE TABLE estagiario (
 /* estagiainscrito */
 
 CREATE TABLE  escolheins(
-
+	idescolheins SERIAL PRIMARY KEY,
 	idestagiario INT,
 	idfichaconvenio INT,
 	idfichacomunidade INT,
 	status BOOLEAN DEFAULT FALSE,
-	dthescolha TIMESTAMP
+	dthescolha TIMESTAMP DEFAULT NOW(),
+	FOREIGN KEY (idestagiario) REFERENCES estagiario (idestagiario),
+	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
+	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
 );
 
 select * from coordenador;
@@ -365,7 +371,13 @@ CREATE TABLE prontuario (
 	FOREIGN KEY (ra) REFERENCES estagiario (ra),
 	FOREIGN KEY (idfichaconvenio) REFERENCES inscritoconvenio (idfichaconvenio),
 	FOREIGN KEY (idfichacomunidade) REFERENCES inscritocomunidade (idfichacomunidade)
+);
 
+CREATE TABLE folhaevo (
+	idfolhaevolução SERIAL PRIMARY KEY,
+	idprontuario INT NOT NULL,
+	folhaevolucao BYTEA NOT NULL,
+	dthanexo TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE fichafreqest(
@@ -407,7 +419,6 @@ CREATE TABLE arqinscrito(
 
 CREATE TABLE arquivamento(
 	idarquivamento SERIAL PRIMARY KEY,
-	idsolicitacao INT NOT NULL,
 	crpcoord INT,
 	crpresp INT,
 	idprontuario INT,
@@ -422,7 +433,7 @@ CREATE TABLE arquivamento(
 );
 
 CREATE TABLE soliarquivamento(
-	idsloicitacao SERIAL PRIMARY KEY,
+	idsolicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
 	idarqinscrito INT,
 	idarquivamento INT NOT NULL,
@@ -463,5 +474,3 @@ CREATE TABLE htocorrencia(
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
 );
-
-
