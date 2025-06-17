@@ -49,10 +49,10 @@
         
         --name postgres-codespace: nome do container para facilitar o gerenciamento.
 
-        -e POSTGRES_PASSWORD=suasenha: variável de ambiente que define a senha do usuário padrão postgres.
+        -e POSTGRES_PASSWORD = suasenha: variável de ambiente que define a senha do usuário padrão postgres.
         Substitua suasenha por uma senha forte e segura.
 
-        -e POSTGRES_DB=laudinho: variável que cria automaticamente um banco de dados chamado laudinho ao iniciar o container.
+        -e POSTGRES_DB = scp : variável que cria automaticamente um banco de dados chamado laudinho ao iniciar o container.
 
         -p 5432:5432: mapeia a porta 5432 do container para a porta 5432 do Codespace, permitindo conexão externa.
 
@@ -82,7 +82,7 @@
 
     Depois, conecte-se ao banco com o comando:
 
-        psql -h localhost -U postgres -d laudinho
+        psql -h localhost -U postgres -d scp
 
     -h localhost: host onde o banco está rodando (localhost, pois está dentro do Codespace).
 
