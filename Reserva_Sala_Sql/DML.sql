@@ -175,3 +175,11 @@ VALUES
 INSERT INTO nti (nome,cpf,email,senha,status)
 VALUES
 ('Samuel Alves','04356789706','samuca1234@gmail.com',MD5('samucalindo'),TRUE);
+
+
+SELECT * FROM sala;
+
+INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala) 
+    VALUES ('04263637153','B',55,'Livre',50,'Terreo',1);
+
+SELECT * FROM sala;

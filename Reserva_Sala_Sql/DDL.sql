@@ -1,3 +1,4 @@
+-- Active: 1749757574490@@127.0.0.1@5432@reserva
 -- Criação da tabela assessora
 
 CREATE TABLE assessora (
@@ -23,7 +24,7 @@ CREATE TABLE nti (
 -- Criação de tabela Turma
 CREATE TABLE turma(
 	idturma SERIAL PRIMARY KEY,
-	cpfnti CHAR(11),
+	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir também sem a obrigatóriedade do NTI    */
 	codturma VARCHAR(100),
 	periodoletivo VARCHAR(10),
 	FOREIGN KEY (cpfnti) REFERENCES nti (cpf)
@@ -60,7 +61,7 @@ CREATE TABLE reserva(
 	cpfnti CHAR(11),
 	idsala INT NOT NULL,
 	diasemana VARCHAR(10) NOT NULL,
-	peridodo VARCHAR(15) NOT NULL,
+	periodolt VARCHAR(15) NOT NULL,
 	turno VARCHAR(10) NOT NULL,
 	datainicial DATE DEFAULT NOW(),
 	datafinal DATE DEFAULT NOW(),
