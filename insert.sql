@@ -76,7 +76,7 @@ VALUES
 INSERT INTO tipoterapia (idfichacomunidade, casal)
 VALUES 
 	(13, TRUE),
-	(21, TRUE);
+	(17, TRUE);
 	
 INSERT INTO tipoterapia (idfichacomunidade, familia)
 VALUES
@@ -86,13 +86,13 @@ VALUES
 INSERT INTO tipoterapia (idfichacomunidade, individualadt)
 VALUES
 	(17, TRUE),
-	(22, TRUE),
-	(24, TRUE);
+	(12, TRUE),
+	(14, TRUE);
 
 INSERT INTO pcdsnd (idfichacomunidade, tea)
 VALUES
 	(16, TRUE),
-	(24, TRUE);
+	(14, TRUE);
 	
 INSERT INTO pcdsnd (idfichacomunidade, dfa)
 VALUES
@@ -175,4 +175,3 @@ INSERT INTO estagiario (crpsup, crpcoord, nome, ra, senha, nivelestagio, semestr
 (89012, 12345, 'Felipe Souza', 1003, MD5('felipe_estg#'), 'Avançado', '5º Semestre', 'felipe.s@aluno.instituicao.com', TRUE),
 (90123, 34567, 'Luisa Dias', 1004, MD5('luisaEstg!'), 'Básico', '2º Semestre', 'luisa.d@aluno.instituicao.com', TRUE),
 (01234, 23456, 'Gabriel Alves', 1005, MD5('gabriel-e$tg'), 'Intermediário', '4º Semestre', 'gabriel.a@aluno.instituicao.com', TRUE);
-

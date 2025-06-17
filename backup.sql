@@ -1,4 +1,5 @@
 
+
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
 
@@ -463,5 +464,3 @@ CREATE TABLE htocorrencia(
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
 );
-
-

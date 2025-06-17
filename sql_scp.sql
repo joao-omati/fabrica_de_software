@@ -1,3 +1,4 @@
+-- Active: 1749756924575@@127.0.0.1@5432@scp
 
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
@@ -431,8 +432,6 @@ CREATE TABLE arquivamento(
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
-
--- Tirei o Default False dos booleans para evitar complicações no futuro, neste boolean vamos permitir null
 CREATE TABLE soliarquivamento(
 	idsolicitacao SERIAL PRIMARY KEY,
 	idprontuario INT,
@@ -441,12 +440,12 @@ CREATE TABLE soliarquivamento(
 	ra INT,
 	dthsoliestagiario TIMESTAMP,
 	crpsup INT,
-	confirmsup BOOLEAN,
+	confirmsup BOOLEAN DEFAULT FALSE,
 	dthsolisup TIMESTAMP,
 	crpresp INT,
-	confirmresp BOOLEAN,
+	confirmresp BOOLEAN DEFAULT FALSE,
 	crpcoord INT,
-	confirmcoord BOOLEAN,
+	confirmcoord BOOLEAN DEFAULT FALSE,
 	descricao VARCHAR(255),
 	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
 	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
@@ -475,5 +474,3 @@ CREATE TABLE htocorrencia(
 	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
 	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
 );
-
-

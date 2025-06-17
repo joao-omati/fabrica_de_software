@@ -140,8 +140,3 @@ VALUES
 	(25,TRUE, TRUE,TRUE);
 
 --
-
-
-
-
-
