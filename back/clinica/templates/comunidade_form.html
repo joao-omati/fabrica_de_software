@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block titulo %}
-    Ficha de Convênio
+Ficha de Comunidade
 {% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/convenio.css' %}">
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+<link rel="shortcut icon" href="{% static 'img/unieuro.png' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,53 +24,29 @@
     <h1>Clínica Psicológica</h1>
 </div>
 <div class="login-banner">
-    FICHA DE CONVÊNIO
+    FICHA DE COMUNIDADE
 </div>
-{% if errors %}
-  <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 20px;">
-      <strong>Ocorreram erros:</strong>
-      <ul>
-          {% for error in errors %}
-              <li>{{ error }}</li>
-          {% endfor %}
-      </ul>
-  </div>
-{% endif %}
-<form method="POST">
+<form method="post">
     {% csrf_token %}
-    <div class="checkbox">
-        <input name="testavpsico" type="checkbox" id="testavpsico" required>
-        <label for="testavpsico">Fez avaliação psicológica?</label>
-    </div>
     <h6>Dados Pessoais do Inscrito</h6>
     <div class="grid">
-        <input name="nomeinscrito" type="text" id="nome" class="apenas-letras" placeholder="Nome Completo" required>
-        <input name="cpfinscrito" type="text" id="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
-        <input name="dtnascimento" type="date" placeholder="Data de Nascimento" required>
-        <input name="rua" name="" type="text" placeholder="Rua" required> <!-- para a tabela endereço -->
-        <input name="bairro" type="text" placeholder="Bairro" required> <!-- para a tabela endereço -->
-        <input name="cidade" type="text" placeholder="Cidade" required> <!-- para a tabela endereço -->
-        <input name="cep" type="text" placeholder="CEP" required> <!-- para a tabela endereço -->
+        <input type="text" name="nomeinscrito" id="nome" class="apenas-letras" placeholder="Nome Completo" required>
 
+        <input type="text" name="cpfinscrito" id="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
+
+        <input type="date" name="dtnascimento" placeholder="Data de Nascimento" required>
+
+        <input type="text" name="rua" placeholder="Rua" required>
+
+        <input type="text" name="bairro" placeholder="Bairro" required>
+
+        <input type="text" name="cidade" placeholder="Cidade" required>
+
+        <input type="text" name="cep" placeholder="CEP" required>
         <select name="uf">
             <option disabled selected>UF</option>
             <option value="DF">DF</option>
         </select>
-
-        <select name="tipoencaminhamento">
-            <option disabled selected>Tipo de encaminhamento</option>
-            <option value="CAPS">CAPS</option>
-            <option value="CRAS">CRAS</option>
-            <option value="CREAS">CREAS</option>
-            <option value="DEAM">DEAM</option>
-            <option value="DPDF">DPDF</option>
-            <option value="MPDFT">MPDFT</option>
-            <option value="SES">SES</option>
-            <option value="SEJUS">SEJUS</option>
-            <option value="UBS">UBS</option>
-            <option value="Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul">Clinica Ana Lucia Chaves Fecury Unieuro Asa Sul</option>
-        </select>
-
         <select name="estadocivilinscrito" required>
             <option disabled selected>Estado Civil</option>
             <option value="Solteiro">Solteiro(a)</option>
@@ -157,9 +134,9 @@
                 </div>
             </div>
         </div>
-        
-        <input name="tellcellinscrito" type="text" id="telefone" class="telefone" placeholder="Telefone Celular" maxlength="11"
-            required>
+
+        <input name="tellcellinscrito" type="text" id="telefone" class="telefone" placeholder="Telefone Celular"
+            maxlength="11" required>
         <!-- Campo modificado: Uso de Medicação -->
         <div class="dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown('uso-medicacao')">
@@ -194,13 +171,14 @@
                     <label for="outro">Outros</label>
                 </div>
                 <div class="other-input" id="outros_medicacao_text" style="display: none;">
-                    <input type="text" placeholder="Especifique outros medicamentos..." name="outros_medicacao_especificar">
+                    <input type="text" placeholder="Especifique outros medicamentos..."
+                        name="outros_medicacao_especificar">
                 </div>
             </div>
         </div>
-        
+
         <input name="emailinscrito" type="email" placeholder="E-mail" required>
-        
+
         <!-- Campo modificado: Pessoas com defiência e/ou Neurodivergências -->
         <div class="dropdown-container">
             <div class="dropdown-header" onclick="toggleDropdown('deficiencias-neurodiv')">
@@ -242,7 +220,7 @@
                 </div>
             </div>
         </div>
-        
+
         <select name="identidadegenero" required>
             <option value="" disabled selected>Identidade de Gênero</option>
             <option value="Feminino">Feminino</option>
@@ -304,7 +282,7 @@
                 </div>
             </div>
         </div>
-        
+
         <select name="etnia" required>
             <option value="" disabled selected>Cor e Etnia</option>
             <option value="Branca">Branca</option>
@@ -349,7 +327,7 @@
                 </div>
             </div>
         </div>
-        
+
         <select required name="religiao">
             <option disabled selected>Religião</option>
             <option value="Católico">Católica</option>
@@ -395,9 +373,9 @@
 
     <h6>Dados do Responsável Legal</h6>
     <div class="grid">
-        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" >
-        <input name="emailresp" type="email" placeholder="E-mail" >
-        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" >
+        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" required>
+        <input name="emailresp" type="email" placeholder="E-mail" required>
+        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" required>
         <select name="estadocivilresp">
             <option disabled selected>Estado Civil</option>
             <option value="Solteiro">Solteiro(a)</option>
@@ -408,14 +386,15 @@
             <option value="Nenhum">Nenhum</option>
             <option value="Outros">Outros</option>
         </select>
-        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" >
-        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" >
+        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" required>
     </div>
 
     <h6>Contato(s) de Urgência</h6>
     <div class="grid">
         <input name="nomecontatourgencia" type="text" class="apenas-letras" placeholder="Nome Completo" required>
-        <input name="contatourgencia" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+        <input name="contatourgencia" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11"
+            required>
     </div>
     <small class="acordo">
         <strong>
@@ -435,8 +414,8 @@
             <label for="deAcordo">De Acordo</label>
         </div>
     </small>
-    
+
     <button type="submit">SALVAR INSCRIÇÃO</button>
 </form>
-<script src="{% static 'js/convenio.js' %}"></script>
+<script src="{% static 'js/comunidade.js' %}"></script>
 {% endblock %}
