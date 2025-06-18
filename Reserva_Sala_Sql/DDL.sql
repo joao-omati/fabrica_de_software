@@ -38,7 +38,7 @@ CREATE TABLE sala(
 	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir ou atualizar também as salas */
 	bloco CHAR(1),
 	tvtamanho INT,
-	situacao VARCHAR(10) NOT NULL CHECK (situacao IN('Livre','Ocupadado','Manutenção')),
+	situacao VARCHAR(10) NOT NULL CHECK (situacao IN('Livre','Ocupado','Manutenção')),
 	capacidade INT NOT NULL,
 	andar VARCHAR(25),
 	numerosala INT NOT NULL,
