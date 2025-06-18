@@ -47,8 +47,6 @@ INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR09N1', '20
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR10M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR10N1', '2025/1');
 
-INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01M1', '2025/1');
-INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01N1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB02M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB03M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB04M1', '2025/1');
@@ -182,4 +180,5 @@ SELECT * FROM sala;
 INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala) 
     VALUES ('04263637153','B',55,'Livre',50,'Terreo',1);
 
-SELECT * FROM sala;
+SELECT * FROM sala;INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01M1', '2025/1');
+INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01N1', '2025/1');
