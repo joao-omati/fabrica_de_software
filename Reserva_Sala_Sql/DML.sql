@@ -47,8 +47,6 @@ INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR09N1', '20
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR10M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'DIR10N1', '2025/1');
 
-INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01M1', '2025/1');
-INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01N1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB02M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB03M1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB04M1', '2025/1');
@@ -160,13 +158,17 @@ INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'SIN06N1', '20
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'SIN07N1', '2025/1');
 INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'SIN08N1', '2025/1');
 
-///Inclusão na Tabela Assessora///
+-- TURMAS RESTANTES
+INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01M1', '2025/1');
+INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01N1', '2025/1');
+
+--Inclusão na Tabela Assessora
 
 INSERT INTO assessora (nome,cpf,email,senha,status)
 VALUES ('Maria Eduarda Paim','05236246111','dudapaim@gmail.com',MD5('122344'),TRUE);
 
 
-///Inclusão na Tabela NTI///
+--Inclusão na Tabela NTI
 
 INSERT INTO nti (nome,cpf,email,senha,status)
 VALUES 
@@ -176,8 +178,12 @@ INSERT INTO nti (nome,cpf,email,senha,status)
 VALUES
 ('Samuel Alves','04356789706','samuca1234@gmail.com',MD5('samucalindo'),TRUE);
 
+
+-- Inclusão na tabela sala
 INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala) 
     VALUES ('04263637153','B',55,'Livre',50,'Terreo',1);
 
-INSERT INTO public.sala(cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala)
-    VALUES(NULL,'C',55,'Ocupado',50,'1',20);
+INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala) 
+    VALUES ('04263637153','B',55,'Ocupado',50,'1',1);
+
+INSERT INTO public.tursala (idsala,idturma) VALUES (1,1);
