@@ -7,7 +7,7 @@ CREATE TABLE assessora (
     cpf CHAR(11) NOT NULL UNIQUE, 
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    status BOOLEAN DEFAULT TRUE
+    status BOOLEAN DEFAULT TRUE /* PARA FAZER DELETE LÓGIGO */
 );
 
 -- Criação de tabela NTI 
@@ -18,15 +18,16 @@ CREATE TABLE nti (
     cpf CHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    status BOOLEAN DEFAULT TRUE
+    status BOOLEAN DEFAULT TRUE /* PARA FAZER DELETE LÓGICO*/
 );
 
 -- Criação de tabela Turma
 CREATE TABLE turma(
 	idturma SERIAL PRIMARY KEY,
-	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir também sem a obrigatóriedade do NTI    */
+	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir, atualizar também sem a obrigatóriedade do NTI    */
 	codturma VARCHAR(100),
 	periodoletivo VARCHAR(10),
+	status BOOLEAN DEFAULT TRUE; /* PARA FAZER DELETE LÓGICO */
 	FOREIGN KEY (cpfnti) REFERENCES nti (cpf)
 );
 
@@ -34,13 +35,14 @@ CREATE TABLE turma(
 
 CREATE TABLE sala(
 	idsala SERIAL PRIMARY KEY,
-	cpfnti CHAR(11) NOT NULL,
+	cpfnti CHAR(11)L, /* Vamos deixar Nullable porque o Desenvolvedor pode inserir ou atualizar também as salas */
 	bloco CHAR(1),
 	tvtamanho INT,
 	situacao VARCHAR(10) NOT NULL CHECK (situacao IN('Livre','Ocupadado','Manutenção')),
 	capacidade INT NOT NULL,
 	andar VARCHAR(25),
 	numerosala INT NOT NULL,
+	status BOOLEAN DEFAULT TRUE /* PARA FAZER DELETE LÓGICO */
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf)
 );
 
