@@ -1,6 +1,4 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva
 -- Criação da tabela assessora
-
 CREATE TABLE assessora (
     idassessora SERIAL PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
