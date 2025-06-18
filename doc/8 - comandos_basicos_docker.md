@@ -56,36 +56,44 @@
             -a incluir os contêines que foram parados
     
     Comando para um contêiner em execução.
-    docker stop [ID_contêiner_ou_nome]: 
-    Exemplo: docker stop meu-nginx ou docker stop [ID_do_contêiner]
+
+        docker stop [ID_contêiner_ou_nome]: 
+        Exemplo: docker stop meu-nginx ou docker stop [ID_do_contêiner]
 
     Comando inicia um contêiner que foi parado.
-    docker start [ID_contêiner_ou_nome]:
-    Exemplo: docker start meu-nginx
+
+        docker start [ID_contêiner_ou_nome]:
+        Exemplo: docker start meu-nginx
 
     Comando reinicia um contêiner.
-    docker restart [ID_contêiner_ou_nome]:
-    Exemplo: docker restart meu-nginx
+
+        docker restart [ID_contêiner_ou_nome]:
+        Exemplo: docker restart meu-nginx
     
     Comando remove um contêiner parado. Você não pode remover um contêiner em execução, primeiro pare-o.
-    docker rm [ID_contêiner_ou_nome]:
-    Exemplo: docker rm meu-nginx
+    
+        docker rm [ID_contêiner_ou_nome]:
+        Exemplo: docker rm meu-nginx
 
     Comando remove uma imagem Docker. Certifique-se de que nenhum contêiner esteja usando a imagem antes de tentar removê-la.
-    docker rmi [ID_imagem_ou_nome]:
-    Exemplo: docker rmi nginx
+
+        docker rmi [ID_imagem_ou_nome]:
+        Exemplo: docker rmi nginx
     
     Comando exibe os logs de um contêiner. Útil para depurar problemas.
-    docker logs [ID_contêiner_ou_nome]: Exibe os logs de um contêiner. Útil para depurar problemas.
-    Exemplo: docker logs meu-nginx
+
+        docker logs [ID_contêiner_ou_nome]: Exibe os logs de um contêiner. Útil para depurar problemas.
+        Exemplo: docker logs meu-nginx
 
     Comando executa um comando dentro de um contêiner em execução.
-    docker exec -it [ID_contêiner_ou_nome] [comando]: 
-    -it: Permite uma sessão interativa (como um terminal).
-    Exemplo: docker exec -it meu-nginx bash (abre um terminal Bash dentro do contêiner Nginx)
+
+        docker exec -it [ID_contêiner_ou_nome] [comando]: 
+        -it: Permite uma sessão interativa (como um terminal).
+        Exemplo: docker exec -it meu-nginx bash (abre um terminal Bash dentro do contêiner Nginx)
     
     Comando constrói uma imagem Docker a partir de um Dockerfile no diretório atual (.).
-    docker build -t [nome_da_imagem] .: 
-    Exemplo: Se você tiver um Dockerfile no seu projeto, navegue até o diretório e use: docker build -t meu-app-customizado.
+
+        docker build -t [nome_da_imagem] .: 
+        Exemplo: Se você tiver um Dockerfile no seu projeto, navegue até o diretório e use: docker build -t meu-app-customizado.
 
 
