@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clínica de Psicologia - Visualização de Salas</title>
+        <link rel="stylesheet" href="./css/visualizacao_salas.css">
+        <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <!--BARRA DE NAVEGAÇÃO CONTENDO LOGO, TEXTO E BARRA DE PESQUISA-->
+        <header>
+            <div class="header-container">
+                <img src="./img/unieurologo.png" alt="Logo Unieuro">
+                <h1><strong>Clínica Psicológica</strong></h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="./img/iconusuario.png" alt="Lucas Carvalho">
+                        </div>
+                        <div class="user-details">
+                            <h3>Lucas Carvalho</h3>
+                            <p>Estagiário de Psicologia</p>
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
+                            <li><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
+                            <li class="active"><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
+                            <li><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
+                            <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9 main-content">
+                    <!-- Sala 2 - Instant -->
+                    <div class="sala-section">
+                        <div class="sala-header">
+                            <h3>Sala 2 - Instant</h3>
+                            <span class="horario-consultas">Horário das Consultas</span>
+                        </div>
+                        <div class="sala-content">
+                            <div class="sala-image">
+                                <img src="./img/fotosala.PNG" alt="Sala 2">
+                            </div>
+                            <div class="horarios-grid">
+                                <div class="horarios-table">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Segunda</th>
+                                                <th>Terça</th>
+                                                <th>Quarta</th>
+                                                <th>Quinta</th>
+                                                <th>Sexta</th>
+                                                <th>Sábado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sala 3 - Normal -->
+                    <div class="sala-section">
+                        <div class="sala-header">
+                            <h3>Sala 3 - Normal</h3>
+                            <span class="horario-consultas">Horário das Consultas</span>
+                        </div>
+                        <div class="sala-content">
+                            <div class="sala-image">
+                                <img src="./img/fotosala.PNG" alt="Sala 3">
+                            </div>
+                            <div class="horarios-grid">
+                                <div class="horarios-table">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Segunda</th>
+                                                <th>Terça</th>
+                                                <th>Quarta</th>
+                                                <th>Quinta</th>
+                                                <th>Sexta</th>
+                                                <th>Sábado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sala 4 - Normal -->
+                    <div class="sala-section">
+                        <div class="sala-header">
+                            <h3>Sala 4 - Normal</h3>
+                            <span class="horario-consultas">Horário das Consultas</span>
+                        </div>
+                        <div class="sala-content">
+                            <div class="sala-image">
+                                <img src="./img/fotosala.PNG" alt="Sala 4">
+                            </div>
+                            <div class="horarios-grid">
+                                <div class="horarios-table">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Segunda</th>
+                                                <th>Terça</th>
+                                                <th>Quarta</th>
+                                                <th>Quinta</th>
+                                                <th>Sexta</th>
+                                                <th>Sábado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                                <td><span class="horario">07:30 - 08:30</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status agendado">Agendado</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                                <td><span class="status disponivel">Disponível</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/visualizacao_salas.js"></script>
+    </body>
+</html>
+

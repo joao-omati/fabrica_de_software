@@ -1,0 +1,462 @@
+:root {
+    --cor-primaria: #004a8f;
+    --cor-secundaria: #ffffff;
+    --cor-texto-principal: #333333;
+    --cor-texto-secundaria: #666666;
+    --cor-realce-destaque: #e0e0e0;
+    --cor-botao-hover: #003366;
+    --cor-disponivel: #4CAF50;
+    --cor-agendado: #FFC107;
+    --cor-indisponivel: #F44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    text-align: center;
+    background-color: #f9f9f9;
+    color: var(--cor-texto-principal);
+}
+
+/* HEADER */
+header {
+    background: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container img {
+    width: 200px;
+}
+
+.header-container h1 {
+    text-align: center;
+    font-size: 20px;
+    margin: 0 20px;
+    flex: 1;
+    margin-left: 400px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    width: 200px;
+}
+
+.search-button {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.login-icon {
+    font-size: 24px;
+    color: var(--cor-primaria);
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background-color: #fff;
+    padding: 20px 0;
+    min-height: calc(100vh - 140px);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.user-details p {
+    font-size: 12px;
+    color: var(--cor-texto-secundaria);
+    margin: 5px 0 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar-nav a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-nav li.active a {
+    background-color: #f0f7ff;
+    color: var(--cor-primaria);
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.sidebar-nav a:hover {
+    background-color: #f5f5f5;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    padding: 30px;
+    text-align: left;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin: 0;
+    color: var(--cor-primaria);
+}
+
+.date-info {
+    color: var(--cor-texto-secundaria);
+    font-size: 14px;
+}
+
+/* CONSULTAS RECENTES */
+.consultas-recentes {
+    margin-bottom: 40px;
+}
+
+.consulta-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consulta-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #e3f2fd;
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.consulta-info h4 {
+    font-size: 16px;
+    margin: 0 0 5px;
+    color: var(--cor-texto-principal);
+}
+
+.consulta-info p {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+    margin: 0;
+}
+
+/* SOLICITAÇÕES DE AGENDAMENTO */
+.solicitacoes-agendamento {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.solicitacoes-agendamento h3 {
+    font-size: 18px;
+    margin: 0 0 5px;
+    color: var(--cor-texto-principal);
+}
+
+.subtitle {
+    color: var(--cor-texto-secundaria);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.status-solicitacoes {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.status-header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.status-items {
+    padding: 0;
+}
+
+.status-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+.status-label {
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+}
+
+.status-text {
+    color: var(--cor-texto-secundaria);
+    font-size: 14px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.status-badge.confirmado {
+    background-color: #e8f5e9;
+    color: var(--cor-disponivel);
+}
+
+.status-badge.rejeitado {
+    background-color: #f8d7da;
+    color: var(--cor-indisponivel);
+}
+
+.status-details {
+    margin-top: 5px;
+}
+
+.status-details small {
+    color: var(--cor-texto-secundaria);
+    font-style: italic;
+}
+
+/* CONSULTAR SALAS */
+.consultar-salas {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consultar-salas h3 {
+    font-size: 18px;
+    margin: 0 0 5px;
+    color: var(--cor-texto-principal);
+}
+
+.sala-consulta {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.sala-header-consulta {
+    background-color: #e3f2fd;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sala-nome {
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+
+.horario-consultas {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+}
+
+.sala-content-consulta {
+    display: flex;
+    padding: 20px;
+}
+
+.sala-image {
+    width: 200px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.sala-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.modal-agendamento {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 15px;
+}
+
+.modal-header h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.agendamento-info {
+    margin-bottom: 20px;
+}
+
+.agendamento-info p {
+    margin: 5px 0;
+    color: var(--cor-texto-principal);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: var(--cor-texto-secundaria);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+    .header-container h1 {
+        margin-left: 20px;
+    }
+
+    .sala-content-consulta {
+        flex-direction: column;
+    }
+
+    .sala-image {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+    }
+
+    .header-container h1 {
+        order: 3;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .search-container {
+        order: 2;
+        margin-right: 0;
+    }
+
+    .sidebar {
+        min-height: auto;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .sala-header-consulta {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}
