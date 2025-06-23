@@ -1,566 +1,451 @@
 :root {
-  --cor-primaria: #004a8f;
-  --cor-secundaria: #ffffff;
-  --cor-texto-principal: #333333;
-  --cor-texto-secundaria: #666666;
-  --cor-realce-destaque: #e0e0e0;
-  --cor-botao-hover: #003366;
-  --cor-disponivel: #4CAF50;
-  --cor-agendado: #FFC107;
-  --cor-indisponivel: #F44336;
+    --cor-primaria: #004a8f;
+    --cor-secundaria: #ffffff;
+    --cor-texto-principal: #333333;
+    --cor-texto-secundaria: #666666;
+    --cor-realce-destaque: #e0e0e0;
+    --cor-botao-hover: #003366;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-  text-align: center;
-  background-color: #f9f9f9;
-  color: var(--cor-texto-principal);
+    text-align: center;
+    background-color: #f9f9f9;
+    color: var(--cor-texto-principal);
 }
 
 /* HEADER */
 header {
-  background: #fff;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
+    background: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 .header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header-container img {
-  width: 200px;
+    width: 200px;
 }
 
 .header-container h1 {
-  font-size: 20px;
-  margin: 0 20px;
-  flex: 1;
-  margin-left: 400px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 20px;
+    flex: 1;
+    margin-left: 400px;
 }
 
 .search-container {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .search-input {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 20px 0 0 20px;
-  outline: none;
-  width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    width: 200px;
 }
 
 .search-button {
-  background-color: var(--cor-primaria);
-  color: white;
-  border: none;
-  border-radius: 0 20px 20px 0;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.login-icon {
-  font-size: 24px;
-  color: var(--cor-primaria);
-  cursor: pointer;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 /* SIDEBAR */
 .sidebar {
-  background-color: #fff;
-  padding: 20px 0;
-  min-height: calc(100vh - 140px);
+    background-color: #fff;
+    padding: 20px 0;
+    min-height: calc(100vh - 140px);
 }
 
 .user-info {
-  display: flex;
-  align-items: center;
-  padding: 0 20px 20px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
 }
 
 .user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
 }
 
 .user-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .user-details h3 {
-  font-size: 16px;
-  margin: 0;
+    font-size: 16px;
+    margin: 0;
 }
 
 .user-details p {
-  font-size: 12px;
-  color: var(--cor-texto-secundaria);
-  margin: 5px 0 0;
+    font-size: 12px;
+    color: var(--cor-texto-secundaria);
+    margin: 5px 0 0;
 }
 
 .sidebar-nav ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .sidebar-nav li {
-  margin-bottom: 5px;
-}
-
-.sidebar-nav a {
-  display: flex;
-  align-items: center;
-  padding: 12px 20px;
-  color: var(--cor-texto-principal);
-  text-decoration: none;
-  transition: all 0.3s;
+    margin-bottom: 5px;
 }
 
 .sidebar-nav a i {
-  margin-right: 10px;
-  width: 20px;
-  text-align: center;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
 }
 
 .sidebar-nav li.active a {
-  background-color: #f0f7ff;
-  color: var(--cor-primaria);
-  border-left: 4px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
 .sidebar-nav a:hover {
-  background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
 
 /* MAIN CONTENT */
 .main-content {
-  padding: 30px;
-  text-align: left;
-}
-
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+    padding: 30px;
+    text-align: left;
 }
 
 .page-title {
-  font-size: 24px;
-  margin: 0;
-  color: var(--cor-primaria);
-}
-
-.date-info {
-  color: var(--cor-texto-secundaria);
-  font-size: 14px;
-}
-
-/* CONSULTAS RECENTES */
-.consultas-recentes {
-  margin-bottom: 40px;
-}
-
-.consulta-item {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.consulta-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #e3f2fd;
-  color: var(--cor-primaria);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 15px;
-}
-
-.consulta-info h4 {
-  font-size: 16px;
-  margin: 0 0 5px;
-  color: var(--cor-texto-principal);
-}
-
-.consulta-info p {
-  font-size: 14px;
-  color: var(--cor-texto-secundaria);
-  margin: 0;
-}
-
-/* SOLICITAÇÕES DE AGENDAMENTO */
-.solicitacoes-agendamento {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.solicitacoes-agendamento h3 {
-  font-size: 18px;
-  margin: 0 0 5px;
-  color: var(--cor-texto-principal);
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--cor-primaria);
 }
 
 .subtitle {
-  color: var(--cor-texto-secundaria);
-  font-size: 14px;
-  margin-bottom: 20px;
+    color: var(--cor-texto-secundaria);
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
-.status-solicitacoes {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
+/* AGENDA DE CONSULTAS */
+.agenda-section {
+    margin-bottom: 40px;
 }
 
-.status-header {
-  background-color: var(--cor-primaria);
-  color: white;
-  padding: 10px 15px;
-  font-weight: 600;
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.consulta-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.status-buttons {
-  display: flex;
-  gap: 10px;
+.consulta-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.status-buttons .btn {
-  padding: 5px 12px;
-  font-size: 12px;
-  border-radius: 15px;
+.consulta-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--cor-primaria);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
-.status-buttons .btn-primary {
-  background-color: white;
-  color: var(--cor-primaria);
-  border: 1px solid white;
+.consulta-details h4 {
+    font-size: 16px;
+    margin: 0 0 5px;
+    color: var(--cor-texto-principal);
 }
 
-.status-buttons .btn-outline-secondary {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
+.consulta-details p {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+    margin: 0;
 }
 
-.status-items-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid #eee;
+/* SOLICITAÇÕES DE AGENDAMENTO */
+.solicitacoes-section {
+    margin-bottom: 40px;
 }
 
-.status-grid-header {
-  display: contents; /* Permite que os filhos sejam itens de grid sem criar um novo contexto de formatação */
+.section-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--cor-texto-principal);
+    font-weight: 600;
 }
 
-.header-cell {
-  background-color: #f0f7ff;
-  color: var(--cor-primaria);
-  font-weight: 600;
-  padding: 10px 15px;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  text-align: left;
+.section-subtitle {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+    margin-bottom: 20px;
 }
 
-.header-cell:last-child {
-  border-right: none;
+.solicitacoes-table-container {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.status-item-grid {
-  display: contents; /* Permite que os filhos sejam itens de grid sem criar um novo contexto de formatação */
+.solicitacoes-header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
 }
 
-.grid-cell {
-  padding: 10px 15px;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  text-align: left;
-  display: flex;
-  align-items: center;
+.solicitacoes-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.grid-cell:last-child {
-  border-right: none;
+.solicitacoes-table thead {
+    background-color: #f5f5f5;
 }
 
-.status-item-grid:last-child .grid-cell {
-  border-bottom: none;
+.solicitacoes-table th,
+.solicitacoes-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
 }
 
+.solicitacoes-table th {
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    font-size: 14px;
+}
+
+.solicitacoes-table td {
+    font-size: 14px;
+}
+
+.solicitacao-row {
+    transition: background-color 0.2s;
+}
+
+.solicitacao-row:hover {
+    background-color: #f9f9f9;
+}
+
+/* STATUS BADGES */
 .status-badge {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 600;
-  width: fit-content;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    min-width: 100px;
 }
 
-.status-badge.confirmado {
-  background-color: #e8f5e9;
-  color: var(--cor-disponivel);
+.status-confirmado {
+    background-color: #d4edda;
+    color: #155724;
 }
 
-.status-badge.aguardando {
-  background-color: #fff3cd;
-  color: #856404;
+.status-negado {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-.status-badge.rejeitado {
-  background-color: #f8d7da;
-  color: var(--cor-indisponivel);
+.status-normal {
+    background-color: #e2e3e5;
+    color: #383d41;
 }
 
-.status-details {
-  margin-top: 5px;
+/* ALERTA DE AGENDAMENTO */
+.agendamento-alert {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.status-details small {
-  color: var(--cor-texto-secundaria);
-  font-style: italic;
+.alert-icon {
+    color: #721c24;
+    font-size: 18px;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-weight: 600;
+    color: #721c24;
+    margin: 0 0 5px;
+    font-size: 14px;
+}
+
+.alert-text {
+    color: #721c24;
+    margin: 0;
+    font-size: 12px;
 }
 
 /* CONSULTAR SALAS */
-.consultar-salas {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.consultar-salas-section {
+    margin-bottom: 40px;
 }
 
-.consultar-salas h3 {
-  font-size: 18px;
-  margin: 0 0 5px;
-  color: var(--cor-texto-principal);
+.salas-header {
+    background-color: #6c757d;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
 }
 
-.sala-consulta {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 20px;
+.salas-content {
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.sala-header-consulta {
-  background-color: var(--cor-primaria);
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.salas-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.sala-nome {
-  font-weight: 600;
-  color: #fff;
+.salas-table thead {
+    background-color: #f5f5f5;
 }
 
-.horario-consultas {
-  font-size: 14px;
-  color: var(--cor-texto-secundaria);
+.salas-table th,
+.salas-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
 }
 
-.sala-content-consulta {
-  display: flex;
-  padding: 20px;
+.salas-table th {
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    font-size: 14px;
 }
 
-.sala-image {
-  width: 200px;
-  margin-right: 20px;
-  flex-shrink: 0;
+.salas-table td {
+    font-size: 14px;
 }
 
-.sala-image img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
+.sala-row {
+    transition: background-color 0.2s;
 }
 
-.horarios-grid {
-  flex: 1;
-}
-
-.horarios-grid table {
-  width: 100%;
-  margin: 0;
-}
-
-.horarios-grid th {
-  background-color: #f8f9fa;
-  color: var(--cor-texto-principal);
-  font-weight: 600;
-  text-align: center;
-  padding: 8px 5px;
-  font-size: 14px;
-  border: 1px solid #dee2e6;
-}
-
-.horarios-grid td {
-  text-align: center;
-  padding: 8px 5px;
-  border: 1px solid #dee2e6;
-  vertical-align: middle;
-}
-
-.horario {
-  font-size: 12px;
-  color: var(--cor-texto-secundaria);
-  display: block;
-  margin-bottom: 5px;
-}
-
-.status {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-  width: 80px;
-}
-
-.status.disponivel {
-  background-color: #e8f5e9;
-  color: var(--cor-disponivel);
-}
-
-.status.agendado {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.status.indisponivel {
-  background-color: #f8d7da;
-  color: var(--cor-indisponivel);
+.sala-row:hover {
+    background-color: #f9f9f9;
 }
 
 /* FOOTER */
 footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  color: var(--cor-texto-secundaria);
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: var(--cor-texto-secundaria);
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 992px) {
-  .header-container h1 {
-    margin-left: 20px;
-  }
-
-  .sala-content-consulta {
-    flex-direction: column;
-  }
-
-  .sala-image {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .status-solicitacoes .status-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .status-items-grid {
-    grid-template-columns: 1fr; /* Uma coluna para telas menores */
-  }
-
-  .header-cell,
-  .grid-cell {
-    border-right: none;
-    text-align: center;
-  }
-
-  .grid-cell:last-child {
-    border-bottom: 1px solid #eee;
-  }
-
-  .status-item-grid:last-child .grid-cell {
-    border-bottom: none;
-  }
+    .header-container h1 {
+        margin-left: 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  .header-container {
-    flex-wrap: wrap;
-  }
+    .header-container {
+        flex-wrap: wrap;
+    }
 
-  .header-container h1 {
-    order: 3;
-    width: 100%;
-    margin: 10px 0;
-    text-align: center;
-  }
+    .header-container h1 {
+        order: 3;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
 
-  .search-container {
-    order: 2;
-    margin-right: 0;
-  }
+    .search-container {
+        order: 2;
+        margin-right: 0;
+    }
 
-  .sidebar {
-    min-height: auto;
-  }
+    .sidebar {
+        min-height: auto;
+    }
 
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+    .consulta-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
 
-  .sala-header-consulta {
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
-  }
+    .solicitacoes-table,
+    .salas-table {
+        font-size: 12px;
+    }
 
-  .horarios-grid {
-    overflow-x: auto;
-  }
+    .solicitacoes-table th,
+    .solicitacoes-table td,
+    .salas-table th,
+    .salas-table td {
+        padding: 10px 8px;
+    }
 
-  .status {
-    width: 60px;
-    font-size: 10px;
-    padding: 3px 5px;
-  }
-
-  .status-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
+    .status-badge {
+        min-width: 80px;
+        font-size: 11px;
+    }
 }
+

@@ -5,9 +5,6 @@
     --cor-texto-secundaria: #666666;
     --cor-realce-destaque: #e0e0e0;
     --cor-botao-hover: #003366;
-    --cor-disponivel: #4CAF50;
-    --cor-agendado: #FFC107;
-    --cor-indisponivel: #F44336;
 }
 
 * {
@@ -71,12 +68,6 @@ header {
     cursor: pointer;
 }
 
-.login-icon {
-    font-size: 24px;
-    color: var(--cor-primaria);
-    cursor: pointer;
-}
-
 /* SIDEBAR */
 .sidebar {
     background-color: #fff;
@@ -126,15 +117,6 @@ header {
     margin-bottom: 5px;
 }
 
-.sidebar-nav a {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    color: var(--cor-texto-principal);
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
 .sidebar-nav a i {
     margin-right: 10px;
     width: 20px;
@@ -142,9 +124,17 @@ header {
 }
 
 .sidebar-nav li.active a {
-    background-color: #f0f7ff;
     color: var(--cor-primaria);
     border-left: 4px solid var(--cor-primaria);
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
 .sidebar-nav a:hover {
@@ -163,14 +153,14 @@ header {
     color: var(--cor-primaria);
 }
 
-.page-description {
+.subtitle {
     color: var(--cor-texto-secundaria);
     margin-bottom: 30px;
     font-size: 14px;
 }
 
-/* INFORMAÇÕES DA ESTAGIÁRIA */
-.estagiaria-info {
+/* BUSCA DE INSCRITOS */
+.search-section {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
@@ -178,129 +168,205 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.estagiaria-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-.estagiaria-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.estagiaria-info h3 {
-    font-size: 20px;
-    margin: 0 0 5px;
-    color: var(--cor-texto-principal);
-}
-
-.estagiaria-info p {
-    color: var(--cor-texto-secundaria);
-    margin: 0;
-    font-size: 14px;
-}
-
-/* TODOS OS INSCRITOS */
-.todos-inscritos {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.todos-inscritos h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: var(--cor-texto-principal);
-}
-
-/* MEUS INSCRITOS */
-.meus-inscritos {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.section-header {
+.inscrito-search-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.section-header h3 {
-    font-size: 18px;
-    margin: 0;
-    color: var(--cor-texto-principal);
-}
-
-.search-container-small {
-    display: flex;
+    gap: 10px;
     align-items: center;
 }
 
-.search-input-small {
-    padding: 6px 10px;
+.inscrito-search-input {
+    flex: 1;
+    padding: 10px 15px;
     border: 1px solid #ddd;
-    border-radius: 15px 0 0 15px;
+    border-radius: 5px;
     outline: none;
-    width: 150px;
     font-size: 14px;
 }
 
-.search-button-small {
+.search-btn {
     background-color: var(--cor-primaria);
     color: white;
     border: none;
-    border-radius: 0 15px 15px 0;
-    padding: 6px 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
 }
 
-/* TABELAS */
-.table {
+.search-btn:hover {
+    background-color: var(--cor-botao-hover);
+}
+
+/* SEÇÕES DE INSCRITOS */
+.inscritos-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: var(--cor-texto-secundaria);
+    margin-bottom: 20px;
+}
+
+.inscritos-list {
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.table thead th {
-    background-color: #f5f5f5;
-    border-bottom: 2px solid #ddd;
-    color: var(--cor-texto-principal);
-    font-weight: 600;
+.inscritos-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
+.inscritos-table thead {
+    background-color: #f5f5f5;
+}
+
+.inscritos-table th,
+.inscritos-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.inscritos-table th {
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    font-size: 14px;
+}
+
+.inscritos-table td {
+    font-size: 14px;
+}
+
+.inscrito-row {
+    transition: background-color 0.2s;
+}
+
+.inscrito-row:hover {
+    background-color: #f9f9f9;
+}
+
+.inscrito-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--cor-primaria);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.inscrito-info {
+    display: flex;
+    align-items: center;
+}
+
+/* BADGES DE CATEGORIA */
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
     font-size: 12px;
     font-weight: 600;
 }
 
-.status.ativo {
+.badge-infantil {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.badge-adolescente {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.badge-adulto {
     background-color: #e8f5e9;
-    color: #4caf50;
+    color: #388e3c;
 }
 
-.status.pendente {
-    background-color: #fff3cd;
-    color: #856404;
+.badge-casal {
+    background-color: #fff3e0;
+    color: #f57c00;
 }
 
-.status.inativo {
-    background-color: #f8d7da;
-    color: #721c24;
+/* BADGES DE FICHA */
+.ficha-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ficha-ativa {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.ficha-inativa {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+/* BOTÕES DE AÇÃO */
+.btn-criar-prontuario {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-selecionar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-abrir {
+    background-color: #e2870f;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-criar-prontuario:hover {
+    background-color: var(--cor-botao-hover);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-selecionar:hover {
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
 }
 
 /* FOOTER */
@@ -339,17 +405,18 @@ footer {
         min-height: auto;
     }
 
-    .section-header {
+    .inscrito-search-container {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        align-items: stretch;
     }
 
-    .estagiaria-info .row {
-        text-align: center;
+    .inscritos-table {
+        font-size: 12px;
     }
 
-    .estagiaria-info .col-md-9 {
-        margin-top: 15px;
+    .inscritos-table th,
+    .inscritos-table td {
+        padding: 10px 8px;
     }
 }
+

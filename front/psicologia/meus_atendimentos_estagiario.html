@@ -47,9 +47,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="prontuarios_form.html">
+                                <a href="consultapaciente_estagiario.html">
                                     <i class="fas fa-file-medical"></i>
-                                    Prontuários
+                                    Consulta de Pacientes
                                 </a>
                             </li>
                             <li>
@@ -71,12 +71,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="gerar_relatorio_estagiario.html">
-                                    <i class="fas fa-file-alt"></i>
-                                    Gerar Relatório Acadêmico
-                                </a>
-                            </li>
-                            <li>
                                 <a href="perfil_estagiario.html">
                                     <i class="fas fa-user"></i>
                                     Perfil
@@ -88,16 +82,16 @@
                 <!-- Main Content -->
                 <div class="col-md-9 main-content">
                     <div class="page-header">
-                        <h2 class="page-title">Atendimentos</h2>
+                        <h2 class="page-title">Consultas Agendadas</h2>
                     </div>
-                    <p class="page-subtitle">Gerencie seus compromissos diários e consultas de pacientes</p>
+                    <p class="page-subtitle">Visualize sua agenda, acompanhe o status das sessões e organize seus atendimentos</p>
                     <!-- Calendário -->
                     <div class="calendar-container">
                         <div class="calendar-header">
                             <button class="calendar-nav-btn" id="prevMonth">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <h3 class="calendar-month">May 2025</h3>
+                            <h3 class="calendar-month">Maio 2025</h3>
                             <button class="calendar-nav-btn" id="nextMonth">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
@@ -151,7 +145,7 @@
                             </div>
                         </div>
                         <div class="calendar-today">
-                            Today: 26/05/2025
+                            Hoje: 26/05/2025
                         </div>
                     </div>
                     <!-- Data selecionada -->
@@ -174,6 +168,7 @@
                         </div>
                     </div>
                     <!-- Lista de consultas -->
+                    <h1><strong>Pacientes a serem consultados no dia</strong></h1>
                     <div class="consultas-lista">
                         <div class="consulta-item">
                             <div class="consulta-avatar">
@@ -203,6 +198,12 @@
                                 <button class="btn-detalhes">Ver Detalhes</button>
                             </div>
                         </div>
+                        <!-- Botão Gerar Relatório Acadêmico -->
+                        <div style="position: fixed; bottom: 30px; left: 30px;">
+                            <button class="btn btn-primary" onclick="mostrarModalRelatorio()">
+                                Gerar Relatório Acadêmico
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,5 +213,6 @@
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
         <script src="./js/meus_atendimentos.js"></script>
+        <script src="./js/mostrarModalRelatorio"></script>
     </body>
 </html>

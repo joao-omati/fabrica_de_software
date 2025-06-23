@@ -182,9 +182,15 @@ header {
     margin-bottom: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     max-width: 450px;
-    margin-left: 0;
-    margin-right: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    margin-bottom: 25px;
 }
+
 
 .calendar-header {
     display: flex;
@@ -279,10 +285,17 @@ header {
     margin: 0;
 }
 
+b, strong {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
 /* STATUS DAS CONSULTAS */
 .consultas-status {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
     margin-bottom: 30px;
 }
 

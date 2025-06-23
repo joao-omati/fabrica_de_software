@@ -71,12 +71,6 @@ header {
     cursor: pointer;
 }
 
-.login-icon {
-    font-size: 24px;
-    color: var(--cor-primaria);
-    cursor: pointer;
-}
-
 /* SIDEBAR */
 .sidebar {
     background-color: #fff;
@@ -126,7 +120,6 @@ header {
     margin-bottom: 5px;
 }
 
-
 .sidebar-nav a i {
     margin-right: 10px;
     width: 20px;
@@ -157,8 +150,7 @@ header {
     text-align: left;
 }
 
-.welcome-title,
-.page-title {
+.welcome-title {
     font-size: 24px;
     margin-bottom: 10px;
     color: var(--cor-primaria);
@@ -236,10 +228,9 @@ header {
     margin-right: 15px;
 }
 
-.checkbox-container input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--cor-primaria);
+.checkbox-container i {
+    font-size: 20px;
+    color: var(--cor-primaria);
 }
 
 .prontuario-info .details h4 {
@@ -301,6 +292,72 @@ header {
     color: #721c24;
 }
 
+/* POP-UP MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    min-width: 400px;
+}
+
+.modal-content h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-cancelar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-confirmar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-cancelar:hover {
+    background-color: #c82333;
+}
+
+.btn-confirmar:hover {
+    background-color: #218838;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
@@ -344,4 +401,10 @@ footer {
     .estagiario-info .col-md-9 {
         margin-top: 15px;
     }
+
+    .modal-content {
+        min-width: 300px;
+        margin: 20px;
+    }
 }
+
