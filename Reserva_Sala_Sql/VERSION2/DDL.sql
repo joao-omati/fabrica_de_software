@@ -1,3 +1,4 @@
+-- Active: 1750797472150@@127.0.0.1@5432@reserva
 -- ESSA É A SEGUNDA VERSÃO DO NOSSO BANCO DE DADOS! PARA JUSTAMENTE CORRIGIR UM PROBLEMA DE LÓGICA
 
 
@@ -36,45 +37,38 @@ CREATE TABLE turma(
 
 CREATE TABLE sala(
 	idsala SERIAL PRIMARY KEY,
-	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir ou atualizar também as salas */
+	cpfnti CHAR(11), /* FK, Vamos deixar Nullable porque o Desenvolvedor pode inserir ou atualizar também as salas */
 	bloco CHAR(1),
 	tvtamanho INT,
-	disponibilidade BOOLEAN  DEFAULT true,
+	disponibilidade BOOLEAN NOT NULL DEFAULT TRUE,
 	capacidade INT NOT NULL,
 	andar VARCHAR(25),
 	numerosala INT NOT NULL,
-	periodo VARCHAR(15),
-	turno VARCHAR(10),
-	status BOOLEAN DEFAULT TRUE, /* PARA FAZER DELETE LÓGICO */
+	periodo VARCHAR(15) CHECK (periodo IN ('Primeiro', 'Segundo') OR periodo IS NULL), /*Período da Sala, vamos deixar NullAble para ser inserido posteriormente pela assessora*/
+	turno VARCHAR(10), /*Turno da sala, vamos deixar NullAble para ser inserido posteriormente pela assessora*/
+	status BOOLEAN NOT NULL DEFAULT TRUE, /* PARA FAZER DELETE LÓGICO */
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf)
 );
-
--- Criação de tabela sala
-/* CREATE TABLE tursala(
-	idtursala SERIAL PRIMARY KEY,
-	idturma INT NOT NULL,
-	idsala INT NOT NULL,
-	FOREIGN KEY (idturma) REFERENCES turma(idturma),
-	FOREIGN KEY (idsala) REFERENCES sala(idsala)
-); */ -- Foi retirado para corrigir a relação entre sala e turma.
 
 -- Criação de tabela reserva
 
 CREATE TABLE reserva(
 	idreserva SERIAL PRIMARY KEY,
-	cpfass CHAR(11),
-	cpfnti CHAR(11),
+	cpfass CHAR(11), /* Deixando Nullable porque tanto a assessora como o NTI pode fazer a reserva*/
+	cpfnti CHAR(11), /* Deixando Nullable porque tanto a assessora como o NTI pode fazer a reserva*/
 	idsala INT NOT NULL,
-	diasemana VARCHAR(10) NOT NULL,
+	idturma INT NULL, /* Chave estrangeira opcional para futura associação com a tabela turma. Permite que a reserva seja criada antes do cadastro completo da turma. */
+	codturma VARCHAR(100) NOT NULL, -- apenas informativo
+	diasemana VARCHAR(10) NOT NULL, -- Segunda, Terça, Quarta, Quinta, Sexta	
 	datainicial DATE DEFAULT NOW(),
-	datafinal DATE DEFAULT NOW(),
+	datafinal DATE NOT NULL CHECK (datafinal >= datainicial),
 	responsavel VARCHAR(100) NOT NULL,
-	--statusreserva BOOLEAN NOT NULL DEFAULT TRUE,
-	descrição VARCHAR(255) NOT NULL,
+	descrição VARCHAR(255), -- É opcional a descrição da reserva
+	status BOOLEAN DEFAULT TRUE, -- Usar para delete lógico
 	FOREIGN KEY (cpfass) REFERENCES assessora(cpf),
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf),
-	FOREIGN KEY (idsala) REFERENCES sala(idsala)
+	FOREIGN KEY (idsala) REFERENCES sala(idsala),
+		FOREIGN KEY (idturma) REFERENCES turma(idturma)
 );
-
 
 
