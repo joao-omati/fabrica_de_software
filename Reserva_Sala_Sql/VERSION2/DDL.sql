@@ -39,22 +39,24 @@ CREATE TABLE sala(
 	cpfnti CHAR(11), /* Vamos deixar Nullable porque o Desenvolvedor pode inserir ou atualizar também as salas */
 	bloco CHAR(1),
 	tvtamanho INT,
-	situacao VARCHAR(10) NOT NULL CHECK (situacao IN('Livre','Ocupado','Manutenção')),
+	disponibilidade BOOLEAN  DEFAULT true,
 	capacidade INT NOT NULL,
 	andar VARCHAR(25),
 	numerosala INT NOT NULL,
+	periodo VARCHAR(15),
+	turno VARCHAR(10),
 	status BOOLEAN DEFAULT TRUE, /* PARA FAZER DELETE LÓGICO */
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf)
 );
 
 -- Criação de tabela sala
-CREATE TABLE tursala(
+/* CREATE TABLE tursala(
 	idtursala SERIAL PRIMARY KEY,
 	idturma INT NOT NULL,
 	idsala INT NOT NULL,
 	FOREIGN KEY (idturma) REFERENCES turma(idturma),
 	FOREIGN KEY (idsala) REFERENCES sala(idsala)
-);
+); */ -- Foi retirado para corrigir a relação entre sala e turma.
 
 -- Criação de tabela reserva
 
@@ -64,12 +66,10 @@ CREATE TABLE reserva(
 	cpfnti CHAR(11),
 	idsala INT NOT NULL,
 	diasemana VARCHAR(10) NOT NULL,
-	--periodolt VARCHAR(15) NOT NULL CHECK ('primeiro periodo, segundo periodo'), -- periodo vai ser um atributo sala
-	turno VARCHAR(10) NOT NULL,
 	datainicial DATE DEFAULT NOW(),
 	datafinal DATE DEFAULT NOW(),
 	responsavel VARCHAR(100) NOT NULL,
-	statusreserva BOOLEAN NOT NULL DEFAULT TRUE,
+	--statusreserva BOOLEAN NOT NULL DEFAULT TRUE,
 	descrição VARCHAR(255) NOT NULL,
 	FOREIGN KEY (cpfass) REFERENCES assessora(cpf),
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf),
