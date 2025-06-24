@@ -1,4 +1,4 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva
+
 -- Criação da tabela assessora
 CREATE TABLE assessora (
     idassessora SERIAL PRIMARY KEY,
@@ -62,7 +62,7 @@ CREATE TABLE reserva(
 	cpfnti CHAR(11),
 	idsala INT NOT NULL,
 	diasemana VARCHAR(10) NOT NULL,
-	periodolt VARCHAR(15) NOT NULL,
+	--periodolt VARCHAR(15) NOT NULL CHECK ('primeiro periodo, segundo periodo'), -- periodo vai ser um atributo sala
 	turno VARCHAR(10) NOT NULL,
 	datainicial DATE DEFAULT NOW(),
 	datafinal DATE DEFAULT NOW(),

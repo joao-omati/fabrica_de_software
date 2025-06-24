@@ -25,5 +25,32 @@ INNER JOIN
 
 
 
+SELECT * FROM sala;
+
+SELECT * FROM reserva;
+
+
+
+-- Descobrindo a situação da sala para realizar uma reserva
+SELECT 
+    s.idsala,
+    s.bloco,
+    s.numerosala,
+    s.andar,
+    s.capacidade,
+    s.situacao AS status_sala,
+    r.diasemana,
+    r.periodolt,
+    r.turno,
+    r.responsavel,
+    r.descrição
+FROM 
+    sala s
+INNER JOIN 
+    reserva r ON s.idsala = r.idsala
+WHERE 
+    s.status = TRUE
+ORDER BY 
+    s.idsala, r.datainicial;
 
 

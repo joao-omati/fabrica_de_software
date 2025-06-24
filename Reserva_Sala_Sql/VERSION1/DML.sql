@@ -168,7 +168,7 @@ INSERT INTO assessora (nome,cpf,email,senha,status)
 VALUES ('Maria Eduarda Paim','05236246111','dudapaim@gmail.com',MD5('122344'),TRUE);
 
 
---Inclusão na Tabela NTI
+--Inclusão na Tabela NTI    
 
 INSERT INTO nti (nome,cpf,email,senha,status)
 VALUES 
@@ -186,4 +186,78 @@ INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numero
 INSERT INTO public.sala (cpfnti,bloco,tvtamanho,situacao,capacidade,andar,numerosala) 
     VALUES ('04263637153','B',55,'Ocupado',50,'1',1);
 
+
+INSERT INTO sala (cpfnti, bloco, tvtamanho, situacao, capacidade, andar, numerosala, status) VALUES
+('12345678901', 'A', 50, 'Livre', 20, 'Térreo', 101, TRUE),
+('12345678901', 'A', 42, 'Ocupado', 25, '1º Andar', 102, TRUE),
+('12345678901', 'B', 65, 'Manutenção', 40, '2º Andar', 201, TRUE),
+('12345678901', 'B', 55, 'Livre', 30, '2º Andar', 202, TRUE),
+('12345678901', 'C', 60, 'Ocupado', 35, '3º Andar', 301, TRUE),
+('12345678901', 'C', 48, 'Livre', 18, '3º Andar', 302, TRUE),
+('12345678901', 'D', 70, 'Livre', 50, '4º Andar', 401, TRUE),
+('12345678901', 'D', 40, 'Ocupado', 22, '4º Andar', 402, TRUE),
+('12345678901', 'E', 52, 'Livre', 28, '5º Andar', 501, TRUE),
+('12345678901', 'E', 60, 'Manutenção', 45, '5º Andar', 502, TRUE);
+
+-- inclusão na tabela tursala = turma e sala
 INSERT INTO public.tursala (idsala,idturma) VALUES (1,1);
+
+-- inclusão na tabela reserva:
+
+INSERT INTO reserva (cpfass, cpfnti, idsala, diasemana, periodolt, turno, datainicial, datafinal, responsavel, statusreserva, descrição) VALUES
+('05236246111', NULL, 13, 'Segunda', '08:00-09:00', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '7 days', 'João Silva', TRUE, 'Aula de reforço de matemática'),
+('05236246111', NULL, 14, 'Terça', '09:00-10:00', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days', 'Maria Souza', TRUE, 'Treinamento de novos servidores'),
+('05236246111', NULL, 15, 'Quarta', '10:00-11:30', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '21 days', 'Carlos Lima', TRUE, 'Oficina de robótica'),
+('05236246111', NULL, 16, 'Quinta', '13:00-14:00', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '28 days', 'Ana Pereira', TRUE, 'Reunião de projeto de extensão'),
+('05236246111', NULL, 17, 'Sexta', '14:00-15:30', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '35 days', 'Luana Torres', TRUE, 'Gravação de aula aberta'),
+('05236246111', NULL, 18, 'Segunda', '15:30-17:00', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days', 'Felipe Rocha', TRUE, 'Preparação para evento escolar'),
+('05236246111', NULL, 19, 'Terça', '17:00-18:30', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '10 days', 'Sofia Martins', TRUE, 'Roda de conversa pedagógica'),
+('05236246111', NULL, 20, 'Quarta', '18:30-20:00', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '60 days', 'Rafael Alves', TRUE, 'Sessão de cinema educativo'),
+('05236246111', NULL, 21, 'Quinta', '19:00-20:30', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '5 days', 'Isabela Ferreira', TRUE, 'Debate acadêmico'),
+('05236246111', NULL, 22, 'Sexta', '20:30-22:00', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '20 days', 'Thiago Oliveira', TRUE, 'Aula extra de programação');
+
+
+-- INSARTS DE TEXTE
+
+INSERT INTO sala (cpfnti, bloco, tvtamanho, situacao, capacidade, andar, numerosala, status) VALUES
+('04263637153', 'A', 50, 'Livre', 20, 'Térreo', 101, TRUE),
+('04263637153', 'A', 42, 'Ocupado', 25, '1º Andar', 102, TRUE),
+('04263637153', 'B', 65, 'Manutenção', 40, '2º Andar', 201, TRUE),
+('04263637153', 'B', 55, 'Livre', 30, '2º Andar', 202, TRUE),
+('04263637153', 'C', 60, 'Ocupado', 35, '3º Andar', 301, TRUE),
+('04263637153', 'C', 48, 'Livre', 18, '3º Andar', 302, TRUE),
+('04263637153', 'D', 70, 'Livre', 50, '4º Andar', 401, TRUE),
+('04263637153', 'D', 40, 'Ocupado', 22, '4º Andar', 402, TRUE),
+('04263637153', 'E', 52, 'Livre', 28, '5º Andar', 501, TRUE),
+('04263637153', 'E', 60, 'Manutenção', 45, '5º Andar', 502, TRUE);
+
+INSERT INTO reserva (cpfass, cpfnti, idsala, diasemana, periodolt, turno, datainicial, datafinal, responsavel, statusreserva, descrição) VALUES
+('05236246111', NULL, 13, 'Segunda', '08:00-09:00', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '7 days', 'João Silva', TRUE, 'Aula de reforço de matemática'),
+('05236246111', NULL, 14, 'Terça', '09:00-10:00', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days', 'Maria Souza', TRUE, 'Treinamento de novos servidores'),
+('05236246111', NULL, 15, 'Quarta', '10:00-11:30', 'Manhã', CURRENT_DATE, CURRENT_DATE + INTERVAL '21 days', 'Carlos Lima', TRUE, 'Oficina de robótica'),
+('05236246111', NULL, 16, 'Quinta', '13:00-14:00', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '28 days', 'Ana Pereira', TRUE, 'Reunião de projeto de extensão'),
+('05236246111', NULL, 17, 'Sexta', '14:00-15:30', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '35 days', 'Luana Torres', TRUE, 'Gravação de aula aberta'),
+('05236246111', NULL, 18, 'Segunda', '15:30-17:00', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '14 days', 'Felipe Rocha', TRUE, 'Preparação para evento escolar'),
+('05236246111', NULL, 19, 'Terça', '17:00-18:30', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '10 days', 'Sofia Martins', TRUE, 'Roda de conversa pedagógica'),
+('05236246111', NULL, 20, 'Quarta', '18:30-20:00', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '60 days', 'Rafael Alves', TRUE, 'Sessão de cinema educativo'),
+('05236246111', NULL, 21, 'Quinta', '19:00-20:30', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '5 days', 'Isabela Ferreira', TRUE, 'Debate acadêmico'),
+('05236246111', NULL, 22, 'Sexta', '20:30-22:00', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '20 days', 'Thiago Oliveira', TRUE, 'Aula extra de programação');
+
+
+INSERT INTO reserva (cpfass, cpfnti, idsala, diasemana, periodolt, turno, datainicial, datafinal, responsavel, statusreserva, descrição) VALUES
+('05236246111', NULL, 13, 'Segunda', '20:30-22:00', 'Noite', CURRENT_DATE, CURRENT_DATE + INTERVAL '7 days', 'João Silva', TRUE, 'Aula de reforço de matemática');
+
+INSERT INTO reserva (cpfass, cpfnti, idsala, diasemana, periodolt, turno, datainicial, datafinal, responsavel, statusreserva, descrição) VALUES
+('05236246111', NULL, 13, 'Segunda', '13:00-14:00', 'Tarde', CURRENT_DATE, CURRENT_DATE + INTERVAL '7 days', 'João Silva', TRUE, 'Aula de reforço de matemática');
+
+
+-- UPDATE COM SELECT
+
+UPDATE sala
+SET situacao = 'Ocupado'
+WHERE idsala = 13
+AND EXISTS (
+    SELECT * FROM reserva
+    WHERE reserva.idsala = sala.idsala
+    AND periodolt = '20:30-22:00'
+);
