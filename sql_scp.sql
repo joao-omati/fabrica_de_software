@@ -1,5 +1,3 @@
--- Active: 1749756924575@@127.0.0.1@5432@scp
-
 /* Criando a Tabela Inscrito Convenio, ele é a nossa ficha de inscrição */
 
 
