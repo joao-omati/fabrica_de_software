@@ -1,4 +1,3 @@
--- Active: 1750871648690@@127.0.0.1@5432@reserva
 -- insart para assessora 
 
 INSERT INTO assessora (nome, cpf, email, senha, status) VALUES
@@ -295,4 +294,21 @@ UPDATE sala SET periodo = 'Segundo', cpfnti = '22233344455' WHERE numerosala = 4
 UPDATE sala SET periodo = 'Segundo', cpfnti = '22233344455' WHERE numerosala = 402;
 UPDATE sala SET periodo = 'Segundo', cpfnti = '22233344455' WHERE numerosala = 501;
 UPDATE sala SET periodo = 'Segundo', cpfnti = '22233344455' WHERE numerosala = 502;
+
+INSERT INTO reserva (idsala, codturma, diasemana, datainicial, datafinal,responsavel)
+VALUES
+(1, 'ADM06N1','Segunda', '2025/06/25', '2025/07/02', 'Fernando Silva'),
+(2,'ADM07N1' ,'Segunda', '2025/06/25','2025/07/02', 'João Vitor Mota'),
+(3, 'ADS01M1','Segunda' ,'2025/06/25','2025/07/02', 'Marcos Vinicius Santos'),
+(4,'ADS01N1' ,'Terça' , '2025/06/25', '2025/07/03', 'Thiago Tenorio'),
+(5,'ADS02M1' ,'Terça', '2025/06/25', '2025/07/03', 'Danilo Sousa'),
+(6,'ADS02N1' , 'Quarta','2025/06/25', '2025/07/04', 'Iago Porto'),
+(7, 'ADS03N1', 'Quinta', '2025/06/25','2025/07/05', 'Guilherme de Bras'),
+(8, 'AUR03N1', 'Quinta', '2025/06/25','2025/07/05','Gustavo Oliveira'),
+(9, 'AUR06M1', 'Sexta', '2025/06/25', '2025/07/06', 'Natalia Guitler'),
+(10, 'DIR08M1', 'Sexta', '2025/06/25', '2025/07/06','Brenda Fernandes');
+
+  UPDATE public.reserva SET  cpfass = '45678901234' WHERE cpfass is NULL;
+
+  UPDATE public.reserva SET  cpfnti = '22233344455' WHERE cpfnti is NULL;
 
