@@ -1,5 +1,4 @@
--- Active: 1750797472150@@127.0.0.1@5432@reserva
-
+-- Active: 1750870493227@@127.0.0.1@5432@reserva
 -- SELECT GERAL PARA EXPLORAR
 SELECT * FROM public.turma;
 
@@ -46,3 +45,13 @@ WHERE numerosala = 101
   AND turno = 'Tarde'    -- novo valor após update
   AND status = TRUE;
 
+  SELECT * FROM public.reserva;
+
+  SELECT * FROM assessora;
+
+-- mostrar duas tabelas, assessora e reserva de sala:
+
+
+SELECT a.*, r.* FROM public.reserva as r
+  INNER JOIN public.assessora AS a ON a.cpf = r.cpfass
+  ORDER BY idassessora ASC;
