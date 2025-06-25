@@ -1,3 +1,4 @@
+-- Active: 1750871648690@@127.0.0.1@5432@reserva
 -- insart para assessora 
 
 INSERT INTO assessora (nome, cpf, email, senha, status) VALUES
@@ -190,28 +191,33 @@ INSERT INTO turma (cpfnti, codturma, periodoletivo) VALUES (NULL, 'EFB01N1', '20
 
 -- INSARTS PARA SALAS: 
 
-INSERT INTO sala (cpfnti, bloco, tvtamanho, disponibilidade, capacidade, andar, numerosala, periodo, status) VALUES
-('11122233344', 'A', 50, TRUE, 30, '1º Andar', 101, 'Primeiro', TRUE),
-('22233344455', 'A', 55, TRUE, 40, '1º Andar', 101, 'Segundo', TRUE),
-('33344455566', 'B', 60, TRUE, 35, '2º Andar', 201, 'Primeiro', TRUE),
-('44455566677', 'B', 50, TRUE, 25, '2º Andar', 201, 'Segundo', TRUE),
-('55566677788', 'C', 55, TRUE, 45, '3º Andar', 301, 'Primeiro', TRUE),
-('66677788899', 'C', 60, TRUE, 30, '3º Andar', 301, 'Segundo', TRUE),
-('77788899900', 'D', 50, TRUE, 20, '4º Andar', 401, 'Primeiro', TRUE),
-('88899900011', 'D', 55, TRUE, 50, '4º Andar', 401, 'Segundo', TRUE),
-('99900011122', 'E', 60, TRUE, 35, '5º Andar', 501, 'Primeiro', TRUE),
-('00011122233', 'E', 50, TRUE, 40, '5º Andar', 501, 'Segundo', TRUE),
+INSERT INTO sala 
+(cpfnti, bloco, tvtamanho, disponibilidade, capacidade, andar, numerosala, periodo, turno, status) 
+VALUES
+('11122233344', 'A', 50, TRUE, 30, '1º Andar', 101, 'Primeiro', 'manhã', TRUE),
+('22233344455', 'A', 55, TRUE, 40, '1º Andar', 101, 'Segundo', 'tarde', TRUE),
+('33344455566', 'B', 60, TRUE, 35, '2º Andar', 201, 'Primeiro', 'tarde', TRUE),
+('44455566677', 'B', 50, TRUE, 25, '2º Andar', 201, 'Segundo', 'noturno', TRUE),
+('55566677788', 'C', 55, TRUE, 45, '3º Andar', 301, 'Primeiro', 'manhã', TRUE),
+('66677788899', 'C', 60, TRUE, 30, '3º Andar', 301, 'Segundo', 'noturno', TRUE),
+('77788899900', 'D', 50, TRUE, 20, '4º Andar', 401, 'Primeiro', 'noturno', TRUE),
+('88899900011', 'D', 55, TRUE, 50, '4º Andar', 401, 'Segundo', 'manhã', TRUE),
+('99900011122', 'E', 60, TRUE, 35, '5º Andar', 501, 'Primeiro', 'tarde', TRUE),
+('00011122233', 'E', 50, TRUE, 40, '5º Andar', 501, 'Segundo', 'tarde', TRUE);
 
-('11122233344', 'A', 50, TRUE, 30, '1º Andar', 102, 'Primeiro', TRUE),
-('22233344455', 'A', 55, TRUE, 40, '1º Andar', 102, 'Segundo', TRUE),
-('33344455566', 'B', 60, TRUE, 35, '2º Andar', 202, 'Primeiro', TRUE),
-('44455566677', 'B', 50, TRUE, 25, '2º Andar', 202, 'Segundo', TRUE),
-('55566677788', 'C', 55, TRUE, 45, '3º Andar', 302, 'Primeiro', TRUE),
-('66677788899', 'C', 60, TRUE, 30, '3º Andar', 302, 'Segundo', TRUE),
-('77788899900', 'D', 50, TRUE, 20, '4º Andar', 402, 'Primeiro', TRUE),
-('88899900011', 'D', 55, TRUE, 50, '4º Andar', 402, 'Segundo', TRUE),
-('99900011122', 'E', 60, TRUE, 35, '5º Andar', 502, 'Primeiro', TRUE),
-('00011122233', 'E', 50, TRUE, 40, '5º Andar', 502, 'Segundo', TRUE);
+INSERT INTO sala 
+(cpfnti, bloco, tvtamanho, disponibilidade, capacidade, andar, numerosala, periodo, turno, status) 
+VALUES
+('11122233344', 'A', 50, TRUE, 30, '1º Andar', 102, 'Primeiro','manhã', TRUE),
+('22233344455', 'A', 55, TRUE, 40, '1º Andar', 102, 'Segundo','tarde', TRUE),
+('33344455566', 'B', 60, TRUE, 35, '2º Andar', 202, 'Primeiro','noturno', TRUE),
+('44455566677', 'B', 50, TRUE, 25, '2º Andar', 202, 'Segundo','manhã', TRUE),
+('55566677788', 'C', 55, TRUE, 45, '3º Andar', 302, 'Primeiro','manhã', TRUE),
+('66677788899', 'C', 60, TRUE, 30, '3º Andar', 302, 'Segundo','tarde', TRUE),
+('77788899900', 'D', 50, TRUE, 20, '4º Andar', 402, 'Primeiro','noturno', TRUE),
+('88899900011', 'D', 55, TRUE, 50, '4º Andar', 402, 'Segundo','manhã', TRUE),
+('99900011122', 'E', 60, TRUE, 35, '5º Andar', 502, 'Primeiro','tarde', TRUE),
+('00011122233', 'E', 50, TRUE, 40, '5º Andar', 502, 'Segundo','tarde', TRUE);
 
 
 -- INSARTS PARA RESERVA: 
