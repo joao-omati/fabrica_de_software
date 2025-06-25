@@ -1,7 +1,14 @@
 -- Active: 1750871648690@@127.0.0.1@5432@reserva
 SELECT * FROM public.sala; --Para verificar se o insert deu certo
+ 
+ SELECT * FROM sala LIMIT 10000;
 
--- Com cpfnti nulo
+-- Select para poder mostra somente o que vai mostra na tela da secretaria
+
+SELECT bloco, tvtamanho, disponibilidade, capacidade, numerosala, andar, status
+FROM sala;
+
+-- Com cpfnti nulo, para fazer o update do cpf.
 
 INSERT INTO sala (bloco, tvtamanho, disponibilidade, capacidade, andar, numerosala, periodo, turno, status) VALUES
 ('A', 50, TRUE, 30, '1º Andar', 101, 'Primeiro', 'manhã', TRUE),
@@ -26,6 +33,7 @@ INSERT INTO sala (bloco, tvtamanho, disponibilidade, capacidade, andar, numerosa
 ('J', 65, TRUE, 35, '10º Andar', 1002, 'Segundo', 'manhã', TRUE);
 
 -- insert cpf em algumas salas que foi inserido sem cpfnti.
+
 UPDATE sala
 SET cpfnti = '99900011122'
 WHERE idsala IN (22, 28, 25, 24);
@@ -46,7 +54,33 @@ VALUES
 ('99900011122', 'E', 60, TRUE, 35, '5º Andar', 501, 'Primeiro', 'tarde', TRUE),
 ('00011122233', 'E', 50, TRUE, 40, '5º Andar', 501, 'Segundo', 'tarde', TRUE);
 
+--fazendo update 
 
+INSERT INTO sala
+(cpfnti, bloco, disponibilidade, capacidade, andar, numerosala, periodo, turno, status)
+VALUES
+('11122233344', 'B', TRUE , 50, '3º Anadar', 213, 'Primeiro', 'noturno', TRUE),
+('22233344455', 'C', TRUE , 35, '2º Andar', 214, 'Segundo', 'manhã', TRUE),
+('33344455566', 'A', TRUE, 60, '1º Andar', 101, 'Primeiro', 'tarde', TRUE),
+('44455566677', 'D', TRUE , 45, '4º Andar', 301, 'Primeiro', 'tarde', TRUE),
+('55566677788', 'B', TRUE, 25, 'Térreo', 105, 'Segundo',   'manhã', TRUE);
+
+-- update para colocar tv em agulmas salas
+
+UPDATE sala
+SET tvtamanho = 55
+WHERE idsala IN (55,57,54,53,3,16,17);
+
+--update para trocar de tv para data show
+UPDATE sala
+set tvtamanho = 'Data Show'
+WHERE idsala in (7,12,18,20,37,40); -- atenção vai precisa deixar que tvtamanho possa inserir data show.
+
+-- deixando salas ocupadas com update de disponibilidade para false
+
+UPDATE sala
+set disponibilidade = FALSE
+WHERE idsala IN (4,9,18,20,22,24,25,32,33);
 
 
 
