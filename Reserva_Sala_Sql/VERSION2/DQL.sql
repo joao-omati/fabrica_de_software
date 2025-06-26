@@ -1,6 +1,4 @@
 -- Active: 1750871648690@@127.0.0.1@5432@reserva
-
-
 -- Active: 1750870493227@@127.0.0.1@5432@reserva
 -- SELECT GERAL PARA EXPLORAR
 SELECT * FROM public.turma;

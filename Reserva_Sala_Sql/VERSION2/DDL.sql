@@ -1,7 +1,9 @@
 -- Active: 1750871648690@@127.0.0.1@5432@reserva
 -- Active: 1750870493227@@127.0.0.1@5432@reserva
--- ESSA É A SEGUNDA VERSÃO DO NOSSO BANCO DE DADOS! PARA JUSTAMENTE CORRIGIR UM PROBLEMA DE LÓGICA
 
+-- VERSIO: 2.1
+
+-- ESSA É A SEGUNDA VERSÃO DO NOSSO BANCO DE DADOS! PARA JUSTAMENTE CORRIGIR UM PROBLEMA DE LÓGICA E ALGUNS ATRIBUTOS
 
 -- Criação da tabela assessora
 CREATE TABLE assessora (
@@ -46,7 +48,7 @@ CREATE TABLE sala(
 	andar VARCHAR(25),
 	numerosala INT NOT NULL,
 	periodo VARCHAR(15) CHECK (periodo IN ('Primeiro', 'Segundo') OR periodo IS NULL), /*Período da Sala, vamos deixar NullAble para ser inserido posteriormente pela assessora*/
-	turno VARCHAR(10), /*Turno da sala, vamos deixar NullAble para ser inserido posteriormente pela assessora*/
+	turno VARCHAR(10) CHECK (turno IN ('Manhã', 'Tarde', 'Noite') OR turno IS NULL), /*Turno da sala, vamos deixar NullAble para ser inserido posteriormente pela assessora*/
 	status BOOLEAN NOT NULL DEFAULT TRUE, /* PARA FAZER DELETE LÓGICO */
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf)
 );
@@ -60,16 +62,17 @@ CREATE TABLE reserva(
 	idsala INT NOT NULL,
 	idturma INT NULL, /* Chave estrangeira opcional para futura associação com a tabela turma. Permite que a reserva seja criada antes do cadastro completo da turma. */
 	codturma VARCHAR(100) NOT NULL, -- apenas informativo
-	diasemana VARCHAR(10) NOT NULL, -- Segunda, Terça, Quarta, Quinta, Sexta	
-	datainicial DATE DEFAULT NOW(),
+	diasemana VARCHAR(15) NOT NULL, -- Segunda, Terça, Quarta, Quinta, Sexta	
+	datainicial DATE DEFAULT CURRENT_DATE, -- Colocando CURRENT_DATE porque é melhor para o campo DATE que a função NOW()
 	datafinal DATE NOT NULL CHECK (datafinal >= datainicial),
 	responsavel VARCHAR(100) NOT NULL,
-	descrição VARCHAR(255), -- É opcional a descrição da reserva
+	descricao VARCHAR(255), -- É opcional a descrição da reserva
+	situacao BOOLEAN DEFAULT TRUE NOT NULL, /* TRUE = Reservado, FALSE = Livre*/
 	status BOOLEAN DEFAULT TRUE, -- Usar para delete lógico
 	FOREIGN KEY (cpfass) REFERENCES assessora(cpf),
 	FOREIGN KEY (cpfnti) REFERENCES nti(cpf),
 	FOREIGN KEY (idsala) REFERENCES sala(idsala),
-		FOREIGN KEY (idturma) REFERENCES turma(idturma)
+	FOREIGN KEY (idturma) REFERENCES turma(idturma)
 );
 
 
