@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - Clínica Psicológica</title>
+    <link rel="stylesheet" href="./css/cadastrofunc.css">
+    <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Cabeçalho com logo -->
+    <div class="header">
+        <div class="logo">
+            <img src="./img/unieurologo.png" alt="UNIEURO">
+        </div>
+        <div class="clinic-title">
+            <span>Clínica Psicológica</span>
+        </div>
+    </div>
+
+    <!-- Banner do cadastro -->
+    <div class="cadastro-banner">
+        Cadastro de Usuário
+    </div>
+
+    <!-- Container principal -->
+    <div class="main-container">
+        <h2><strong>Selecione um perfil para o Usuário:</strong></h2>
+
+        <!-- Botões de seleção de perfil -->
+        <div class="profile-buttons">
+            <button class="profile-btn" data-profile="estagiario">Estagiário</button>
+            <button class="profile-btn" data-profile="supervisor">Supervisor</button>
+            <button class="profile-btn active" data-profile="coordenador">Coordenador</button>
+            <button class="profile-btn" data-profile="resp-tecnica">Resp. Técnica</button>
+            <button class="profile-btn" data-profile="secretaria">Secretária</button>
+        </div>
+
+        <!-- Formulário do Coordenador -->
+        <div class="form-container" id="coordenador-form">
+            <h3>Coordenador</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome-coordenador">Nome Completo</label>
+                    <input type="text" id="nome-coordenador" placeholder="Digite o nome aqui">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-coordenador">E-mail Institucional</label>
+                    <input type="email" id="email-coordenador" placeholder="Digite o e-mail aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crp-coordenador">CRP</label>
+                        <input type="text" id="crp-coordenador" placeholder="Digite o CRP aqui">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf-coordenador">CPF</label>
+                        <input type="text" id="cpf-coordenador" placeholder="Digite o CPF aqui">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-coordenador">Senha</label>
+                    <input type="password" id="senha-coordenador" placeholder="Digite uma senha provisória aqui">
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar Usuário</button>
+            </form>
+        </div>
+
+        <!-- Formulário do Estagiário -->
+        <div class="form-container hidden" id="estagiario-form">
+            <h3>Estagiário</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome-estagiario">Nome Completo</label>
+                    <input type="text" id="nome-estagiario" placeholder="Digite o nome aqui">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-estagiario">E-mail Institucional</label>
+                    <input type="email" id="email-estagiario" placeholder="Digite o e-mail aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crp-supervisor">CRP do Supervisor</label>
+                        <input type="text" id="crp-supervisor" placeholder="Digite o CRP aqui">
+                    </div>
+                    <div class="form-group">
+                        <label for="ra-estagiario">RA</label>
+                        <input type="text" id="ra-estagiario" placeholder="Digite o RA do Aluno aqui">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-estagiario">Senha</label>
+                    <input type="password" id="senha-estagiario" placeholder="Digite uma senha provisória aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nivel-estagiario">Nível do Estagiário</label>
+                        <select id="nivel-estagiario">
+                            <option value="">Selecione o nível aqui</option>
+                            <option value="1">Nível 1</option>
+                            <option value="2">Nível 2</option>
+                            <option value="3">Nível 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="semestre-aluno">Semestre do Aluno</label>
+                        <select id="semestre-aluno">
+                            <option value="">Selecione o semestre aqui</option>
+                            <option value="1">1º Semestre</option>
+                            <option value="2">2º Semestre</option>
+                            <option value="3">3º Semestre</option>
+                            <option value="4">4º Semestre</option>
+                            <option value="5">5º Semestre</option>
+                            <option value="6">6º Semestre</option>
+                            <option value="7">7º Semestre</option>
+                            <option value="8">8º Semestre</option>
+                            <option value="9">9º Semestre</option>
+                            <option value="10">10º Semestre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar Usuário</button>
+            </form>
+        </div>
+
+        <!-- Formulário do Supervisor -->
+        <div class="form-container hidden" id="supervisor-form">
+            <h3>Supervisor</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome-supervisor">Nome Completo</label>
+                    <input type="text" id="nome-supervisor" placeholder="Digite o nome aqui">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-supervisor">E-mail Institucional</label>
+                    <input type="email" id="email-supervisor" placeholder="Digite o e-mail aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crp-supervisor-form">CRP</label>
+                        <input type="text" id="crp-supervisor-form" placeholder="Digite o CRP aqui">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf-supervisor">CPF</label>
+                        <input type="text" id="cpf-supervisor" placeholder="Digite o CPF aqui">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-supervisor">Senha</label>
+                    <input type="password" id="senha-supervisor" placeholder="Digite uma senha provisória aqui">
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar Usuário</button>
+            </form>
+        </div>
+
+        <!-- Formulário da Responsável Técnica -->
+        <div class="form-container hidden" id="resp-tecnica-form">
+            <h3>Responsável Técnico</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome-resp-tecnica">Nome Completo</label>
+                    <input type="text" id="nome-resp-tecnica" placeholder="Digite o nome aqui">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-resp-tecnica">E-mail Institucional</label>
+                    <input type="email" id="email-resp-tecnica" placeholder="Digite o e-mail aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crp-resp-tecnica">CRP</label>
+                        <input type="text" id="crp-resp-tecnica" placeholder="Digite o CRP aqui">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf-resp-tecnica">CPF</label>
+                        <input type="text" id="cpf-resp-tecnica" placeholder="Digite o CPF aqui">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-resp-tecnica">Senha</label>
+                    <input type="password" id="senha-resp-tecnica" placeholder="Digite uma senha provisória aqui">
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar Usuário</button>
+            </form>
+        </div>
+
+        <!-- Formulário da Secretária -->
+        <div class="form-container hidden" id="secretaria-form">
+            <h3>Secretária</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nome-secretaria">Nome Completo</label>
+                    <input type="text" id="nome-secretaria" placeholder="Digite o nome aqui">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-secretaria">E-mail Institucional</label>
+                    <input type="email" id="email-secretaria" placeholder="Digite o e-mail aqui">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="codigo-funcionario">Código Funcionário</label>
+                        <input type="text" id="codigo-funcionario" placeholder="Digite o Código aqui">
+                    </div>
+                    <div class="form-group">
+                        <label for="cpf-secretaria">CPF</label>
+                        <input type="text" id="cpf-secretaria" placeholder="Digite o CPF aqui">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="senha-secretaria">Senha</label>
+                    <input type="password" id="senha-secretaria" placeholder="Digite uma senha provisória aqui">
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar Usuário</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="./js/cadastrofunc.js"></script>
+</body>
+
+</html>
