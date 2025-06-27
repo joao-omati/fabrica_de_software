@@ -135,6 +135,15 @@ VALUES
 ('21697117082', 6, 'SIN05M1', 'seg,ter,quart' , '12-03-2025', '12-05-2025','paulo'),
 ('21697117082', 7, 'FIS04N1','semanha toda', '11-03-2025', '11-05-2025','mario');--quando for null e para ambos os periodos a reserva
 
+
+
+INSERT INTO reserva(cpfnti, idsaladispo, codturma, diasemana, datainicial, datafinal, responsavel)
+VALUES
+('21697117082', 19,'ADS06M1', 'seg,ter,quarta', '06-02-2025', '05-06-2025', 'vitor'),
+('21697117082', 49,'ADS03M1', 'seg,quarta,sexta', '12-03-2025', '02-05-2025','guilherme');
+
+
+49,19
 UPDATE saladispo
 SET disponibilidade = FALSE
 WHERE idsaladispo in (1,31,5,45,5,7,10,13,15,9,6,42,17,41,48,59,60,64,61,62);

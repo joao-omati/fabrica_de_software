@@ -1,4 +1,5 @@
--- Active: 1750984295846@@127.0.0.1@5432@reserva
+
+
 
 SELECT * FROM diretor;
 
@@ -64,10 +65,10 @@ WHERE
 SELECT * FROM reserva
 WHERE idsaladispo = 1;
 
-
 --Mostrando salas que e que tem mais de uma turma
 
 --não consegui fazer o 4 desafio --> Obs tem que salas com turmas do mesmo curso no mesmo turno mais em período diferentes.
+
 
 
 
