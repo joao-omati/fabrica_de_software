@@ -1,8 +1,6 @@
--- Active: 1750966967560@@127.0.0.1@5432@reserva
-
+-- Active: 1750984295846@@127.0.0.1@5432@reserva
 
 -- VERSAO: 3.0 beta
-
 -- REMODELAGEM PARA SEPARAR SALA FÍSICA DA DISPONIBILIDADE POR TURNO/PERIODO AINDA EM ANDAMENTO!
 
 -- Criação da tabela Diretor
@@ -91,14 +89,14 @@ CREATE TABLE tusala (
 CREATE TABLE saladispo (
     idsaladispo SERIAL PRIMARY KEY,
     idsala INT NOT NULL,
-    periodo VARCHAR(15) NOT NULL CHECK (periodo IN ('Primeiro', 'Segundo')),
+    periodo VARCHAR(15) NOT NULL CHECK (periodo IN ('Primeiro', 'Segundo', 'ambos')),
     turno VARCHAR(10) CHECK (turno IN ('Manhã', 'Tarde', 'Noite') OR turno IS NULL),
     disponibilidade BOOLEAN NOT NULL DEFAULT TRUE,
     dthinsart TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP,
     status BOOLEAN NOT NULL DEFAULT TRUE, -- DELETE LÓGICO
-    UNIQUE (idsala, periodo, turno),
-    FOREIGN KEY (idsala) REFERENCES sala(idsala)
+    FOREIGN KEY (idsala) REFERENCES sala(idsala),
+    CONSTRAINT unica_spt UNIQUE (idsala, periodo, turno)
 );
 
 -- Criação da tabela reserva (ligada à sala_disponibilidade)
@@ -109,7 +107,7 @@ CREATE TABLE reserva(
     idsaladispo INT NOT NULL,
     idturma INT NULL,
     codturma VARCHAR(100) NOT NULL, -- Apenas informativo
-    diasemana VARCHAR(15) NOT NULL, -- Segunda, Terça, etc.
+    diasemana VARCHAR(50) NOT NULL, -- Segunda, Terça, etc. (Aumentei o varchar pois as vezes são dias especificos da semana, e seria indicado colocar abrivação do dia da semana)
     datainicial DATE DEFAULT CURRENT_DATE,
     datafinal DATE NOT NULL CHECK (datafinal >= datainicial),
     responsavel VARCHAR(100) NOT NULL,

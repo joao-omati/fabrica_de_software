@@ -1,4 +1,5 @@
--- Active: 1750966967560@@127.0.0.1@5432@reserva
+-- Active: 1750984295846@@127.0.0.1@5432@reserva
+
 
 --inserindo direto
 INSERT INTO diretor (cpf, nome, email, senha)
@@ -71,12 +72,72 @@ VALUES
 ('52312627060', 'F', 55, TRUE, 75, '1º Andar', 103, TRUE);
 
 
---insert tursala
-
+--insert tursala (obs: quando for testa e importante verificar os id que ta na sua tabela, pois o serial e continuo.)
 INSERT INTO tusala (idsala,idturma)
 VALUES
-(24,2),
-(20,14),
-(21,11),
-(26,6),
-(18,5);
+(1,5),
+(10,11),
+(8,6),
+(13,3),
+(5,15);
+
+--Insert na tabela saladispo
+
+INSERT INTO saladispo (idsala, periodo, turno)
+VALUES
+(1, 'Primeiro', 'Manhã'), (1, 'Primeiro', 'Tarde'), (1, 'Primeiro', 'Noite'),
+(2, 'Primeiro', 'Manhã'), (2, 'Primeiro', 'Tarde'), (2, 'Primeiro', 'Noite'),
+(3, 'Primeiro', 'Manhã'), (3, 'Primeiro', 'Tarde'), (3, 'Primeiro', 'Noite'),
+(4, 'Primeiro', 'Manhã'), (4, 'Primeiro', 'Tarde'), (4, 'Primeiro', 'Noite'),
+(5, 'Primeiro', 'Manhã'), (5, 'Primeiro', 'Tarde'), (5, 'Primeiro', 'Noite'),
+(6, 'Primeiro', 'Manhã'), (6, 'Primeiro', 'Tarde'), (6, 'Primeiro', 'Noite'),
+(7, 'Primeiro', 'Manhã'), (7, 'Primeiro', 'Tarde'), (7, 'Primeiro', 'Noite'),
+(8, 'Primeiro', 'Manhã'), (8, 'Primeiro', 'Tarde'), (8, 'Primeiro', 'Noite'),
+(9, 'Primeiro', 'Manhã'), (9, 'Primeiro', 'Tarde'), (9, 'Primeiro', 'Noite'),
+(10, 'Primeiro', 'Manhã'), (10, 'Primeiro', 'Tarde'), (10, 'Primeiro', 'Noite');
+
+INSERT INTO saladispo (idsala, periodo, turno)
+VALUES
+(1, 'Segundo', 'Manhã'), (1, 'Segundo', 'Tarde'), (1, 'Segundo', 'Noite'),
+(2, 'Segundo', 'Manhã'), (2, 'Segundo', 'Tarde'), (2, 'Segundo', 'Noite'),
+(3, 'Segundo', 'Manhã'), (3, 'Segundo', 'Tarde'), (3, 'Segundo', 'Noite'),
+(4, 'Segundo', 'Manhã'), (4, 'Segundo', 'Tarde'), (4, 'Segundo', 'Noite'),
+(5, 'Segundo', 'Manhã'), (5, 'Segundo', 'Tarde'), (5, 'Segundo', 'Noite'),
+(6, 'Segundo', 'Manhã'), (6, 'Segundo', 'Tarde'), (6, 'Segundo', 'Noite'),
+(7, 'Segundo', 'Manhã'), (7, 'Segundo', 'Tarde'), (7, 'Segundo', 'Noite'),
+(8, 'Segundo', 'Manhã'), (8, 'Segundo', 'Tarde'), (8, 'Segundo', 'Noite'),
+(9, 'Segundo', 'Manhã'), (9, 'Segundo', 'Tarde'), (9, 'Segundo', 'Noite'),
+(10, 'Segundo', 'Manhã'), (10, 'Segundo', 'Tarde'), (10, 'Segundo', 'Noite');
+
+INSERT INTO saladispo (idsala, periodo, turno)
+VALUES
+(1, 'ambos', 'Manhã'), (1, 'ambos', 'Tarde'), (1, 'ambos', 'Noite'),
+(2, 'ambos', 'Manhã'), (2, 'ambos', 'Tarde'), (2, 'ambos', 'Noite'),
+(3, 'ambos', 'Manhã'), (3, 'ambos', 'Tarde'), (3, 'ambos', 'Noite'),
+(4, 'ambos', 'Manhã'), (4, 'ambos', 'Tarde'), (4, 'ambos', 'Noite'),
+(5, 'ambos', 'Manhã'), (5, 'ambos', 'Tarde'), (5, 'ambos', 'Noite'),
+(6, 'ambos', 'Manhã'), (6, 'ambos', 'Tarde'), (6, 'ambos', 'Noite'),
+(7, 'ambos', 'Manhã'), (7, 'ambos', 'Tarde'), (7, 'ambos', 'Noite'),
+(8, 'ambos', 'Manhã'), (8, 'ambos', 'Tarde'), (8, 'ambos', 'Noite'),
+(9, 'ambos', 'Manhã'), (9, 'ambos', 'Tarde'), (9, 'ambos', 'Noite'),
+(10, 'ambos', 'Manhã'), (10, 'ambos', 'Tarde'), (10, 'ambos', 'Noite');
+
+
+
+--fazendo reservas 
+
+INSERT INTO reserva(cpfnti, idsaladispo, codturma, diasemana, datainicial, datafinal, responsavel)
+VALUES
+('21697117082', 1,'ADS07M1', 'seg,ter,quarta', '02-02-2025', '05-05-2025', 'vitor'),
+('21697117082', 31,'ADS02M1', 'seg,quarta,sexta', '02-03-2025', '02-05-2025','guilherme'),
+('21697117082', 5,'PSI08M1', 'ter,quin,sexta', '12-02-2025', '12-05-2025','viceleno'),
+('21697117082', 45,'PSI10M1', 'seg,quin,sexta', '19-02-2025','19-05-2025','athur'),
+('21697117082', 6, 'SIN05M1', 'seg,ter,quart' , '12-03-2025', '12-05-2025','paulo'),
+('21697117082', 7, 'FIS04N1','semanha toda', '11-03-2025', '11-05-2025','mario');--quando for null e para ambos os periodos a reserva
+
+UPDATE saladispo
+SET disponibilidade = FALSE
+WHERE idsaladispo in (1,31,5,45,5,7,10,13,15,9,6,42,17,41,48,59,60,64,61,62);
+
+
+
