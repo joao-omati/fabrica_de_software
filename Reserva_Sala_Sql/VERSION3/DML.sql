@@ -1,5 +1,5 @@
+-- Active: 1749757574490@@127.0.0.1@5432@reserva
 -- Active: 1750984295846@@127.0.0.1@5432@reserva
-
 
 --inserindo direto
 INSERT INTO diretor (cpf, nome, email, senha)
@@ -124,29 +124,55 @@ VALUES
 
 
 
---fazendo reservas 
+--FAZENDO RESERVAS ALTEREI PARA FICAR MAIS DESCRITIVO E REAL
 
-INSERT INTO reserva(cpfnti, idsaladispo, codturma, diasemana, datainicial, datafinal, responsavel)
-VALUES
-('21697117082', 1,'ADS07M1', 'seg,ter,quarta', '02-02-2025', '05-05-2025', 'vitor'),
-('21697117082', 31,'ADS02M1', 'seg,quarta,sexta', '02-03-2025', '02-05-2025','guilherme'),
-('21697117082', 5,'PSI08M1', 'ter,quin,sexta', '12-02-2025', '12-05-2025','viceleno'),
-('21697117082', 45,'PSI10M1', 'seg,quin,sexta', '19-02-2025','19-05-2025','athur'),
-('21697117082', 6, 'SIN05M1', 'seg,ter,quart' , '12-03-2025', '12-05-2025','paulo'),
-('21697117082', 7, 'FIS04N1','semanha toda', '11-03-2025', '11-05-2025','mario');--quando for null e para ambos os periodos a reserva
+-- ADM06N1 - Segunda - Sala 1, Manhã
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (1, 1, 'ADM06N1', 'Segunda', '2025-08-01', '2025-09-01', 'Prof. Ana', 'Aula de Administração – 1º semestre');
+
+-- ADS01M1 - Terça - Sala 1, Tarde
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (2, 2, 'ADS01M1', 'Terça', '2025-08-01', '2025-09-01', 'Prof. Bruno', 'Aula introdutória de Análise e Desenvolvimento de Sistemas');
+
+-- ADS02M1 - Quarta - Sala 1, Noite
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (3, 3, 'ADS02M1', 'Quarta', '2025-08-01', '2025-09-01', 'Prof. Carla', 'Programação em Java – turma do 2º semestre');
+
+-- FIS04N1 - Quinta - Sala 2, Manhã
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (4, 4, 'FIS04N1', 'Quinta', '2025-08-01', '2025-09-01', 'Prof. Daniel', 'Aulas práticas de Física – circuito elétrico');
+
+-- FIS07M1 - Sexta - Sala 2, Tarde
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (5, 5, 'FIS07M1', 'Sexta', '2025-08-01', '2025-09-01', 'Profª Elisa', 'Revisão de conteúdos para avaliação – Física 7º módulo');
+
+-- FIS10N1 - Segunda - Sala 2, Noite
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (6, 6, 'FIS10N1', 'Segunda', '2025-08-01', '2025-09-01', 'Prof. Felipe', 'Apresentação de TCC – Física 10º módulo');
+
+-- NUT03N1 - Terça - Sala 3, Manhã
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (7, 7, 'NUT03N1', 'Terça', '2025-08-01', '2025-09-01', 'Profª Gabi', 'Aulas práticas de Nutrição – avaliação nutricional');
+
+-- ODO01I1 - Quarta - Sala 3, Tarde
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (8, 8, 'ODO01I1', 'Quarta', '2025-08-01', '2025-09-01', 'Prof. Henrique', 'Introdução à Odontologia – turma inicial');
+
+-- ODO01N1 - Quinta - Sala 3, Noite
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (9, 9, 'ODO01N1', 'Quinta', '2025-08-01', '2025-09-01', 'Profª Isadora', 'Práticas laboratoriais – Odontologia');
+
+-- PSI08M1 - Sexta - Sala 4, Manhã
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (10, 10, 'PSI08M1', 'Sexta', '2025-08-01', '2025-09-01', 'Prof. Jorge', 'Estágio supervisionado em Psicologia');
 
 
+-- FAZENDO A RESERVA DE DUAS TURMAS  DESTINTAS EM UMA SALA
 
-INSERT INTO reserva(cpfnti, idsaladispo, codturma, diasemana, datainicial, datafinal, responsavel)
-VALUES
-('21697117082', 19,'ADS06M1', 'seg,ter,quarta', '06-02-2025', '05-06-2025', 'vitor'),
-('21697117082', 49,'ADS03M1', 'seg,quarta,sexta', '12-03-2025', '02-05-2025','guilherme');
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (2, 2, 'ADS01M1', 'Terça', '2025-08-01', '2025-09-01', 'Prof. Bruno', 'Compartilhamento de sala com ADS02M1');
 
-
-49,19
-UPDATE saladispo
-SET disponibilidade = FALSE
-WHERE idsaladispo in (1,31,5,45,5,7,10,13,15,9,6,42,17,41,48,59,60,64,61,62);
-
-
+-- Turma ADS02M1
+INSERT INTO reserva (idsaladispo, idturma, codturma, diasemana, datainicial, datafinal, responsavel, descricao)
+VALUES (2, 3, 'ADS02M1', 'Terça', '2025-08-01', '2025-09-01', 'Prof. Carla', 'Aula compartilhada com ADS01M1');
 
