@@ -28,3 +28,4 @@ JOIN
     curso c ON t.idcurso = c.idcurso;
 
 
+

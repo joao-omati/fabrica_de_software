@@ -1,4 +1,4 @@
--- Active: 1751319038352@@127.0.0.1@5432@reserva
+-- Active: 1751320626488@@127.0.0.1@5432@reserva
 -- Active: 1751309244752@@127.0.0.1@5432@reserva
 
 -- USER UM CÓDIGO EM PYTHON PARA INSERIR TODAS AS TURMAS DE UM ARQUIVO.EXEL NESTE CAMINHO: "C:\fabrica_de_software\Reserva_Sala_Sql\VERSION4\importar_dados.py"
@@ -57,3 +57,7 @@ UPDATE turma SET idcurso = 13 WHERE codturma ILIKE('SIN%');
 
 -- DELETANDO TODOS OS DADOS DA TABELA TURMA PARA RESETAR O ID
 TRUNCATE TABLE turma RESTART IDENTITY CASCADE;
+
+--Insert na tabela diasemana
+INSERT INTO
+
