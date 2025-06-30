@@ -47,8 +47,6 @@ CREATE TABLE saladispo (
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK (dthdelete >= dthinsert OR dthdelete IS NULL), 
     status BOOLEAN DEFAULT TRUE, -- DELETE LÓGICO
-    CHECK (disponibilidade = TRUE OR motivoinativo IS NOT NULL),
-    CHECK (disponibilidade = TRUE OR matricula IS NOT NULL),
     FOREIGN KEY (idsala) REFERENCES sala(idsala),
     FOREIGN KEY (matricula) REFERENCES usuario(matricula)
 
@@ -120,8 +118,6 @@ CREATE TABLE reserva(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL),
     status BOOLEAN DEFAULT TRUE,
-    CHECK(situacao != FALSE OR descricao IS NOT NULL),
-    CHECK(situacao = TRUE OR descricao IS NOT NULL),
     FOREIGN KEY (matricula) REFERENCES usuario(matricula), 
     FOREIGN KEY (idsaladispo) REFERENCES saladispo(idsaladispo),
     FOREIGN KEY (idturma) REFERENCES turma(idturma),
