@@ -1,10 +1,12 @@
 -- Active: 1751320881998@@127.0.0.1@5432@reserva 
 
+-- Active: 1751320626488@@127.0.0.1@5432@reserva
+-- Active: 1751302420903@@127.0.0.1@5432@reserva
+-- Active: 1751309244752@@127.0.0.1@5432@reserva 
 -- Active: 1749757574490@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
 CREATE TABLE usuario(
-
     idusuario INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, -- MELHOR QUE SERIAL E MAIS UTILIZADO
     matricula INTEGER NOT NULL UNIQUE,
     nome VARCHAR(255) NOT NULL,
@@ -16,7 +18,7 @@ CREATE TABLE usuario(
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, a data de insart não pode ser menor
     statuslogin BOOLEAN DEFAULT TRUE, 
     status BOOLEAN DEFAULT TRUE -- DELETE LÓGICO
-);
+); 
 
 -- CRIANDO A TABELA SALA 
 CREATE TABLE sala(
