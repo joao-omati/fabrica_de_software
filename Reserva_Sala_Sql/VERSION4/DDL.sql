@@ -50,7 +50,7 @@ CREATE TABLE saladispo (
     CHECK (disponibilidade = TRUE OR motivoinativo IS NOT NULL),
     CHECK (disponibilidade = TRUE OR matricula IS NOT NULL),
     FOREIGN KEY (idsala) REFERENCES sala(idsala),
-    FOREIGN KEY (matricula) REFERENCES usuario(matricula),
+    FOREIGN KEY (matricula) REFERENCES usuario(matricula)
 
 );
 
@@ -74,7 +74,7 @@ CREATE TABLE curso(
     nomecurso VARCHAR(255) NOT NULL,
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthinsert IS NULL),
-    status BOOLEAN DEFAULT TRUE,
+    status BOOLEAN DEFAULT TRUE
 );
 
 
