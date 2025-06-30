@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Login - Unieuro
+{% endblock %}
+
+{% block head %}
+<style>
+  :root {
+    --cor-primaria: #004a8f;
+    --cor-secundaria: #ffffff;
+    --cor-texto-principal: #333333;
+    --cor-texto-secundaria: #666666;
+    --cor-realce-destaque: #e0e0e0;
+    --cor-botao-hover: #003366;
+    --cor-erro: #d8000c;
+    --cor-sucesso: #4F8A10;
+  }
+
+  body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-principal);
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 100px;
+  }
+
+  .top-bar {
+    background-color: var(--cor-realce-destaque);
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .logo-text {
+    text-align: left;
+  }
+
+  .logo-text strong {
+    color: var(--cor-primaria);
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .logo-text small {
+    color: var(--cor-texto-secundaria);
+    font-size: 12px;
+  }
+
+  .login-banner {
+    background-color: #002f6c;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .login-container {
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-container img {
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .login-container h2 {
+    color: var(--cor-primaria);
+    margin: 15px 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .forgot {
+    margin: 15px 0;
+    text-align: right;
+  }
+
+  .forgot a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: var(--cor-botao-hover);
+  }
+
+  .alert {
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .alert-error {
+    background-color: #ffebee;
+    color: var(--cor-erro);
+    border: 1px solid #ffcdd2;
+  }
+
+  .alert-success {
+    background-color: #e8f5e9;
+    color: var(--cor-sucesso);
+    border: 1px solid #c8e6c9;
+  }
+
+  .rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contato {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .imgwpp {
+    height: 25px;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .logo {
+      justify-content: center;
+    }
+    .logo-text {
+      text-align: center;
+    }
+    .login-container {
+      padding: 20px;
+      margin: 20px 15px;
+    }
+    .rodape {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px 10px;
+    }
+    .atendimento, .suporte {
+      margin: 0 !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 15px;
+    }
+    .logo img {
+      height: 40px;
+    }
+    .logo-text strong {
+      font-size: 14px;
+    }
+    .logo-text small {
+      font-size: 10px;
+    }
+    input[type="text"],
+    input[type="password"],
+    .btn {
+      padding: 10px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="top-bar"></div>
+
+  <div class="header">
+    <div class="logo">
+      <img src="data:image/png;base64,SUA_IMAGEM_AQUI_EM_BASE64" alt="UNIEURO">
+      <div class="logo-text">
+        <strong>Centro Universitário Unieuro</strong><br>
+        <small>Sua escolha para um grande futuro.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-banner">LOGIN</div>
+
+  <div class="login-container">
+    <img src="data:image/png;base64,SUA_IMAGEM_AQUI_EM_BASE64" alt="Logo">
+    <h2>PSICOLOGIA</h2>
+
+    {% if form.errors %}
+      <div class="alert alert-error">
+        CPF ou senha incorretos. Por favor, tente novamente.
+      </div>
+    {% endif %}
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="CPF" required><br>
+      <input type="password" name="password" placeholder="Senha" required><br>
+
+      <div class="forgot">
+        Esqueceu a senha? <a href="#" target="_blank">Clique aqui!</a>
+      </div>
+
+      <button type="submit" class="btn">Entrar</button><br>
+    </form>
+  </div>
+
+  <footer class="rodape">
+    <p class="atendimento">Atendimento: Seg-Sex 08:00 - 18:00</p>
+    <div class="contato">
+      <img class="imgwpp" src="data:image/png;base64,ICONE_WHATSAPP_BASE64" alt="WhatsApp">
+      <p class="suporte">Fale conosco: (61) XXXXX-XXXX</p>
+    </div>
+  </footer>
+{% endblock %}

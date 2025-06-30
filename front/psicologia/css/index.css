@@ -1,0 +1,325 @@
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor-botao-hover: #003366;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  text-align: center;
+  background-color: #f9f9f9;
+  color: var(--cor-texto-principal);
+}
+
+/* HEADER */
+header {
+  background: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;  /* Permite que os elementos se ajustem melhor em telas pequenas */
+}
+
+.header-container img {
+  width: 200px;
+}
+
+.header-container h1 {
+  font-size: 20px;
+  margin: 0;
+  flex: 1;
+  text-align: center; /* Centraliza o título */
+}
+
+.login-icon {
+  font-size: 30px;
+  color: var(--cor-texto-principal);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero img {
+  width: 50%;
+}
+
+.hero h2 {
+  font-size: 35px;
+  margin-top: 20px;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.hero button {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 10px 80px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* ATENDIMENTOS */
+.atendimentos {
+  padding: 40px 20px;
+}
+
+.atendimentos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card-atendimento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  text-align: left;
+}
+
+.conteudo-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.conteudo-texto h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.conteudo-texto p {
+  font-size: 15px;
+  color: var(--cor-texto-secundaria);
+}
+
+.conteudo-texto button {
+  margin-top: 12px;
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.conteudo-imagem img {
+  width: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* SOBRE */
+.sobre {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.sobre p {
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 800px; /* Limita a largura para evitar que o texto fique muito esticado */
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.sobre h3 {
+  margin-top: 70px;
+}
+
+.sobre img {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* FAQ */
+.faq {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.faq h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.faq-item {
+  background: #fff;
+  margin: 10px auto;
+  padding: 20px 20px;
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-toggle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: var(--cor-texto-principal);
+}
+
+.faq-answer {
+  color: var(--cor-texto-secundaria);
+  display: none;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: var(--cor-texto-secundaria);
+}
+
+/* RESPONSIVIDADE */
+
+/* Telas menores que 992px (notebooks, tablets na horizontal) */
+@media (max-width: 992px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-container h1 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 80%;
+  }
+
+  .card-atendimento {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .conteudo-texto {
+    align-items: center;
+  }
+
+  .conteudo-texto button {
+    align-self: center;
+  }
+
+  .conteudo-imagem img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .sobre p {
+    padding: 0 30px;
+  }
+}
+
+/* Telas menores que 768px (tablets em pé e celulares grandes) */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .card-atendimento {
+    padding: 20px 10px;
+  }
+
+  .conteudo-texto h3 {
+    font-size: 20px;
+  }
+
+  .conteudo-texto p {
+    font-size: 14px;
+  }
+
+  .faq-item {
+    padding: 15px;
+  }
+}
+
+/* Telas menores que 576px (celulares pequenos) */
+@media (max-width: 576px) {
+  .header-container img {
+    width: 150px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero button {
+    padding: 8px 40px;
+    font-size: 14px;
+  }
+
+  .conteudo-texto h3 {
+    font-size: 18px;
+  }
+
+  .conteudo-texto p {
+    font-size: 13px;
+  }
+
+  .conteudo-texto button {
+    font-size: 13px;
+    padding: 6px 20px;
+  }
+
+  .faq h2,
+  .sobre h2,
+  .atendimentos h2 {
+    font-size: 22px;
+  }
+
+  .sobre p {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+}
