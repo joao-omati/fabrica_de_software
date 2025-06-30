@@ -1,9 +1,8 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva
+-- Active: 1751302420903@@127.0.0.1@5432@reserva
 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
 CREATE TABLE usuario(
-
     idusuario INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, -- MELHOR QUE SERIAL E MAIS UTILIZADO
     matricula INTEGER NOT NULL UNIQUE,
     nome VARCHAR(255) NOT NULL,
