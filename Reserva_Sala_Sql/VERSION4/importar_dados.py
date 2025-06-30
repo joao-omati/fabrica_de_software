@@ -5,7 +5,8 @@ from sqlalchemy import create_engine
 import time
 
 # Corrigido: caminho real do arquivo Excel (atenção às barras!)
-caminho_arq_excel = r'C:\fabrica_de_software\doc\docs_unieuro\Turmas_Curso.xlsx'
+caminho_arq_excel = r'/workspaces/fabrica_de_software/doc/docs_unieuro/Turmas_Curso.xlsx'
+#caminho_arq_excel = r'C:\fabrica_de_software\doc\docs_unieuro\Turmas_Curso.xlsx'
 
 # Conectar ao banco de dados PostgreSQL
 user = 'postgres'
