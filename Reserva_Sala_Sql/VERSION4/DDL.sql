@@ -1,5 +1,6 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva
+-- Active: 1751309244752@@127.0.0.1@5432@reserva 
 
+-- Active: 1749757574490@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
 CREATE TABLE usuario(
@@ -14,8 +15,7 @@ CREATE TABLE usuario(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, a data de insart não pode ser menor
     statuslogin BOOLEAN DEFAULT TRUE, 
-    status BOOLEAN DEFAULT TRUE, -- DELETE LÓGICO
-    CHECK (status = FALSE OR dthdelete IS NOT NULL) -- Se status for FALSE, dthdelete deve estar preenchido
+    status BOOLEAN DEFAULT TRUE -- DELETE LÓGICO
 );
 
 -- CRIANDO A TABELA SALA 
@@ -32,7 +32,6 @@ CREATE TABLE sala(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, data do insart não pode ser menor 
     status BOOLEAN DEFAULT TRUE, -- DELETE LÓGICO
-    CHECK (status = FALSE OR dthdelete IS NOT NULL),
     FOREIGN KEY (matricula) REFERENCES usuario(matricula)
 );
 
@@ -52,7 +51,7 @@ CREATE TABLE saladispo (
     CHECK (disponibilidade = TRUE OR matricula IS NOT NULL),
     FOREIGN KEY (idsala) REFERENCES sala(idsala),
     FOREIGN KEY (matricula) REFERENCES usuario(matricula),
-    CHECK (status = FALSE OR dthdelete IS NOT NULL)
+
 );
 
 -- CRIANDO TABELA PERIODO, ATRIBUTO MULTIVALORADO QUE SE REFERE AOS PERIODOS/HORAS DA AULA NAQUELA SALA DISPONIVEL QUE FOI RESERVADA
@@ -76,7 +75,6 @@ CREATE TABLE curso(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthinsert IS NULL),
     status BOOLEAN DEFAULT TRUE,
-    CHECK (status = FALSE OR dthdelete IS NOT NULL)
 );
 
 
@@ -92,7 +90,6 @@ CREATE TABLE turma(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK (dthdelete >= dthinsert OR dthdelete is NULL),
     status BOOLEAN DEFAULT TRUE,
-    CHECK(status = FALSE OR dthdelete IS NOT NULL),
     FOREIGN KEY (matricula) REFERENCES usuario(matricula),
     FOREIGN KEY (idcurso) REFERENCES curso(idcurso)
 );
