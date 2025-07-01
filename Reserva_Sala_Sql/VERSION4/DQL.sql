@@ -1,4 +1,4 @@
--- Active: 1751320626488@@127.0.0.1@5432@reserva
+-- Active: 1751377694609@@127.0.0.1@5432@reserva
 -- Active: 1751309244752@@127.0.0.1@5432@reserva
 
 
@@ -26,6 +26,9 @@ FROM
     turma t
 JOIN 
     curso c ON t.idcurso = c.idcurso;
+
+--Realizando o select das salas
+SELECT * FROM sala;
 
 
 

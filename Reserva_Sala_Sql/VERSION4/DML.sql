@@ -1,4 +1,4 @@
--- Active: 1751320626488@@127.0.0.1@5432@reserva
+-- Active: 1751377694609@@127.0.0.1@5432@reserva
 -- Active: 1751309244752@@127.0.0.1@5432@reserva
 
 -- USER UM CÓDIGO EM PYTHON PARA INSERIR TODAS AS TURMAS DE UM ARQUIVO.EXEL NESTE CAMINHO: "C:\fabrica_de_software\Reserva_Sala_Sql\VERSION4\importar_dados.py"
@@ -58,6 +58,30 @@ UPDATE turma SET idcurso = 13 WHERE codturma ILIKE('SIN%');
 -- DELETANDO TODOS OS DADOS DA TABELA TURMA PARA RESETAR O ID
 TRUNCATE TABLE turma RESTART IDENTITY CASCADE;
 
---Insert na tabela diasemana
-INSERT INTO
+--Insert na tabela sala, obs: como tvtamanho não permitir null e quando tem datashow não tem tv coloquei tvtamanho como zero e true em datashow 
+
+INSERT INTO sala (
+    bloco, tvtamanho, datashow, capacidade, andar, numerosala, status
+)
+VALUES
+( 'C', 0, TRUE, 80, '1ª andar', 102, TRUE),
+( 'B', 55, FALSE, 50, '2ª andar', 211, TRUE),
+( 'B', 55, FALSE, 50, '3ª andar', 307, TRUE),
+( 'C', 55, FALSE, 50, '2ª andar', 204, TRUE),
+( 'B', 0, TRUE, 180, '1ª andar', 112, TRUE),
+( 'D', 0, TRUE, 50, 'Térreo', 1, TRUE),
+( 'A', 55, TRUE, 50, 'Térreo', 2, TRUE),
+( 'B', 0, TRUE, 180, 'Térreo', 100, TRUE),
+( 'C', 0, TRUE, 50, '1º Andar', 101, TRUE),
+( 'E', 65, TRUE, 80, '2º Andar', 208, TRUE),
+( 'C', 0, FALSE, 50, '3º Andar', 303, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 312, TRUE),
+( 'F', 55, TRUE, 75, '1º Andar', 103, TRUE),
+( 'C', 65, TRUE, 90, '3º Andar', 316, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 301, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 303, TRUE),
+( 'D', 65, TRUE, 110, '3º Andar', 304, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 305, TRUE);
+
+
 
