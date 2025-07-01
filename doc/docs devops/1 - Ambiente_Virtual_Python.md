@@ -1,7 +1,6 @@
 # INTRODUÇÃO
 O objetivo deste documento registrar como criar um ambinete virtual com python
 
-
 ## Para quer serve o venv (Ambiente Virtual do python?)
 
 O venv (Virtual Environment) serve para criar um ambiente isolado de Python dentro de um projeto. Ele resolve problemas comuns de dependências entre projetos e ajuda a manter tudo organizado.
@@ -53,6 +52,10 @@ comando: .\venv\Scripts\activate.bat
 - No linux ou MacOS: 
 
 comando: source .venv/bin/activate
+
+vai aparecer algo como: (.venv) @GuiXaadrez1 ➜ /workspaces/fabrica_de_software (banco_dados)
+
+quando o (.venv) aparece na frente do caminho ou do seu usuário codespace significa que estamos no ambiente virtual
 
 ## Instalando as nossas libs específicas para esse ambiente virtul:
 dentro da pasta onde tem o arquico requirements.txt use o comando:
