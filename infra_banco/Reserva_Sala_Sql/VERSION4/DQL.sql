@@ -1,3 +1,4 @@
+-- Active: 1751392827437@@127.0.0.1@5432@reserva
 -- Active: 1751320881998@@127.0.0.1@5432@reserva 
 
 -- Active: 1751320626488@@127.0.0.1@5432@reserva
@@ -5,6 +6,8 @@
 
 
 -- REALIZANDO SELECTS EXPLORATÓRIOS
+SELECT * FROM public.usuario;
+
 SELECT * FROM curso;
 
 -- Realizando SELECT de 300 registros
@@ -29,5 +32,8 @@ FROM
 JOIN 
     curso c ON t.idcurso = c.idcurso;
 
+SELECT * FROM curso;
 
+SELECT * FROM sala;
 
+SELECT * FROM reserva;
