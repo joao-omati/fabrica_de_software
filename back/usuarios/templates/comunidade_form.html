@@ -1,0 +1,379 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ficha de Comunidade{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <div class="logo">
+        <img src="{% static 'img/unieuro.png' %}" alt="UNIEURO">
+        <div class="logo-text">
+            <strong>Centro Universitário Unieuro</strong><br>
+            <small>Sua escolha para um grande futuro.</small>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ================== VARIÁVEIS GLOBAIS ================== */
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor--botao-hover: #003366;
+}
+
+/* ================== CONFIGURAÇÃO GLOBAL ================== */
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ================== BARRA SUPERIOR COM ACESSIBILIDADE ================== */
+.top-bar {
+  background-color: var(--cor-realce-destaque);
+  color: var(--cor-texto-principal);
+  padding: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* ================== CABEÇALHO COM LOGO ================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-text strong {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logo-text small {
+  color: var(--cor-texto-secundaria);
+  font-size: 12px;
+}
+
+/* ================== BANNER SUPERIOR DO LOGIN ================== */
+.login-banner {
+  background-color: #002f6c;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+form {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0;
+  text-align: left;
+}
+
+form h6 {
+  font-weight: bold;
+  color: #000;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  box-sizing: border-box;
+  color: #000;
+}
+
+input::placeholder {
+  color: #444;
+}
+
+select {
+  color: #000;
+  background-color: #e0e0e0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox label {
+  margin: 0;
+}
+
+small, acordo {
+  font-size: 14px;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.acordo {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--cor-realce-destaque); /* opcional para leve destaque */
+  margin-top: 20px;
+}
+
+
+button[type="submit"] {
+  background-color: #004a8f;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button[type="submit"]:hover {
+  background-color: #003366;
+}
+
+</style>
+
+<div class="login-banner">
+    FICHA DE INSCRIÇÃO COMUNIDADE
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <h6>Dados Pessoais do Inscrito</h6>
+    <div class="grid">
+        <input type="text" name="nome" class="apenas-letras" placeholder="Nome Completo" required>
+        <input type="text" name="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
+        <input type="date" name="data_nascimento" required>
+        <input type="text" name="rua" placeholder="Rua" required>
+        <input type="text" name="bairro" placeholder="Bairro" required>
+        <input type="text" name="cidade" placeholder="Cidade" required>
+        <input type="text" name="cep" placeholder="CEP" required>
+
+        <select name="uf" required>
+            <option disabled selected>UF</option>
+            <option value="DF">DF</option>
+        </select>
+
+        <select name="estado_civil" required>
+            <option disabled selected>Estado Civil</option>
+            <option value="solteiro">Solteiro(a)</option>
+            <option value="casado">Casado(a)</option>
+            <option value="divorciado">Divorciado(a)</option>
+            <option value="viuvo">Viúvo(a)</option>
+            <option value="separado">Separado(a)</option>
+            <option value="outros">Outros</option>
+        </select>
+
+        <select name="motivo" required>
+            <option disabled selected>Motivos da Busca do Tratamento</option>
+            <option value="ansiedade">Ansiedade</option>
+            <option value="depressao">Depressão</option>
+            <option value="stress">Estresse</option>
+            <option value="autoestima">Autoestima</option>
+            <option value="problemas_familiares">Problemas Familiares</option>
+            <option value="transtornos_mentais">Transtornos Mentais</option>
+            <option value="outros">Outros</option>
+        </select>
+
+        <input type="text" name="telefone" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+
+        <select name="medicacao" required>
+            <option disabled selected>Uso de Medicação</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+            <option value="prefiro_nao_dizer">Prefiro não dizer</option>
+        </select>
+
+        <input type="email" name="email" placeholder="E-mail" required>
+
+        <select name="deficiencia" required>
+            <option disabled selected>Pessoas com Deficiência e/ou Neurodivergências</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+            <option value="prefiro_nao_dizer">Prefiro não dizer</option>
+        </select>
+
+        <select name="identidade_genero" required>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Não binário">Não binário</option>
+            <option value="Transgênero">Transgênero</option>
+            <option value="Outro">Outro</option>
+        </select>
+
+        <select name="doencas_fisicas" required>
+            <option value="" disabled selected>Doenças Físicas Diagnosticadas</option>
+            <option value="nenhuma">Nenhuma</option>
+            <option value="diabetes">Diabetes</option>
+            <option value="hipertensao">Hipertensão</option>
+            <option value="asma">Asma</option>
+            <option value="epilepsia">Epilepsia</option>
+            <option value="doenca_autoimune">Doença autoimune</option>
+            <option value="doenca_cronica">Doença crônica</option>
+            <option value="prefiro_nao_dizer">Prefiro não informar</option>
+        </select>
+
+        <select name="etnia" required>
+    <option value="" disabled selected>Cor e Etnia</option>
+    <option value="Branca">Branca</option>
+    <option value="Preta">Preta</option>
+    <option value="Parda">Parda</option>
+    <option value="Amarela">Amarela</option>
+    <option value="Indígena">Indígena</option>
+    <option value="Outras">Outras</option>
+</select>
+
+        <select name="tipo_terapia" required>
+            <option disabled selected>Tipo de Terapia</option>
+            <option value="familia">Terapia Familiar</option>
+            <option value="grupal">Terapia em Grupo</option>
+        </select>
+
+        <select name="religiao" required>
+           <option value="Católica">Católica</option>
+           <option value="Espírita">Espírita</option>
+           <option value="Sem religião">Sem religião</option>
+        </select>
+
+        <select name="disponibilidade" required>
+            <option disabled selected>Disponibilidade</option>
+            <option value="manha">Manhã</option>
+            <option value="tarde">Tarde</option>
+            <option value="noite">Noite</option>
+            <option value="final_semana">Finais de Semana</option>
+        </select>
+    </div>
+
+  <div class="checkbox">
+    <input type="checkbox" id="menorIdade" name="menor_idade">
+    <label for="menorIdade">O Inscrito é menor de idade?</label>
+</div>
+
+<div id="responsavel_legal_container" style="display:none;">
+    <h6>Dados do Responsável Legal</h6>
+    <div class="grid">
+        <input type="text" name="nome_responsavel" class="apenas-letras" placeholder="Nome Completo" required>
+        <input type="email" name="email_responsavel" placeholder="E-mail" required>
+        <input type="text" name="cpf_responsavel" class="cpf" placeholder="CPF" maxlength="11" required>
+        <select name="estado_civil_responsavel" required>
+            <option disabled selected>Estado Civil</option>
+            <option value="solteiro">Solteiro(a)</option>
+            <option value="casado">Casado(a)</option>
+            <option value="divorciado">Divorciado(a)</option>
+            <option value="viuvo">Viúvo(a)</option>
+            <option value="separado">Separado(a)</option>
+            <option value="outros">Outros</option>
+        </select>
+        <input type="text" name="telefone_responsavel" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+        <input type="text" name="parentesco_responsavel" class="apenas-letras" placeholder="Grau de Parentesco" required>
+    </div>
+</div>
+
+    <h6>Contato(s) de Urgência</h6>
+    <div class="grid">
+        <input type="text" name="nome_urgencia" class="apenas-letras" placeholder="Nome Completo" required>
+        <input type="text" name="telefone_urgencia" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
+    </div>
+
+    <small class="acordo">
+        <strong>
+            Ao preencher o presente formulário e submeter minha inscrição para atendimento na Clínica Escola de Psicologia do Unieuro, declaro que autorizo, 
+            em conformidade com o inciso I do art. 7, da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais – LGPD) que os dados pessoais aqui fornecidos 
+            sejam tratados e utilizados unicamente para a finalidade exclusiva de compor o banco de dados dos atendimentos a serem realizados.
+        </strong>
+        <div class="checkbox">
+            <input type="checkbox" id="deAcordo" name="de_acordo" required>
+            <label for="deAcordo">De Acordo</label>
+        </div>
+    </small>
+
+    <button type="submit">SALVAR INSCRIÇÃO</button>
+</form>
+
+<script src="{% static 'js/comunidade.js' %}"></script>
+
+<script>
+  const checkboxMenor = document.getElementById('menorIdade');
+  const responsavelContainer = document.getElementById('responsavel_legal_container');
+
+  function toggleResponsavel() {
+    if (checkboxMenor.checked) {
+      responsavelContainer.style.display = 'block';
+      // Torna os campos requeridos quando visível
+      responsavelContainer.querySelectorAll('input, select').forEach(el => el.required = true);
+    } else {
+      responsavelContainer.style.display = 'none';
+      // Remove required quando escondido
+      responsavelContainer.querySelectorAll('input, select').forEach(el => {
+        el.required = false;
+        el.value = '';
+      });
+    }
+  }
+
+  checkboxMenor.addEventListener('change', toggleResponsavel);
+  toggleResponsavel();  // para aplicar o estado correto ao carregar a página
+</script>
+
+{% endblock %}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica de Psicologia - Perfil</title>
+    <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --cor-primaria: #004a8f;
+            --cor-secundaria: #ffffff;
+            --cor-texto-principal: #333333;
+            --cor-texto-secundaria: #666666;
+            --cor-realce-destaque: #e0e0e0;
+            --cor-botao-hover: #003366;
+            --cor-disponivel: #4CAF50;
+            --cor-agendado: #FFC107;
+            --cor-indisponivel: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            text-align: center;
+            background-color: #f9f9f9;
+            color: var(--cor-texto-principal);
+        }
+
+        header {
+            background: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-container img {
+            width: 200px;
+        }
+
+        .header-container h1 {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 20px;
+            flex: 1;
+            margin-left: 400px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .search-input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-button {
+            background-color: var(--cor-primaria);
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .login-icon {
+            font-size: 24px;
+            color: var(--cor-primaria);
+            cursor: pointer;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            padding: 20px 0;
+            min-height: calc(100vh - 140px);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-details h3 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .user-details p {
+            font-size: 12px;
+            color: var(--cor-texto-secundaria);
+            margin: 5px 0 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-nav a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-nav li.active a {
+            background-color: var(--cor-primaria);
+            color: var(--cor-primaria);
+            border-left: 4px solid var(--cor-primaria);
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--cor-texto-principal);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .main-content {
+            padding: 30px;
+            text-align: left;
+        }
+
+        .welcome-title,
+        .page-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--cor-primaria);
+        }
+
+        .subtitle {
+            color: var(--cor-texto-secundaria);
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .estagiario-info {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .estagiario-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .estagiario-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .estagiario-info h3 {
+            font-size: 20px;
+            margin: 0 0 5px;
+            color: var(--cor-texto-principal);
+        }
+
+        .estagiario-info p {
+            color: var(--cor-texto-secundaria);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .prontuarios-recentes,
+        .atendimentos-recentes {
+            margin-bottom: 40px;
+        }
+
+        .prontuarios-recentes h3,
+        .atendimentos-recentes h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--cor-texto-principal);
+        }
+
+        .prontuario-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .prontuario-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-container {
+            margin-right: 15px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--cor-primaria);
+        }
+
+        .prontuario-info .details h4 {
+            font-size: 16px;
+            margin: 0 0 5px;
+        }
+
+        .prontuario-info .details p {
+            font-size: 12px;
+            color: var(--cor-texto-secundaria);
+            margin: 0;
+        }
+
+        .table {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table thead th {
+            background-color: #f5f5f5;
+            border-bottom: 2px solid #ddd;
+            color: var(--cor-texto-principal);
+            font-weight: 600;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status.ativo {
+            background-color: #e8f5e9;
+            color: #4caf50;
+        }
+
+        .status.pendente {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status.inativo {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--cor-texto-secundaria);
+        }
+
+        @media (max-width: 992px) {
+            .header-container h1 {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .header-container h1 {
+                order: 3;
+                width: 100%;
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .search-container {
+                order: 2;
+                margin-right: 0;
+            }
+
+            .sidebar {
+                min-height: auto;
+            }
+
+            .estagiario-info .row {
+                text-align: center;
+            }
+
+            .estagiario-info .col-md-9 {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- ...restante do seu HTML permanece igual -->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clínica de Psicologia - Perfil</title>
+        <link rel="stylesheet" href="./css/perfil.css">
+        <link rel="shortcut icon" href="./img/unieuro.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <!--BARRA DE NAVEGAÇÃO CONTENDO LOGO, TEXTO E BARRA DE PESQUISA-->
+        <header>
+            <div class="header-container">
+                <img src="./img/unieurologo.png" alt="Logo Unieuro">
+                <h1><strong>Clínica Psicológica</strong></h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="./img/iconusuario.png" alt="Lucas Carvalho">
+                        </div>
+                        <div class="user-details">
+                            <h3>Lucas Carvalho</h3>
+                            <p>Estagiário de Psicologia</p>
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                            <li><a href="prontuarios.html"><i class="fas fa-file-medical"></i> Prontuários</a></li>
+                            <li><a href="selecao_inscritos.html"><i class="fas fa-users"></i> Seleção de Inscritos</a></li>
+                            <li><a href="visualizacao_salas.html"><i class="fas fa-door-open"></i> Visualização de Salas</a></li>
+                            <li><a href="meus_atendimentos.html"><i class="fas fa-calendar-check"></i> Consultas Agendadas</a></li>
+                            <li class="active"><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9 main-content">
+                    <h2 class="page-title">Perfil</h2>
+                    <p class="page-description">Gerencie sua conta e configurações de privacidade</p>
+
+                    <div class="account-form">
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email">
+                            <small class="form-text">O email é usado para fazer login e enviar notificações importantes. Para alterar seu endereço de email, mude o aqui e clique em salvar ou na confirmação do novo endereço de email.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new-password" class="form-label">Nova senha</label>
+                            <div class="password-inputs">
+                                <input type="password" class="form-control" id="new-password" placeholder="Nova senha">
+                                <input type="password" class="form-control" id="confirm-password" placeholder="Confirmar nova senha">
+                            </div>
+                            <small class="form-text">Para mudar sua senha, insira sua senha atual e depois sua nova. Pedimos que você faça login novamente com sua nova senha.</small>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone">
+                            <small class="form-text">Informe seu número de telefone.</small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline-secondary">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Clínica de Psicologia. Todos os direitos reservados.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./js/perfil.js"></script>
+    </body>
+</html>
+
