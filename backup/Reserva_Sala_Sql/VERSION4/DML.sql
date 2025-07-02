@@ -133,7 +133,7 @@ INSERT INTO reserva (
     matricula, idsaladispo, idcurso, idturma, datainicial, datafinal, responsavel
 )
 VALUES
-(094147, 4, 2, 9, '2025-06-10', '2025-12-10', 'Guilherme')
+(094147, 4, 2, 9, '2025-01-10', '2025-02-10', 'Guilherme')
 RETURNING idreserva;
 
 INSERT INTO diasemana (
@@ -143,10 +143,11 @@ VALUES
 (2, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE);
 
 INSERT INTO periodo (
-    idsaladispo, integral
+    idsaladispo, primeiro ,segundo
 )
 VALUES
-(4, TRUE);
+(4, TRUE,TRUE);
 
 
 
+-- Vamos supor que você está analisando um usuário específico:

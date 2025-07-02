@@ -76,5 +76,3 @@ LEFT JOIN periodo p ON sd.idsaladispo = p.idsaladispo
 LEFT JOIN diasemana d ON r.idreserva = d.idreserva
 WHERE r.status = TRUE AND r.situacao = TRUE;
 
-
-
