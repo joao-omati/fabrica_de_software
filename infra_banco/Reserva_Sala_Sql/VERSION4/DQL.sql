@@ -30,4 +30,50 @@ JOIN
     curso c ON t.idcurso = c.idcurso;
 
 
+--Realizando o select das salas
+
+SELECT * FROM sala;
+
+-- Seleciona tabela saladispo
+SELECT * FROM saladispo;
+
+-- Seleciona tabela diasemana
+SELECT * FROM diasemana;
+
+--Seleciona tabela reserva
+SELECT * FROM reserva;
+
+
+-- Retorno para saber salas reservadas
+SELECT
+  r.datainicial,
+  r.datafinal,
+  sd.turno,
+  sd.idsaladispo,
+  s.bloco,
+  s.numerosala,
+  s.andar,
+  t.codturma,
+  t.periodoletivo,
+  p.primeiro,
+  p.segundo,
+  p.terceiro,
+  p.quarto,
+  p.integral,
+  d.segunda,
+  d.terca,
+  d.quarta,
+  d.quinta,
+  d.sexta,
+  d.sabado,
+  d.domingo
+FROM reserva r
+LEFT JOIN saladispo sd ON r.idsaladispo = sd.idsaladispo
+LEFT JOIN sala s ON sd.idsala = s.idsala
+LEFT JOIN turma t ON r.idturma = t.idturma
+LEFT JOIN periodo p ON sd.idsaladispo = p.idsaladispo
+LEFT JOIN diasemana d ON r.idreserva = d.idreserva
+WHERE r.status = TRUE AND r.situacao = TRUE;
+
+
 

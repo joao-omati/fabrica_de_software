@@ -60,6 +60,90 @@ UPDATE turma SET idcurso = 13 WHERE codturma ILIKE('SIN%');
 -- DELETANDO TODOS OS DADOS DA TABELA TURMA PARA RESETAR O ID
 TRUNCATE TABLE turma RESTART IDENTITY CASCADE;
 
---Insert na tabela diasemana
-INSERT INTO
+
+--Insert na tabela Sala
+
+INSERT INTO sala (
+    bloco, tvtamanho, datashow, capacidade, andar, numerosala, status
+)
+VALUES
+( 'C', 0, TRUE, 80, '1ª andar', 102, TRUE),
+( 'B', 55, FALSE, 50, '2ª andar', 211, TRUE),
+( 'B', 55, FALSE, 50, '3ª andar', 307, TRUE),
+( 'C', 55, FALSE, 50, '2ª andar', 204, TRUE),
+( 'B', 0, TRUE, 180, '1ª andar', 112, TRUE),
+( 'D', 0, TRUE, 50, 'Térreo', 1, TRUE),
+( 'A', 55, TRUE, 50, 'Térreo', 2, TRUE),
+( 'B', 0, TRUE, 180, 'Térreo', 100, TRUE),
+( 'C', 0, TRUE, 50, '1º Andar', 101, TRUE),
+( 'E', 65, TRUE, 80, '2º Andar', 208, TRUE),
+( 'C', 0, FALSE, 50, '3º Andar', 303, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 312, TRUE),
+( 'F', 55, TRUE, 75, '1º Andar', 103, TRUE),
+( 'C', 65, TRUE, 90, '3º Andar', 316, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 301, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 303, TRUE),
+( 'D', 65, TRUE, 110, '3º Andar', 304, TRUE),
+( 'D', 55, TRUE, 50, '3º Andar', 305, TRUE);
+
+
+--Prenchendo tabela saladispo
+
+INSERT INTO saladispo (
+    idsala, turno    
+)
+VALUES
+(1,'Manhã'),
+(1,'Tarde'),
+(1,'Noite'),
+(2, 'Manhã'),
+(2, 'Tarde'),
+(2, 'Noite'),
+(3, 'Manhã'),
+(3, 'Tarde'),
+(3, 'Noite'),
+(4, 'Manhã'),
+(4, 'Tarde'),
+(4, 'Noite'),
+(5, 'Manhã'),
+(5, 'Tarde'),
+(5, 'Noite'),
+(6, 'Manhã'),
+(6, 'Tarde'),
+(6, 'Noite'),
+(7, 'Manhã'),
+(7, 'Tarde'),
+(7, 'Noite'),
+(8, 'Manhã'),
+(8, 'Tarde'),
+(8, 'Noite'),
+(9, 'Manhã'),
+(9, 'Tarde'),
+(9, 'Noite'),
+(10, 'Manhã'),
+(10, 'Tarde'),
+(10, 'Noite');
+
+
+
+-- Inserindo nova reserva
+INSERT INTO reserva (
+    matricula, idsaladispo, idcurso, idturma, datainicial, datafinal, responsavel
+)
+VALUES
+(094147, 4, 2, 9, '2025-01-10', '2025-02-10', 'Guilherme')
+RETURNING idreserva;
+
+INSERT INTO diasemana (
+    idreserva, segunda, terca, quarta, quinta, sexta, sabado, domingo
+)
+VALUES
+(2, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE);
+
+INSERT INTO periodo (
+    idsaladispo, primeiro ,segundo
+)
+VALUES
+(4, TRUE,TRUE);
+
 
