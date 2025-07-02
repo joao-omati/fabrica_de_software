@@ -1,0 +1,171 @@
+/* ================== VARIÁVEIS GLOBAIS ================== */
+:root {
+  --cor-primaria: #004a8f;
+  --cor-secundaria: #ffffff;
+  --cor-texto-principal: #333333;
+  --cor-texto-secundaria: #666666;
+  --cor-realce-destaque: #e0e0e0;
+  --cor--botao-hover: #003366;
+}
+
+/* ================== CONFIGURAÇÃO GLOBAL ================== */
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ================== BARRA SUPERIOR COM ACESSIBILIDADE ================== */
+.top-bar {
+  background-color: var(--cor-realce-destaque);
+  color: var(--cor-texto-principal);
+  padding: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* ================== CABEÇALHO COM LOGO ================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-text strong {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logo-text small {
+  color: var(--cor-texto-secundaria);
+  font-size: 12px;
+}
+
+/* ================== BANNER SUPERIOR DO LOGIN ================== */
+.login-banner {
+  background-color: #002f6c;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+form {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0;
+  text-align: left;
+}
+
+form h6 {
+  font-weight: bold;
+  color: #000;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  box-sizing: border-box;
+  color: #000;
+}
+
+input::placeholder {
+  color: #444;
+}
+
+select {
+  color: #000;
+  background-color: #e0e0e0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox label {
+  margin: 0;
+}
+
+small, acordo {
+  font-size: 14px;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.acordo {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--cor-realce-destaque); /* opcional para leve destaque */
+  margin-top: 20px;
+}
+
+
+button[type="submit"] {
+  background-color: #004a8f;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button[type="submit"]:hover {
+  background-color: #003366;
+}
