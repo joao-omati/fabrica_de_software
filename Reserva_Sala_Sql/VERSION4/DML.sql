@@ -1,10 +1,15 @@
--- Active: 1751377694609@@127.0.0.1@5432@reserva
--- Active: 1751309244752@@127.0.0.1@5432@reserva
+-- Active: 1751474481388@@127.0.0.1@5432@reserva
+-- Active: 1751474481388@@127.0.0.1@5432@reserva
 
 -- USER UM CÓDIGO EM PYTHON PARA INSERIR TODAS AS TURMAS DE UM ARQUIVO.EXEL NESTE CAMINHO: "C:\fabrica_de_software\Reserva_Sala_Sql\VERSION4\importar_dados.py"
 
 -- Active: 1751309244752@@127.0.0.1@5432@reserva 
 
+    INSERT INTO usuario(
+        matricula, nome, emailinst, sexo, cargo, senha
+    )
+    VALUES
+    ( 094147, 'VITOR', 'vitor94147@unieuro.com.br', 'M', 'Diretor', '123456')
 -- INSERINDO REGISTROS NA ENTIDADE CURSO
 
 INSERT INTO public.curso (nomecurso)
@@ -57,7 +62,7 @@ UPDATE turma SET idcurso = 13 WHERE codturma ILIKE('SIN%');
 
 -- DELETANDO TODOS OS DADOS DA TABELA TURMA PARA RESETAR O ID
 TRUNCATE TABLE turma RESTART IDENTITY CASCADE;
-
+-- Insert em
 --Insert na tabela sala, obs: como tvtamanho não permitir null e quando tem datashow não tem tv coloquei tvtamanho como zero e true em datashow 
 
 INSERT INTO sala (
@@ -82,6 +87,66 @@ VALUES
 ( 'D', 55, TRUE, 50, '3º Andar', 303, TRUE),
 ( 'D', 65, TRUE, 110, '3º Andar', 304, TRUE),
 ( 'D', 55, TRUE, 50, '3º Andar', 305, TRUE);
+
+
+-- Prenchendo saladispo
+
+INSERT INTO saladispo (
+    idsala, turno    
+)
+VALUES
+(1,'Manhã'),
+(1,'Tarde'),
+(1,'Noite'),
+(2, 'Manhã'),
+(2, 'Tarde'),
+(2, 'Noite'),
+(3, 'Manhã'),
+(3, 'Tarde'),
+(3, 'Noite'),
+(4, 'Manhã'),
+(4, 'Tarde'),
+(4, 'Noite'),
+(5, 'Manhã'),
+(5, 'Tarde'),
+(5, 'Noite'),
+(6, 'Manhã'),
+(6, 'Tarde'),
+(6, 'Noite'),
+(7, 'Manhã'),
+(7, 'Tarde'),
+(7, 'Noite'),
+(8, 'Manhã'),
+(8, 'Tarde'),
+(8, 'Noite'),
+(9, 'Manhã'),
+(9, 'Tarde'),
+(9, 'Noite'),
+(10, 'Manhã'),
+(10, 'Tarde'),
+(10, 'Noite');
+
+
+
+-- Inserindo nova reserva
+INSERT INTO reserva (
+    matricula, idsaladispo, idcurso, idturma, datainicial, datafinal, responsavel
+)
+VALUES
+(094147, 4, 2, 9, '2025-06-10', '2025-12-10', 'Guilherme')
+RETURNING idreserva;
+
+INSERT INTO diasemana (
+    idreserva, segunda, terca, quarta, quinta, sexta, sabado, domingo
+)
+VALUES
+(2, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE);
+
+INSERT INTO periodo (
+    idsaladispo, integral
+)
+VALUES
+(4, TRUE);
 
 
 
