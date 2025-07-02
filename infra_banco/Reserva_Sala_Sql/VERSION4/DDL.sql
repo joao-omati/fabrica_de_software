@@ -1,11 +1,4 @@
-<<<<<<<< HEAD:backup/Reserva_Sala_Sql/VERSION4/DDL.sql
 -- Active: 1751474481388@@127.0.0.1@5432@reserva
-========
--- Active: 1750708565763@@127.0.0.1@5432@reserva 
-
--- Active: 1751320626488@@127.0.0.1@5432@reserva
->>>>>>>> origin/banco_dados:infra_banco/Reserva_Sala_Sql/VERSION4/DDL.sql
--- Active: 1751302420903@@127.0.0.1@5432@reserva
 -- Active: 1751309244752@@127.0.0.1@5432@reserva 
 -- Active: 1749757574490@@127.0.0.1@5432@reserva 
 
