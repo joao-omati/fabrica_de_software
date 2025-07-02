@@ -1,4 +1,4 @@
--- Active: 1751320881998@@127.0.0.1@5432@reserva 
+-- Active: 1750708565763@@127.0.0.1@5432@reserva 
 
 -- Active: 1751320626488@@127.0.0.1@5432@reserva
 -- Active: 1751302420903@@127.0.0.1@5432@reserva
@@ -140,4 +140,25 @@ CREATE TABLE diasemana(
     FOREIGN KEY(idreserva) REFERENCES reserva(idreserva)
 );
 
+-- Craindo Tabela salareservada para moritoramento entre reserva e sala
+
+CREATE TABLE reserva_sala (
+    idreserva_sala INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    
+    idreserva INTEGER NOT NULL,
+    idsala INTEGER NOT NULL,
+    idperiodo INTEGER NOT NULL,
+    iddiasemana INTEGER NOT NULL,
+    
+    situacao VARCHAR(15) NOT NULL DEFAULT 'ocupado'
+        CHECK (situacao IN ('ocupado', 'cancelado')),
+    
+    dthinsert TIMESTAMP DEFAULT NOW(),
+    status BOOLEAN DEFAULT TRUE,
+    
+    FOREIGN KEY (idreserva) REFERENCES reserva(idreserva) ON DELETE CASCADE,
+    FOREIGN KEY (idsala) REFERENCES sala(idsala) ON DELETE RESTRICT,
+    FOREIGN KEY (idperiodo) REFERENCES periodo(idperiodo) ON DELETE RESTRICT,
+    FOREIGN KEY (iddiasemana) REFERENCES diasemana(iddiasemana) ON DELETE RESTRICT
+);
 

@@ -5,12 +5,12 @@ from sqlalchemy import create_engine
 import time
 
 # Corrigido: caminho real do arquivo Excel (atenção às barras!)
-caminho_arq_excel = r'/workspaces/fabrica_de_software/doc/docs_unieuro/Turmas_Curso.xlsx'
-#caminho_arq_excel = r'C:\fabrica_de_software\doc\docs_unieuro\Turmas_Curso.xlsx'
+#caminho_arq_excel = r'/workspaces/fabrica_de_software/doc/docs_unieuro/Turmas_Curso.xlsx'
+caminho_arq_excel = r'C:\fabrica_de_software\doc\docs_unieuro\Turmas_Curso.xlsx'
 
 # Conectar ao banco de dados PostgreSQL
 user = 'postgres'
-password = '123456'
+password = '32481024'
 host = 'localhost'
 database = 'reserva'
 engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}/{database}')
@@ -65,7 +65,7 @@ try:
 
         total_linhas_importadas += len(chunk)
         print(f"Lote {i // chunk_size + 1} inserido com sucesso. Total de linhas importadas até agora: {total_linhas_importadas}")
-        time.sleep(3)
+        #time.sleep(3)
 
     elapsed_time = time.time() - start_time
     print(f"\nExportação concluída com sucesso em {elapsed_time:.2f} segundos.")
