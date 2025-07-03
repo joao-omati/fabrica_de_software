@@ -1,17 +1,13 @@
 {
-  "name": "Django Dev with Postgres",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspace",
-  "postCreateCommand": "pip install -r requirements.txt",
-  "customizations": {
+"name": "Meu Projeto",
+"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+"features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
+},
+"postCreateCommand": "npm install",
+"customizations": {
     "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-azuretools.vscode-docker"
-      ]
+    "extensions": ["dbaeumer.vscode-eslint"]
     }
-  },
-  "features": {}
+}
 }
