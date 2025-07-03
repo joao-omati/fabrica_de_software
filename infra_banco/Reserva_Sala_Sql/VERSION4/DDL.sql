@@ -31,6 +31,8 @@ CREATE TABLE sala(
     capacidade INTEGER NOT NULL,
     tvtamanho INTEGER NOT NULL,
     datashow BOOLEAN DEFAULT FALSE,
+    ativo BOOLEAN DEFAULT TRUE, -- Informa se a sala está aptada para ser reservada
+    motivoinativo VARCHAR(255), /* Descrição so deve ser colocado quando a disponibilidade for false ou null*/
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, data do insart não pode ser menor 
     status BOOLEAN DEFAULT TRUE, -- DELETE LÓGICO
@@ -42,16 +44,12 @@ CREATE TABLE sala(
 CREATE TABLE saladispo (
     idsaladispo INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     idsala INTEGER NOT NULL,
-    matricula INTEGER, /* Matricula só deve ser preenchida se a disponibilidade for False ou Null*/
     turno VARCHAR(15) CHECK (turno IN ('Manhã', 'Tarde', 'Noite') OR turno IS NULL),
-    disponibilidade BOOLEAN DEFAULT TRUE,
-    motivoinativo VARCHAR(255), /* Descrição so deve ser colocado quando a disponibilidade for false ou null*/
+    situacao VARCHAR(15) DEFAULT 'livre' CHECK(situacao IN('livre','indisponível')), -- Situação da disponibilidade de salas para ser reservada
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK (dthdelete >= dthinsert OR dthdelete IS NULL), 
     status BOOLEAN DEFAULT TRUE, -- DELETE LÓGICO
-    FOREIGN KEY (idsala) REFERENCES sala(idsala),
-    FOREIGN KEY (matricula) REFERENCES usuario(matricula)
-
+    FOREIGN KEY (idsala) REFERENCES sala(idsala)
 );
 
 -- CRIANDO TABELA PERIODO, ATRIBUTO MULTIVALORADO QUE SE REFERE AOS PERIODOS/HORAS DA AULA NAQUELA SALA DISPONIVEL QUE FOI RESERVADA
@@ -73,7 +71,7 @@ CREATE TABLE curso(
     matricula INTEGER, -- Vamos permitir que seja NULLABLE
     nomecurso VARCHAR(255) NOT NULL,
     dthinsert TIMESTAMP DEFAULT NOW(),
-    dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthinsert IS NULL),
+    dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL),
     status BOOLEAN DEFAULT TRUE
 );
 
@@ -84,7 +82,7 @@ CREATE TABLE turma(
     idturma INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     idcurso INTEGER, -- VAMOS PERMITIR QUE SEJA NULL ABLE
     matricula INTEGER,-- VAMOS PERMITIR QUE SEJA NULL ABLE
-    codturma VARCHAR(255) NOT NULL, 
+    codturma VARCHAR(255) NOT NULL, -- ELES PODEM COLOCAR TURMAS MESCLADAS EXEMPLO: FIO02/FIO01
     periodoletivo varchar(25), -- VAMOS PERMITIR QUE SEJA NULL ABLE 
     qtdaluno INTEGER, -- VAMOS PERMITIR NULLABLE POIS POSTERIORMENTE ELES IRÃO PRECISAR DESSE DADO
     dthinsert TIMESTAMP DEFAULT NOW(),
@@ -130,6 +128,7 @@ CREATE TABLE reserva(
 CREATE TABLE diasemana(
     iddiasemana INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     idreserva INTEGER NOT NULL,
+    idsaladispo INTEGER NOT NULL, -- FK para idsaladispo pois a reserva pode ser feita em vários dias da semana
     segunda BOOLEAN DEFAULT FALSE, 
     terca BOOLEAN DEFAULT FALSE, 
     quarta BOOLEAN DEFAULT FALSE, 
@@ -137,7 +136,8 @@ CREATE TABLE diasemana(
     sexta BOOLEAN DEFAULT FALSE, 
     sabado BOOLEAN DEFAULT FALSE, 
     domingo BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY(idreserva) REFERENCES reserva(idreserva)
+    FOREIGN KEY(idreserva) REFERENCES reserva(idreserva),
+    FOREIGN KEY(idsaladispo) REFERENCES saladispo(idsaladispo)
 );
 
 -- Craindo Tabela salareservada para moritoramento entre reserva e sala
@@ -156,9 +156,9 @@ CREATE TABLE reserva_sala (
     dthinsert TIMESTAMP DEFAULT NOW(),
     status BOOLEAN DEFAULT TRUE,
     
-    FOREIGN KEY (idreserva) REFERENCES reserva(idreserva) ON DELETE CASCADE,
-    FOREIGN KEY (idsala) REFERENCES sala(idsala) ON DELETE RESTRICT,
-    FOREIGN KEY (idperiodo) REFERENCES periodo(idperiodo) ON DELETE RESTRICT,
-    FOREIGN KEY (iddiasemana) REFERENCES diasemana(iddiasemana) ON DELETE RESTRICT
+    FOREIGN KEY (idreserva) REFERENCES reserva(idreserva),
+    FOREIGN KEY (idsala) REFERENCES sala(idsala),
+    FOREIGN KEY (idperiodo) REFERENCES periodo(idperiodo),
+    FOREIGN KEY (iddiasemana) REFERENCES diasemana(iddiasemana)
 );
 
