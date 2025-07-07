@@ -1,3 +1,4 @@
+-- Active: 1749757574490@@127.0.0.1@5432@reserva 
 -- Active: 1750708565763@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
@@ -10,7 +11,6 @@ CREATE TABLE usuario(
     sexo CHAR(1) CHECK(sexo IN ('M','F','O')),/* M = masculino, F = feminino, O = outro */
     cargo VARCHAR(25) NOT NULL CHECK(cargo IN ('Diretor','Assessora','Secretaria','Coordenador','NAPI','NTI','Manutenção')),
     senha VARCHAR(255) NOT NULL, 
-    statuslogin BOOLEAN DEFAULT TRUE,
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, a data de insart não pode ser menor 
     statusdelete BOOLEAN DEFAULT FALSE, -- DELETE LÓGICO
@@ -36,6 +36,34 @@ CREATE TABLE sala(
     FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
 );
 
+
+-- CRIANDO A TABELA CURSO É  MERAMENTE INFORMATICO, VAI SERVIR PARA FILTRAGEM
+CREATE TABLE curso(
+
+    idcurso INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    matriculauser INTEGER, -- Vamos permitir que seja NULLABLE
+    nomecurso VARCHAR(255) NOT NULL, -- Vai ser permitido mesclagem, exemplo: Enfermagem \ Fisiologia
+    dthinsert TIMESTAMP DEFAULT NOW(),
+    dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL),
+    statusdelete BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
+);
+
+-- CRIANDO TABELA TURMA É MERAMENTE INFORMATICO, VAI SERVIR PARA FILTRAGEM
+CREATE TABLE turma(
+    idturma INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    idcurso INTEGER NULL, -- VAMOS PERMITIR QUE SEJA NULL ABLE
+    matriculauser INTEGER,-- VAMOS PERMITIR QUE SEJA NULL ABLE
+    codturma VARCHAR(255) NOT NULL, -- ELES PODEM COLOCAR TURMAS MESCLADAS EXEMPLO: FIO02/FIO01
+    periodoletivo varchar(25), -- VAMOS PERMITIR QUE SEJA NULL ABLE 
+    qtdaluno INTEGER, -- VAMOS PERMITIR NULLABLE POIS POSTERIORMENTE ELES IRÃO PRECISAR DESSE DADO
+    dthinsert TIMESTAMP DEFAULT NOW(),
+    dthdelete TIMESTAMP CHECK (dthdelete >= dthinsert OR dthdelete is NULL),
+    statusdelete BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula),
+    FOREIGN KEY (idcurso) REFERENCES curso(idcurso)
+);
+
 -- CRIANDO TABELA RESERVA
 
 CREATE TABLE reserva(
@@ -43,7 +71,7 @@ CREATE TABLE reserva(
     idreserva INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     matriculauser INTEGER NOT NULL, -- OBRIGATÓRIO SABER QUEM FEZ A RESERVA
     idcurso INTEGER NULL, -- Vamos permitir null para quando quiserem futuramente fazer um filtro por curso
-    idturma INTEGER NOT NULL, -- Vamos deixar obrigatório para a filtragem pelo codturma 
+    idturma INTEGER NULL, -- Vamos permitir null para posteriomente no futuro eles colocarem a opção de filtragem por codturma
     codturma VARCHAR(255) NOT NULL, -- Isso vai permitir a mesclagem de turma em uma sala, aplicação deve dar um jeito de inserir primeiro na entidade turma e depois aqui
     datainicial DATE DEFAULT CURRENT_DATE, -- CURRENT_DATE É MELHOR PARA O PRENCHIMENTO AUTOMATICO NO CAMPO COM DOMÍNIO DATe
     datafinal DATE CHECK(datafinal >= datainicial OR datafinal IS NULL),
@@ -106,29 +134,4 @@ CREATE TABLE diasemana(
     FOREIGN KEY(idperiodo) REFERENCES periodo(idperiodo)
 );
 
--- CRIANDO A TABELA CURSO
-CREATE TABLE curso(
 
-    idcurso INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    matriculauser INTEGER, -- Vamos permitir que seja NULLABLE
-    nomecurso VARCHAR(255) NOT NULL, -- Vai ser permitido mesclagem, exemplo: Enfermagem \ Fisiologia
-    dthinsert TIMESTAMP DEFAULT NOW(),
-    dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL),
-    statusdelete BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
-);
-
--- CRIANDO TABELA TURMA
-CREATE TABLE turma(
-    idturma INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    idcurso INTEGER, -- VAMOS PERMITIR QUE SEJA NULL ABLE
-    matriculauser INTEGER,-- VAMOS PERMITIR QUE SEJA NULL ABLE
-    codturma VARCHAR(255) NOT NULL, -- ELES PODEM COLOCAR TURMAS MESCLADAS EXEMPLO: FIO02/FIO01
-    periodoletivo varchar(25), -- VAMOS PERMITIR QUE SEJA NULL ABLE 
-    qtdaluno INTEGER, -- VAMOS PERMITIR NULLABLE POIS POSTERIORMENTE ELES IRÃO PRECISAR DESSE DADO
-    dthinsert TIMESTAMP DEFAULT NOW(),
-    dthdelete TIMESTAMP CHECK (dthdelete >= dthinsert OR dthdelete is NULL),
-    statusdelete BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula),
-    FOREIGN KEY (idcurso) REFERENCES curso(idcurso)
-);
