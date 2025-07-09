@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import View, CreateView
 from .models import Inscritoconvenio, Endereco, Motivoacompanhamento, Medicamento, Pcdsnd, Doencafisica, Tipoterapia, Disponibilidade, Inscritocomunidade
 from datetime import datetime, date
+from django.contrib import messages
 
 
 # Create your views here.
@@ -177,6 +178,7 @@ class InscricaoConvenio(View):
         
         Disponibilidade.objects.create(idfichaconvenio=inscritoconvenio, manha=manha, tarde=tarde, noite=noite, sabado=sabado)
 
+        messages.success(request, 'Inscrição realizada com sucesso!')
         return redirect('homepage')
     
 
@@ -288,6 +290,7 @@ class InscricaoComunidade(View):
         
         Disponibilidade.objects.create(idfichacomunidade=inscritocomunidade, manha=manha, tarde=tarde, noite=noite, sabado=sabado)
 
+        messages.success(request, 'Inscrição realizada com sucesso!')
         return redirect('homepage')
         
 
