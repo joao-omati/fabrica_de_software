@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}
 Login - Unieuro
@@ -228,7 +229,7 @@ Login - Unieuro
 
   <div class="header">
     <div class="logo">
-      <img src="data:image/png;base64,SUA_IMAGEM_AQUI_EM_BASE64" alt="UNIEURO">
+      <img src="{% static 'images/unieuro.png' %}" alt="UNIEURO">
       <div class="logo-text">
         <strong>Centro Universitário Unieuro</strong><br>
         <small>Sua escolha para um grande futuro.</small>
@@ -239,7 +240,7 @@ Login - Unieuro
   <div class="login-banner">LOGIN</div>
 
   <div class="login-container">
-    <img src="data:image/png;base64,SUA_IMAGEM_AQUI_EM_BASE64" alt="Logo">
+    <img src="{% static 'images/unieuro.png' %}" alt="Logo">
     <h2>PSICOLOGIA</h2>
 
     {% if form.errors %}
@@ -272,7 +273,7 @@ Login - Unieuro
   <footer class="rodape">
     <p class="atendimento">Atendimento: Seg-Sex 08:00 - 18:00</p>
     <div class="contato">
-      <img class="imgwpp" src="data:image/png;base64,ICONE_WHATSAPP_BASE64" alt="WhatsApp">
+      <img class="imgwpp" src="{% static 'images/whatsapp.png' %}" alt="WhatsApp">
       <p class="suporte">Fale conosco: (61) XXXXX-XXXX</p>
     </div>
   </footer>
