@@ -17,12 +17,27 @@ CREATE TABLE usuario(
     FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
 ); 
 
+
+-- CRIANDO A TABELA BLOCO
+
+CREATE TABLE bloco(
+
+    idbloco INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    matriculauser INTEGER NULL, -- VAMOS PERMITIR NULLABLE
+    ativo BOOLEAN DEFAULT TRUE, -- Informa se a sala está aptada para ser reservada
+    motivoinativo VARCHAR(255) CHECK( ativo = FALSE OR motivoinativo IS NULL), /* So deve ser colocado quando o atributo ativo for false*/
+    dthinsert TIMESTAMP DEFAULT NOW(),
+    dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, data do insart não pode ser menor 
+    statusdelete BOOLEAN DEFAULT FALSE, -- DELETE LÓGICO
+    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
+);
+
 -- CRIANDO A TABELA SALA 
 CREATE TABLE sala(
 
     idsala INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    idbloco INTEGER NOT NULL,
     matriculauser INTEGER NULL, -- VAMOS PERMITIR NULLABLE
-    bloco CHAR(10) NOT NULL,
     andar VARCHAR(25) NOT NULL,
     numerosala INTEGER NOT NULL,    
     capacidade INTEGER NOT NULL,
@@ -33,7 +48,8 @@ CREATE TABLE sala(
     dthinsert TIMESTAMP DEFAULT NOW(),
     dthdelete TIMESTAMP CHECK(dthdelete >= dthinsert OR dthdelete IS NULL), -- validação do delete lógico, data do insart não pode ser menor 
     statusdelete BOOLEAN DEFAULT FALSE, -- DELETE LÓGICO
-    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula)
+    FOREIGN KEY (matriculauser) REFERENCES usuario(matricula),
+    FOREIGN KEY (idbloco) REFERENCES bloco(idbloco)
 );
 
 
