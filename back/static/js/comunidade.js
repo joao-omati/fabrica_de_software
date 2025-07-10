@@ -24,46 +24,19 @@ document.querySelectorAll('.telefone').forEach(input => {
   input.addEventListener('input', () => limparApenasNumeros(input));
 });
 
-// Validação antes do submit
-document.querySelector('form').addEventListener('submit', e => {
-  let formValido = true;
+// ** REMOVIDO: Validação antes do submit **
+// document.querySelector('form').addEventListener('submit', e => { ... });
 
-  // Verifica todos os cpfs
-  document.querySelectorAll('.cpf').forEach(input => {
-    if (input.value.length !== 11) {
-      alert('O CPF deve conter exatamente 11 números.');
-      input.focus();
-      formValido = false;
-      e.preventDefault();
-      return false;
-    }
-  });
-
-  // Verifica todos os telefones
-  document.querySelectorAll('.telefone').forEach(input => {
-    if (input.value.length < 10 || input.value.length > 11) {
-      alert('O telefone deve conter 10 ou 11 números.');
-      input.focus();
-      formValido = false;
-      e.preventDefault();
-      return false;
-    }
-  });
-
-  if (!formValido) e.preventDefault();
-});
-
+// Funções dropdown e toggleOtherInput permanecem iguais
 function toggleDropdown(dropdownId) {
-  // Fechar todos os outros dropdowns antes de abrir o atual
   const allDropdowns = document.querySelectorAll('.dropdown-content');
-  allDropdowns.forEach(function (dropdown) {
+  allDropdowns.forEach(dropdown => {
     if (dropdown.id !== dropdownId) {
       dropdown.style.display = 'none';
       dropdown.classList.remove('show');
     }
   });
 
-  // Abrir/fechar o dropdown atual
   const dropdown = document.getElementById(dropdownId);
 
   if (dropdown.style.display === 'none' || dropdown.style.display === '') {
@@ -86,3 +59,61 @@ function toggleOtherInput(checkboxId, inputId) {
     inputDiv.querySelector('input').value = '';
   }
 }
+
+// Atualiza obrigatoriedade dos campos do responsável no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  const camposResponsavel = [
+    'nomeresp',
+    'emailresp',
+    'cpfresp',
+    'estadocivilresp',
+    'tellcellresp',
+    'grauresp'
+  ].map(id => document.getElementById(id));
+
+  const inputNascimento = document.querySelector('input[name="dtnascimento"]');
+
+  const checkboxesDeficiencia = [
+    'tea', 'tdah', 'dffs', 'dfv', 'dfa', 'ttap', 'ahst', 'outropcdsnd'
+  ].map(id => document.getElementById(id));
+
+  function calcularIdade(dataNasc) {
+    if (!dataNasc) return null;
+    const hoje = new Date();
+    const nasc = new Date(dataNasc);
+    let idade = hoje.getFullYear() - nasc.getFullYear();
+    const m = hoje.getMonth() - nasc.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) {
+      idade--;
+    }
+    return idade;
+  }
+
+  function possuiDeficienciaMarcada() {
+    return checkboxesDeficiencia.some(cb => cb && cb.checked);
+  }
+
+  function atualizarObrigatoriedadeCamposResponsavel() {
+    const dataNasc = inputNascimento ? inputNascimento.value : null;
+    if (!dataNasc) return;
+
+    const idade = calcularIdade(dataNasc);
+    const obrigatorio = (idade !== null && idade < 18) || possuiDeficienciaMarcada();
+
+    camposResponsavel.forEach(campo => {
+      if (!campo) return;
+      if (obrigatorio) {
+        campo.setAttribute('required', 'required');
+      } else {
+        campo.removeAttribute('required');
+      }
+    });
+  }
+
+  if (inputNascimento) inputNascimento.addEventListener('change', atualizarObrigatoriedadeCamposResponsavel);
+  checkboxesDeficiencia.forEach(cb => {
+    if (cb) cb.addEventListener('change', atualizarObrigatoriedadeCamposResponsavel);
+  });
+
+  atualizarObrigatoriedadeCamposResponsavel();
+});

@@ -34,7 +34,7 @@ Ficha de Comunidade
 
         <input type="text" name="cpfinscrito" id="cpf" class="cpf" placeholder="CPF" maxlength="11" required>
 
-        <input type="date" name="dtnascimento" placeholder="Data de Nascimento" required>
+        <input type="date" name="dtnascimento" id="dtnascimento" placeholder="Data de Nascimento" required>
 
         <input type="text" name="rua" placeholder="Rua" required>
 
@@ -214,7 +214,7 @@ Ficha de Comunidade
                     <label for="ahst">Altas habilidades ou super dotação</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="outro" name="outropcdsnd"
+                    <input type="checkbox" id="outropcdsnd" name="outropcdsnd"
                         onchange="toggleOtherInput('outros_motivos', 'outros_motivos_text')">
                     <label for="outro">Outros</label>
                 </div>
@@ -366,17 +366,14 @@ Ficha de Comunidade
         </div>
     </div>
 
-    <div class="checkbox">
-        <input type="checkbox" id="menorIdade">
-        <label for="menorIdade">O Inscrito é menor de idade?</label>
-    </div>
+
 
     <h6>Dados do Responsável Legal</h6>
     <div class="grid">
-        <input name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo" required>
-        <input name="emailresp" type="email" placeholder="E-mail" required>
-        <input name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11" required>
-        <select name="estadocivilresp">
+        <input id="nomeresp" name="nomeresp" type="text" class="apenas-letras" placeholder="Nome Completo">
+        <input id="emailresp" name="emailresp" type="email" placeholder="E-mail" >
+        <input id="cpfresp" name="cpfresp" type="text" class="cpf" placeholder="CPF" maxlength="11">
+        <select id="estadocivilresp" name="estadocivilresp">
             <option disabled selected>Estado Civil</option>
             <option value="Solteiro">Solteiro(a)</option>
             <option value="Casado">Casado(a)</option>
@@ -386,8 +383,8 @@ Ficha de Comunidade
             <option value="Nenhum">Nenhum</option>
             <option value="Outros">Outros</option>
         </select>
-        <input name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11" required>
-        <input name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco" required>
+        <input id="tellcellresp" name="tellcellresp" type="text" class="telefone" placeholder="Telefone Celular" maxlength="11">
+        <input id="grauresp" name="grauresp" type="text" class="apenas-letras" placeholder="Grau de Parentesco">
     </div>
 
     <h6>Contato(s) de Urgência</h6>
