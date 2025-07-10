@@ -44,7 +44,7 @@
                 <div class="conteudo-texto">
                     <h3>Comunidade</h3>
                     <p>Acompanhamento adaptado às necessidades da comunidade.</p>
-                    <button class="btn-comunidade" onclick="location.href='comunidade.html'">AGENDAR</button>
+                    <button class="btn-convenio" onclick="location.href='{% url 'inscricao_comunidade' %}'">AGENDAR</button>
                 </div>
                 <div class="conteudo-imagem">
                     <img src="{% static 'images/imagem1.PNG' %}" alt="Comunidade">
@@ -54,7 +54,7 @@
                 <div class="conteudo-texto">
                     <h3>Convênio</h3>
                     <p>Atendemos por uma variedade de planos de saúde parceiros.</p>
-                    <button class="btn-convenio" onclick="location.href='convenio.html'">AGENDAR</button>
+                    <button class="btn-convenio" onclick="location.href='{% url 'inscricao_convenio' %}'">AGENDAR</button>
                 </div>
                 <div class="conteudo-imagem">
                     <img src="{% static 'images/imagem2.PNG' %}" alt="Convênio">
