@@ -1,15 +1,25 @@
--- Active: 1750708565763@@127.0.0.1@5432@reserva 
+INSERT INTO usario (matricula, matriculauser, nome, emailinst, sexo, cargo, senha) 
+VALUES
+(94147, NULL, 'Vitor', 'vitor94147@unieuro.com.br', 'M', 'Diretor', 133122),
+(99146, NULL, 'Viceleno', 'viceleno099146@unieuro.com.br', 'F', 'Assessora', 123789),
+(12345, NULL, 'Arthur', 'arthur012345@unieuro.com.br', 'M', 'Coordenador', 987321),
+(21253, NULL, 'ellen', 'ellen021253@unieuro.com.br', 'F', 'Secretaria', 987654),
+(78982, NULL, 'João', 'joao078982@unieuro.com.br', 'M', 'NAPI', 789456),
+(34879, NULL, 'Paulo', 'paulo034879@unieuro.com.br', 'M', 'NTI', 456789),
+(41456, NULL, 'Corno', 'corno041456@unieuro.com.br', 'F', 'Manutenção', 123456);
 
--- Active: 1751320626488@@127.0.0.1@5432@reserva
--- Active: 1751309244752@@127.0.0.1@5432@reserva
 
--- USER UM CÓDIGO EM PYTHON PARA INSERIR TODAS AS TURMAS DE UM ARQUIVO.EXEL NESTE CAMINHO: "C:\fabrica_de_software\Reserva_Sala_Sql\VERSION4\importar_dados.py"
+INSERT INTO sala (
+	bloco, andar, numerosala, capacidade, tvtamanho,datashow
+)
+VALUES
+('A', '1º andar', 101, 50, ' 55" ' , FALSE),
+('B', '2º andar', 201, 55, ' 55" ' , FALSE),
+('C', '3º andar', 301, 60, ' 55" ' , FALSE),
+('D', '4º andar', 401, 60, ' 0"  ' , TRUE );
 
--- Active: 1751309244752@@127.0.0.1@5432@reserva 
 
--- INSERINDO REGISTROS NA ENTIDADE CURSO
-
-INSERT INTO public.curso (nomecurso)
+INSERT INTO curso (nomecurso)
 VALUES
 ('ADMINISTRAÇÃO'),
 ('ANÁLISE E DESENVOLVIMENTO DE SISTEMAS'),
@@ -26,40 +36,26 @@ VALUES
 ('SISTEMAS DE INFORMAÇÃO');
 
 
--- FAZENDO O RELACIONAMENTO ENTRE CURSO E TURMA
+-- simulação de reserva 
 
--- ANALISE DE DESENVOLVIMENTO DE SISTEMAS ADS para os códigos de turmas que começa com ADM
-UPDATE turma SET idcurso = 1 WHERE codturma ILIKE('ADM%');
+--tabela reserva
 
--- ANALISE DE DESENVOLVIMENTO DE SISTEMAS ADS para os códigos de turmas que começa com ADS
-UPDATE turma SET idcurso = 2 WHERE codturma ILIKE('ADS%');
+INSERT INTO reserva (matriculauser, idcurso, codturma, datainicial, datafinal)
+VALUES 
+(94147, 1 ,'ADM02N1', '2025-08-11', '2025-11-30')
+RETURNING idreserva;
 
-UPDATE turma SET idcurso = 3 WHERE codturma ILIKE('AUR%');
+--tabela reserva sala 
+INSERT INTO reservasala (idreserva, idsala, turno, responsavel)
+VALUES (1, 1, 'Manhã', 'Prof.pamonha') -- turno informado para consistência, mesmo sem períodos
+RETURNING idreservasala;
 
-UPDATE turma SET idcurso = 4 WHERE codturma ILIKE('BIO%');
+--tabela periodo
+INSERT INTO periodo (idreservasala, terceiro , quarto)
+VALUES (1, TRUE, TRUE)
+RETURNING idperiodo;
 
-UPDATE turma SET idcurso = 5 WHERE codturma ILIKE('DIR%');
-
-UPDATE turma SET idcurso = 6 WHERE codturma ILIKE('EFB%');
-
-UPDATE turma SET idcurso = 7 WHERE codturma ILIKE('ENF%');
-
-UPDATE turma SET idcurso = 8 WHERE codturma ILIKE('FAR%');
-
-UPDATE turma SET idcurso = 9 WHERE codturma ILIKE('FIS%');
-
-UPDATE turma SET idcurso = 10 WHERE codturma ILIKE('NUT%');
-
-UPDATE turma SET idcurso = 11 WHERE codturma ILIKE('ODO%');
-
-UPDATE turma SET idcurso = 12 WHERE codturma ILIKE('PSI%');
-
-UPDATE turma SET idcurso = 13 WHERE codturma ILIKE('SIN%');
-
-
--- DELETANDO TODOS OS DADOS DA TABELA TURMA PARA RESETAR O ID
-TRUNCATE TABLE turma RESTART IDENTITY CASCADE;
-
---Insert na tabela diasemana
-INSERT INTO
+--tabela diasemana
+INSERT INTO diasemana (idreservasala, idperiodo, segunda, terca)
+VALUES (1, 1, TRUE, TRUE);
 
