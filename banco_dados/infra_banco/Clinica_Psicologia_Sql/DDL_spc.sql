@@ -234,9 +234,9 @@ CREATE TABLE estagiario (
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(10) NOT NULL,
-	nivelestagio VARCHAR(10) NOT NULL,
-	semestre VARCHAR(10) NOT NULL, 
+	senha VARCHAR(255) NOT NULL,
+	nivelestagio VARCHAR(30) NOT NULL,
+	semestre VARCHAR(30) NOT NULL, 
 	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
@@ -265,7 +265,7 @@ CREATE TABLE sala(
 	crpresp INT, /* Fk para responsável tec */
 	crpcoord INT, /* FK para coordenador */
 	numsala INT NOT NULL,
-	tiposala VARCHAR(10) NOT NULL,
+	tiposala VARCHAR(15) NOT NULL,
 	capacidade INT NOT NULL,
 	dthsala TIMESTAMP NOT NULL DEFAULT NOW(),
 	status BOOLEAN NOT NULL DEFAULT FALSE,

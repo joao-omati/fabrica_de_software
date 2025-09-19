@@ -1,4 +1,4 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva 
+-- Active: 1757350708892@@127.0.0.1@5432@scp
 -- Active: 1750708565763@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
@@ -23,6 +23,7 @@ CREATE TABLE usuario(
 CREATE TABLE bloco(
 
     idbloco INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nomebloco CHAR(1) NOT NULL UNIQUE, 
     matriculauser INTEGER NULL, -- VAMOS PERMITIR NULLABLE
     ativo BOOLEAN DEFAULT TRUE, -- Informa se a sala está aptada para ser reservada
     motivoinativo VARCHAR(255) CHECK( ativo = FALSE OR motivoinativo IS NULL), /* So deve ser colocado quando o atributo ativo for false*/
@@ -37,8 +38,9 @@ CREATE TABLE sala(
 
     idsala INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     idbloco INTEGER NOT NULL,
-    matriculauser INTEGER NULL, -- VAMOS PERMITIR NULLABLE
-    andar VARCHAR(25) NOT NULL,
+    matriculauser INTEGER NULL,
+    andar VARCHAR(20),
+    nomebloco CHAR(1) NULL, -- VAMOS PERMITIR NULLABLE
     numerosala INTEGER NOT NULL,    
     capacidade INTEGER NOT NULL,
     tvtamanho VARCHAR(5) NOT NULL, -- Tamanho em polegadas, exemplo: 55"
@@ -149,5 +151,3 @@ CREATE TABLE diasemana(
     FOREIGN KEY (idreservasala) REFERENCES reservasala(idreservasala),
     FOREIGN KEY(idperiodo) REFERENCES periodo(idperiodo)
 );
-
-
