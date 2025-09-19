@@ -1,3 +1,4 @@
+-- Active: 1758304941572@@127.0.0.1@5432@psi
 -- Se tiver alguma consulta comentada é para testes depois, ou para estudar
 -- Para Inserts, colunas que possuem DEFAULT ou então coluna de PK SERIAL não é necessário colocar dentro da primeira abertura de ()
 
@@ -255,28 +256,32 @@ INSERT INTO arqinscrito (idarqinscrito, idfichacomunidade, status)
 VALUES (1, 1, TRUE), (2, 2, TRUE), (3, 3, FALSE), (4, 4, TRUE), (5, 5, FALSE);
 
 -- Tabela: arquivamento
-INSERT INTO arquivamento (idarquivamento, crpcoord, crpresp, idprontuario, idarqinscrito, justificativa) VALUES
-(1, 10101, 80808, 1, 1, 'Paciente teve alta'),
-(2, 10101, 80808, 2, 2, 'Paciente abandonou tratamento'),
-(3, 20202, 80808, 3, 3, 'Paciente mudou de cidade'),
-(4, 20202, 80808, 4, 4, 'Tratamento concluído com sucesso'),
-(5, 10101, 80808, 5, 5, 'Solicitação do paciente');
+INSERT INTO arquivamento (idsolicitacao, crpcoord, crpresp, idprontuario, idarqinscrito, justificativa) 
+VALUES
+(1, 10101, 80808, 1, 1,'Paciente teve alta'),
+(2, 10101, 80808, 2, 2,'Paciente abandonou tratamento'),
+(3, 10101, 80808, 3, 3,'Paciente mudou de cidade'),
+(4, 10101, 80808, 4, 4,'Tratamento concluído com sucesso'),
+(5, 10101, 80808, 5, 5,'Solicitação do paciente')
+RETURNING idarquivamento;
 
--- Tabela: soliarquivamento
-INSERT INTO soliarquivamento (idsolicitacao, idarquivamento, idprontuario, ra, crpsup, crpresp, crpcoord, descricao) VALUES
-(1, 1, 1, 110011, 30303, 80808, 10101, 'Solicito arquivamento por alta.'),
-(2, 2, 2, 220022, 40404, 80808, 10101, 'Solicito arquivamento por abandono.'),
-(3, 3, 3, 330033, 50505, 80808, 20202, 'Solicito arquivamento por mudança.'),
-(4, 4, 4, 440044, 60606, 80808, 20202, 'Solicito arquivamento por conclusão.'),
-(5, 5, 5, 550055, 70707, 80808, 10101, 'Solicito arquivamento a pedido do paciente.');
+-- Aqui você atribui o valor necessário para o campo crpcoord
+-- Inserir dados na tabela 'soliarquivamento'
+INSERT INTO soliarquivamento (idprontuario, idarqinscrito, idarquivamento, ra, dthsoliestagiario, crpsup, confirmsup, dthsolisup, crpresp, confirmresp, crpcoord, confirmcoord, descricao) 
+VALUES
+(1, 1, 98, 110011, NOW(), 10101, TRUE, NOW(), 80808, TRUE, 10101, TRUE, 'Paciente teve alta'),
+(2, 2, 99, 220022, NOW(), 20202, TRUE, NOW(), 80808, TRUE, 10101, TRUE, 'Paciente abandonou tratamento'),
+(3, 3, 100, 330033, NOW(), 20202, TRUE, NOW(), 80808, TRUE, 10101, TRUE, 'Paciente mudou de cidade'),
+(4, 4, 101, 440044, NOW(), 20202, TRUE, NOW(), 80808, TRUE, 10101, TRUE, 'Tratamento concluído com sucesso'),
+(5, 5, 102, 550055, NOW(), 20202, TRUE, NOW(), 80808, TRUE, 10101, TRUE, 'Solicitação do paciente')
+RETURNING idsloicitacao;
 
--- Tabela: htocorrencia (Histórico de Ocorrência)
-INSERT INTO htocorrencia (idhtc, idprontuario, ra, crpsup, crpcoord, nomepessoa, faltas, justificativa) VALUES
+SELECT * FROM supervisor;
+-- Inserir dados na tabela 'htocorrencia'
+INSERT INTO htocorrencia (idprontuario, idarqinscrito, ra, crpsup, crpcoord, nomepessoa, faltas, justificativa) 
+VALUES
 (1, 1, 110011, 30303, 10101, 'Ana Silva', 0, 'Sessão realizada normalmente.'),
 (2, 2, 220022, 40404, 10101, 'Bruno Costa', 1, 'Paciente faltou sem justificativa.'),
 (3, 3, 330033, 50505, 20202, 'Carla Dias', 0, 'Sessão remarcada a pedido do paciente.'),
 (4, 4, 440044, 60606, 20202, 'Daniel Farias', 2, 'Paciente com 2 faltas consecutivas.'),
 (5, 5, 550055, 70707, 10101, 'Eduarda Lima', 0, 'Sessão de encerramento realizada.');
-
-
-
