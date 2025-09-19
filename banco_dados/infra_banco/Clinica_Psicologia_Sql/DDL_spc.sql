@@ -1,3 +1,4 @@
+-- Active: 1758304941572@@127.0.0.1@5432@psi
 -- Criação a Tabela inscrito convenio = Ficha de Inscrição(Convenio)
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
@@ -374,63 +375,63 @@ CREATE TABLE arqinscrito(
 );
 
 --Criando a Tabela Arquivamento
-CREATE TABLE arquivamento(
-	idarquivamento SERIAL PRIMARY KEY,
-	idsolicitacao INT NOT NULL,
-	crpcoord INT,
-	crpresp INT,
-	idprontuario INT,
-	idarqinscrito INT,
-	dtharq TIMESTAMP DEFAULT NOW(),
-	retencao TIMESTAMP GENERATED ALWAYS AS (dtharq + INTERVAL '5 years') STORED,
-	justificativa VARCHAR(255),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
-	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
+CREATE TABLE arquivamento (
+    idarquivamento SERIAL PRIMARY KEY,
+    idsolicitacao INT NOT NULL,
+    crpcoord INT,
+    crpresp INT,
+    idprontuario INT,
+    idarqinscrito INT,
+    dtharq TIMESTAMP DEFAULT NOW(),
+    retencao TIMESTAMP GENERATED ALWAYS AS (dtharq + INTERVAL '5 years') STORED,
+    justificativa VARCHAR(255),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
+    FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
---Criando a Tabela Solitação de Arquivamento
-CREATE TABLE soliarquivamento(
-	idsloicitacao SERIAL PRIMARY KEY,
-	idprontuario INT,
-	idarqinscrito INT,
-	idarquivamento INT NOT NULL,
-	ra INT,
-	dthsoliestagiario TIMESTAMP,
-	crpsup INT,
-	confirmsup BOOLEAN DEFAULT FALSE,
-	dthsolisup TIMESTAMP,
-	crpresp INT,
-	confirmresp BOOLEAN DEFAULT FALSE,
-	crpcoord INT,
-	confirmcoord BOOLEAN DEFAULT FALSE,
-	descricao VARCHAR(255),
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
-	FOREIGN KEY (idarquivamento) REFERENCES arquivamento (idarquivamento),
-	FOREIGN KEY (ra) REFERENCES estagiario (ra),
-	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
-	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+-- Tabela: soliarquivamento
+CREATE TABLE soliarquivamento (
+    idsloicitacao SERIAL PRIMARY KEY,
+    idprontuario INT,
+    idarqinscrito INT,
+    idarquivamento INT NOT NULL,
+    ra INT,
+    dthsoliestagiario TIMESTAMP,
+    crpsup INT,
+    confirmsup BOOLEAN DEFAULT FALSE,
+    dthsolisup TIMESTAMP,
+    crpresp INT,
+    confirmresp BOOLEAN DEFAULT FALSE,
+    crpcoord INT,
+    confirmcoord BOOLEAN DEFAULT FALSE,
+    descricao VARCHAR(255),
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+    FOREIGN KEY (idarquivamento) REFERENCES arquivamento (idarquivamento),
+    FOREIGN KEY (ra) REFERENCES estagiario (ra),
+    FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+    FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
---Criando a Tabela Historico de Ocorrencia
-CREATE TABLE htocorrencia(
-	idhtc SERIAL PRIMARY KEY,
-	idprontuario INT,
-	idarqinscrito INT,
-	ra INT,
-	crpsup INT,
-	crpcoord INT,
-	nomepessoa VARCHAR(50) NOT NULL,
-	dthora TIMESTAMP NOT NULL DEFAULT NOW(),
-	comparecimento BOOLEAN DEFAULT FALSE,
-	faltas INT NOT NULL,
-	justificativa VARCHAR(255) NOT NULL,
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
-	FOREIGN KEY (ra) REFERENCES estagiario (ra),
-	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
+-- Tabela: htocorrencia
+CREATE TABLE htocorrencia (
+    idhtc SERIAL PRIMARY KEY,
+    idprontuario INT,
+    idarqinscrito INT,
+    ra INT,
+    crpsup INT,
+    crpcoord INT,
+    nomepessoa VARCHAR(50) NOT NULL,
+    dthora TIMESTAMP NOT NULL DEFAULT NOW(),
+    comparecimento BOOLEAN DEFAULT FALSE,
+    faltas INT NOT NULL,
+    justificativa VARCHAR(255) NOT NULL,
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+    FOREIGN KEY (ra) REFERENCES estagiario (ra),
+    FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
