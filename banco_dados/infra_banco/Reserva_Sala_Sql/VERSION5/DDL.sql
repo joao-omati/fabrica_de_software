@@ -1,4 +1,8 @@
+<<<<<<< HEAD:banco_dados/infra_banco/Reserva_Sala_Sql/VERSION5a/DDL.sql
+-- Active: 1757523534123@@127.0.0.1@5432@SCP
+=======
 -- Active: 1757350708892@@127.0.0.1@5432@scp
+>>>>>>> origin/Vitor_banco_dados_2:banco_dados/infra_banco/Reserva_Sala_Sql/VERSION5/DDL.sql
 -- Active: 1750708565763@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos

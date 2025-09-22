@@ -1,4 +1,3 @@
--- Active: 1758304941572@@127.0.0.1@5432@psi
 -- Criação a Tabela inscrito convenio = Ficha de Inscrição(Convenio)
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
@@ -435,3 +434,23 @@ CREATE TABLE htocorrencia (
     FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
     FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
+
+--Alterando tabela stágiario 
+
+ALTER TABLE estagiario DROP COLUMN senha;
+
+ALTER TABLE estagiario DROP COLUMN nivelestagiario;
+
+ALTER TABLE estagiario DROP COLUMN semestre;
+
+ALTER TABLE estagiario ADD COLUMN nivelestagiario VARCHAR(20);
+
+ALTER TABLE estagiario ADD COLUMN semestre VARCHAR(20);
+
+
+ALTER TABLE estagiario ADD COLUMN senha VARCHAR(40); --Por causa do MD5 a senha precisa ter 32 ou mais carctares, o MD5 gera um hash de 32 caracteres.
+
+
+
+
+ALTER TABLE escolheins 
