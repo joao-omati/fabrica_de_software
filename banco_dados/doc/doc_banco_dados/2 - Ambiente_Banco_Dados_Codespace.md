@@ -10,7 +10,7 @@
 
     Conta no GitHub com acesso a Codespaces.
 
-    Utilizar 2 Núcles/Cores no codespace que é gratuito: limite de 60h por mês
+    êUtilizar 2 Núcles/Cores no codespace que é gratuito: limite de 60h por ms
 
         observação: Você pode criar um com 4 cores, mas aí é contigo kkkkk
 

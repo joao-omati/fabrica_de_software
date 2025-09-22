@@ -1,4 +1,4 @@
--- Active: 1749757574490@@127.0.0.1@5432@reserva 
+-- Active: 1757523534123@@127.0.0.1@5432@SCP
 -- Active: 1750708565763@@127.0.0.1@5432@reserva 
 
 -- CRIANDO A TABELA USUARIO, fiz uma generalização visto que os dados a serem inseridos vai servir para todos
