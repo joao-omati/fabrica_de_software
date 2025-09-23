@@ -234,9 +234,9 @@ CREATE TABLE estagiario (
 	crpcoord INT NOT NULL,
 	nome VARCHAR(50) NOT NULL,
 	ra INT NOT NULL UNIQUE,
-	senha VARCHAR(10) NOT NULL,
-	nivelestagio VARCHAR(10) NOT NULL,
-	semestre VARCHAR(10) NOT NULL, 
+	senha VARCHAR(250) NOT NULL,
+	nivelestagio VARCHAR(30) NOT NULL,
+	semestre VARCHAR(30) NOT NULL, 
 	emailinst VARCHAR(255) NOT NULL, /* Geralmente o email institucional deles é do supervisor, porém aqui podemos aceitar o email institucional do aluno */
 	dthestg TIMESTAMP DEFAULT NOW(),
 	status BOOLEAN DEFAULT TRUE,
@@ -265,7 +265,7 @@ CREATE TABLE sala(
 	crpresp INT, /* Fk para responsável tec */
 	crpcoord INT, /* FK para coordenador */
 	numsala INT NOT NULL,
-	tiposala VARCHAR(10) NOT NULL,
+	tiposala VARCHAR(15) NOT NULL,
 	capacidade INT NOT NULL,
 	dthsala TIMESTAMP NOT NULL DEFAULT NOW(),
 	status BOOLEAN NOT NULL DEFAULT FALSE,
@@ -374,63 +374,83 @@ CREATE TABLE arqinscrito(
 );
 
 --Criando a Tabela Arquivamento
-CREATE TABLE arquivamento(
-	idarquivamento SERIAL PRIMARY KEY,
-	idsolicitacao INT NOT NULL,
-	crpcoord INT,
-	crpresp INT,
-	idprontuario INT,
-	idarqinscrito INT,
-	dtharq TIMESTAMP DEFAULT NOW(),
-	retencao TIMESTAMP GENERATED ALWAYS AS (dtharq + INTERVAL '5 years') STORED,
-	justificativa VARCHAR(255),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
-	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
+CREATE TABLE arquivamento (
+    idarquivamento SERIAL PRIMARY KEY,
+    idsolicitacao INT NOT NULL,
+    crpcoord INT,
+    crpresp INT,
+    idprontuario INT,
+    idarqinscrito INT,
+    dtharq TIMESTAMP DEFAULT NOW(),
+    retencao TIMESTAMP GENERATED ALWAYS AS (dtharq + INTERVAL '5 years') STORED,
+    justificativa VARCHAR(255),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp),
+    FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito)
 );
 
---Criando a Tabela Solitação de Arquivamento
-CREATE TABLE soliarquivamento(
-	idsloicitacao SERIAL PRIMARY KEY,
-	idprontuario INT,
-	idarqinscrito INT,
-	idarquivamento INT NOT NULL,
-	ra INT,
-	dthsoliestagiario TIMESTAMP,
-	crpsup INT,
-	confirmsup BOOLEAN DEFAULT FALSE,
-	dthsolisup TIMESTAMP,
-	crpresp INT,
-	confirmresp BOOLEAN DEFAULT FALSE,
-	crpcoord INT,
-	confirmcoord BOOLEAN DEFAULT FALSE,
-	descricao VARCHAR(255),
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
-	FOREIGN KEY (idarquivamento) REFERENCES arquivamento (idarquivamento),
-	FOREIGN KEY (ra) REFERENCES estagiario (ra),
-	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
-	FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
+-- Tabela: soliarquivamento
+CREATE TABLE soliarquivamento (
+    idsloicitacao SERIAL PRIMARY KEY,
+    idprontuario INT,
+    idarqinscrito INT,
+    idarquivamento INT NOT NULL,
+    ra INT,
+    dthsoliestagiario TIMESTAMP,
+    crpsup INT,
+    confirmsup BOOLEAN DEFAULT FALSE,
+    dthsolisup TIMESTAMP,
+    crpresp INT,
+    confirmresp BOOLEAN DEFAULT FALSE,
+    crpcoord INT,
+    confirmcoord BOOLEAN DEFAULT FALSE,
+    descricao VARCHAR(255),
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+    FOREIGN KEY (idarquivamento) REFERENCES arquivamento (idarquivamento),
+    FOREIGN KEY (ra) REFERENCES estagiario (ra),
+    FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+    FOREIGN KEY (crpresp) REFERENCES resptec (crpresp),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
 
---Criando a Tabela Historico de Ocorrencia
-CREATE TABLE htocorrencia(
-	idhtc SERIAL PRIMARY KEY,
-	idprontuario INT,
-	idarqinscrito INT,
-	ra INT,
-	crpsup INT,
-	crpcoord INT,
-	nomepessoa VARCHAR(50) NOT NULL,
-	dthora TIMESTAMP NOT NULL DEFAULT NOW(),
-	comparecimento BOOLEAN DEFAULT FALSE,
-	faltas INT NOT NULL,
-	justificativa VARCHAR(255) NOT NULL,
-	FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
-	FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
-	FOREIGN KEY (ra) REFERENCES estagiario (ra),
-	FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
-	FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)	
+-- Tabela: htocorrencia
+CREATE TABLE htocorrencia (
+    idhtc SERIAL PRIMARY KEY,
+    idprontuario INT,
+    idarqinscrito INT,
+    ra INT,
+    crpsup INT,
+    crpcoord INT,
+    nomepessoa VARCHAR(50) NOT NULL,
+    dthora TIMESTAMP NOT NULL DEFAULT NOW(),
+    comparecimento BOOLEAN DEFAULT FALSE,
+    faltas INT NOT NULL,
+    justificativa VARCHAR(255) NOT NULL,
+    FOREIGN KEY (idprontuario) REFERENCES prontuario (idprontuario),
+    FOREIGN KEY (idarqinscrito) REFERENCES arqinscrito (idarqinscrito),
+    FOREIGN KEY (ra) REFERENCES estagiario (ra),
+    FOREIGN KEY (crpsup) REFERENCES supervisor (crp),
+    FOREIGN KEY (crpcoord) REFERENCES coordenador (crp)
 );
+
+--Alterando tabela stágiario 
+
+ALTER TABLE estagiario DROP COLUMN senha;
+
+ALTER TABLE estagiario DROP COLUMN nivelestagiario;
+
+ALTER TABLE estagiario DROP COLUMN semestre;
+
+ALTER TABLE estagiario ADD COLUMN nivelestagiario VARCHAR(20);
+
+ALTER TABLE estagiario ADD COLUMN semestre VARCHAR(20);
+
+
+ALTER TABLE estagiario ADD COLUMN senha VARCHAR(40); --Por causa do MD5 a senha precisa ter 32 ou mais carctares, o MD5 gera um hash de 32 caracteres.
+
+
+
+
+ALTER TABLE escolheins 

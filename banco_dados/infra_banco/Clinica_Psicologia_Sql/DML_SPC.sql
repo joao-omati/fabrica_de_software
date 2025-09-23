@@ -1,3 +1,4 @@
+-- Active: 1758559172467@@127.0.0.1@5432@SCP
 -- Inserindo dados para a Tabela Inscrito Convenio
 INSERT INTO 
 	inscritoconvenio (nomeinscrito, dtnascimento, testavpsico, tipoencaminhamento, nomeresp, grauresp, cpfresp, estadocivilresp, tellcellresp, emailresp, estadocivilinscrito, cpfinscrito, tellcellinscrito, contatourgencia, nomecontatourgencia, emailinscrito, identidadegenero, etnia, religiao, confirmlgpd, dthinscricao, status) 
@@ -178,7 +179,7 @@ VALUES
 
 -- Inserindo dados para a Tabela Estagiario
 INSERT INTO 
-	estagiario (crpsup, crpcoord, nome, ra, senha, nivelestagio, semestre, emailinst, status) 
+	estagiario (crpsup, crpcoord, nome, ra, senha, nivelestagiario, semestre, emailinst, status) 
 VALUES
 	(67890, 12345, 'João Pedro Silva', 1001, MD5('joaoestagio@1'), 'Básico', '1º Semestre', 'joao.silva@aluno.instituicao.com', TRUE),
 	(78901, 23456, 'Mariana Gomes', 1002, MD5('mariana.est@'), 'Intermediário', '3º Semestre', 'mariana.g@aluno.instituicao.com', TRUE),
@@ -190,11 +191,11 @@ VALUES
 INSERT INTO 
 	escolheins (idestagiario, idfichaconvenio, idfichacomunidade, status, dthescolha) 
 VALUES
-	(16, 2, NULL, TRUE, NOW()),  -- Exemplo: Estagiário ID 16 escolheu inscrição de convênio ID 2
-	(17, NULL, 7, TRUE, NOW()),  -- Exemplo: Estagiário ID 17 escolheu inscrição de comunidade ID 7
-	(18, 3, NULL, FALSE, NOW()), -- Exemplo: Estagiário ID 18 escolheu inscrição de convênio ID 3
-	(19, NULL, 9, TRUE, NOW()),  -- Exemplo: Estagiário ID 19 escolheu inscrição de comunidade ID 9
-	(20, 5, NULL, FALSE, NOW()); -- Exemplo: Estagiário ID 20 escolheu inscrição de convênio ID 5
+	(1, 1, NULL, TRUE, NOW()),  -- Exemplo: Estagiário ID 16 escolheu inscrição de convênio ID 1
+	(2, 2, NULL, TRUE, NOW()),  -- Exemplo: Estagiário ID 17 escolheu inscrição de comunidade ID 2
+	(3, 3, NULL, FALSE, NOW()), -- Exemplo: Estagiário ID 18 escolheu inscrição de convênio ID 3
+	(4, 4, NULL, TRUE, NOW()),  -- Exemplo: Estagiário ID 19 escolheu inscrição de comunidade ID 4
+	(5, 5, NULL, FALSE, NOW()); -- Exemplo: Estagiário ID 20 escolheu inscrição de convênio ID 5
 
 -- Inserindo dados para a Tabela Salas
 INSERT INTO 
