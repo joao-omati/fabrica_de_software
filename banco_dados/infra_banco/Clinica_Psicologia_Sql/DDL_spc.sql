@@ -1,3 +1,4 @@
+-- Active: 1759427024913@@127.0.0.1@5432@fabricadesoft
 -- Criação a Tabela inscrito convenio = Ficha de Inscrição(Convenio)
 CREATE TABLE inscritoconvenio (
 	idfichaconvenio SERIAL PRIMARY KEY,
@@ -26,11 +27,13 @@ CREATE TABLE inscritoconvenio (
 );
 
 --Criando a Tabela Inscrito Comunidade = Ficha de Inscrição(Comunidade)
+-- adicionar varchar tipo de consulta 
 CREATE TABLE inscritocomunidade (
 	idfichacomunidade SERIAL PRIMARY KEY,
 	nomeinscrito VARCHAR(100) NOT NULL,
 	dtnascimento DATE NOT NULL,
 	nomeresp VARCHAR(50),
+	tipodeconsulta VARCHAR(50) CHECK(tipodeconsulta IN ('avaliação inicial', 'retorno', 'consulta de emergência', 'acompanhamento', 'consulta médica')),
 	grauresp VARCHAR(25),
 	cpfresp CHAR(11) UNIQUE,
 	estadocivilresp VARCHAR(25) CHECK (estadocivilresp IN ('Solteiro', 'Casado', 'Divorciado', 'Viúvo', 'União Estável', 'Nenhum', 'Outros')),
@@ -259,6 +262,7 @@ CREATE TABLE  escolheins(
 );
 
 --Criando tabela a sala 
+-- adicionar varchar de tipo de sala 
 CREATE TABLE sala(
 	idsala SERIAL PRIMARY KEY,
 	codfuncionario INT, /* FK para secretária */
